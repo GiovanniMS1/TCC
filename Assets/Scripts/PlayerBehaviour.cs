@@ -1,17 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Transactions;
 using Unity.Mathematics;
 using UnityEngine;
 
 public class PlayerBehaviour : MonoBehaviour
 {
-    private float horizontalInput;
     [SerializeField] private float moveSpeed;
     [SerializeField] private float jumpPower;
+    private float horizontalInput;
     private Rigidbody2D rb;
     private Animator anim;
     private bool isGrounded = false;
+    private bool isFacingRight = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +21,7 @@ public class PlayerBehaviour : MonoBehaviour
     void Update()
     {
         PlayerInput();
+        FlipSprite();
     }
 
     private void PlayerInput()
@@ -47,10 +46,21 @@ public class PlayerBehaviour : MonoBehaviour
         isGrounded = false;
         anim.SetBool("isJumping", !isGrounded);
     }
+    private void FlipSprite()
+    {
+        if(isFacingRight && horizontalInput < 0f || !isFacingRight && horizontalInput > 0f)
+        {
+            isFacingRight = !isFacingRight;
+            Vector2 ls = transform.localScale;
+            ls.x *= -1f;
+            transform.localScale = ls;
+        }
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         isGrounded = true;
         anim.SetBool("isJumping", !isGrounded);
     }
+    
 }
