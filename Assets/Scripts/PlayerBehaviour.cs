@@ -1,3 +1,4 @@
+using System.Runtime.InteropServices;
 using Unity.Mathematics;
 using UnityEngine;
 
@@ -28,7 +29,7 @@ public class PlayerBehaviour : MonoBehaviour
     {
         horizontalInput = Input.GetAxis("Horizontal");
         
-        if(Input.GetButtonDown("Jump") && isGrounded)
+        if(Input.GetButton("Jump") && isGrounded)
         {
             Jump();
         }
@@ -39,12 +40,12 @@ public class PlayerBehaviour : MonoBehaviour
         rb.velocity = new Vector2(horizontalInput * moveSpeed, rb.velocity.y);
         anim.SetFloat("xVelocity", math.abs(rb.velocity.x));
         anim.SetFloat("yVelocity", rb.velocity.y);
+
     }
     private void Jump()
     {
         rb.velocity = new Vector2(rb.velocity.x, jumpPower);
-        isGrounded = false;
-        anim.SetBool("isJumping", !isGrounded);
+        //anim.SetBool("isJumping", !isGrounded);
     }
     private void FlipSprite()
     {
@@ -57,10 +58,18 @@ public class PlayerBehaviour : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        isGrounded = true;
-        anim.SetBool("isJumping", !isGrounded);
+    private void OnCollisionExit2D(Collision2D other)
+    {   
+            isGrounded = false;
+            anim.SetBool("isJumping", !isGrounded);
     }
-    
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if(other.gameObject.tag == "Ground")
+        {
+            isGrounded = true;
+            anim.SetBool("isJumping", !isGrounded);
+        }
+    }
 }
