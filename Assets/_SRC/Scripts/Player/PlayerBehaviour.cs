@@ -4,15 +4,19 @@ using UnityEngine;
 
 public class PlayerBehaviour : MonoBehaviour
 {
+    [Header("Player Info")]
     [SerializeField] private float moveSpeed;
     [SerializeField] private float jumpPower;
+
+    [Header("Layer Info")]
     [SerializeField] private LayerMask layerGround;
-    private float horizontalInput;
     private Rigidbody2D rb;
     private Animator anim;
     private BoxCollider2D boxCollider;
     private bool isFacingRight = true;
-    // Start is called before the first frame update
+    private float horizontalInput;
+    
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -20,18 +24,18 @@ public class PlayerBehaviour : MonoBehaviour
         boxCollider = GetComponent<BoxCollider2D>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         PlayerInput();
         FlipSprite();
+        IsGrounded();
     }
 
     private void PlayerInput()
     {
         horizontalInput = Input.GetAxis("Horizontal");
         
-        if(Input.GetButton("Jump") && isGrounded())
+        if(Input.GetButton("Jump") && IsGrounded())
         {
             Jump();
         }
@@ -59,24 +63,14 @@ public class PlayerBehaviour : MonoBehaviour
         }
     }
 
-    private bool isGrounded()
+    private bool IsGrounded()
     {
-        RaycastHit2D ground = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size,0,Vector2.down,0.1f,layerGround);
+        RaycastHit2D ground = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0, Vector2.down, 0.2f, layerGround);
+        if(ground.collider != null)
+            anim.SetBool("isJumping", false);
+        else
+            anim.SetBool("isJumping", true);
+        
         return ground.collider != null;
-    }
-
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-        if (other.gameObject.tag == "Ground")
-        {
-            anim.SetBool("isJumping", !isGrounded());
-        }
-    }
-    private void OnCollisionExit2D(Collision2D other)
-    {
-        if (other.gameObject.tag == "Ground")
-        {
-            anim.SetBool("isJumping", !isGrounded());
-        }
     }
 }
