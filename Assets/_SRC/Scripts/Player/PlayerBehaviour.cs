@@ -37,7 +37,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     private void PlayerInput()
     {
-        if(!takingDamage)
+        if(!takingDamage && !attacking)
             horizontalInput = Input.GetAxis("Horizontal");
         
         if(Input.GetButton("Jump") && IsGrounded())
@@ -88,6 +88,7 @@ public class PlayerBehaviour : MonoBehaviour
             takingDamage = true;
             Vector2 rebound = new Vector2(transform.position.x - direction.x, 0.4f).normalized;
             rb2d.AddForce(rebound * reboundPower, ForceMode2D.Impulse);
+            DisableAttack();
         }
         
     }
