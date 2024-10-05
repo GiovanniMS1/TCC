@@ -14,17 +14,22 @@ public class EnemyController : MonoBehaviour
     private Rigidbody2D rb2d;
     private Vector2 movement;
     private Animator anim;
-    private bool chasingPlayer;
+    private bool chasingPlayer, takingDamage, playerIsAlive;
 
     void Start()
     {
+        playerIsAlive = true;
         rb2d = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
     }
 
     void Update()
     {
-        Chasing();
+        if(playerIsAlive)
+        {
+            Chasing();
+        }
+
         AnimationState();
     }
 
@@ -59,7 +64,8 @@ public class EnemyController : MonoBehaviour
             movement = Vector2.zero;
         }
 
-        rb2d.MovePosition(rb2d.position + movement * speed * Time.deltaTime);
+        if(!takingDamage)
+            rb2d.MovePosition(rb2d.position + movement * speed * Time.deltaTime);
     }
     private void AnimationState()
     {
@@ -70,11 +76,45 @@ public class EnemyController : MonoBehaviour
         if(collision.collider.CompareTag("Player"))
         {
             Vector2 directionDamage = new Vector2(transform.position.x, 0);
+            PlayerBehaviour playerScript = collision.gameObject.GetComponent<PlayerBehaviour>();
 
-            collision.gameObject.GetComponent<PlayerBehaviour>().TakeDamage(directionDamage, reboundPower, 1);
+            playerScript.TakeDamage(directionDamage, reboundPower, 1);
+            playerIsAlive = !playerScript.PlayerIsDeath();
+            if(!playerIsAlive)
+            {
+                chasingPlayer = false;
+            }
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.CompareTag("Sword"))
+        {
+            Vector2 directionDamage = new Vector2(collision.gameObject.transform.position.x, 0);
+
+            TakeDamage(directionDamage, reboundPower, 1);
+        }
+    }
+
+    public void TakeDamage(Vector2 direction, float reboundPower, int damage)
+    {
+        if(!takingDamage)
+        {
+            takingDamage = true;
+            Vector2 rebound = new Vector2(transform.position.x - direction.x, 0.4f).normalized;
+            rb2d.AddForce(rebound * reboundPower, ForceMode2D.Impulse);
+            StartCoroutine(DisableDamage());
+        }
+        
+    }
+
+    IEnumerator DisableDamage()
+    {
+        yield return new WaitForSeconds(0.4f);
+        takingDamage = false;
+        rb2d.velocity = Vector2.zero;
+    }
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
