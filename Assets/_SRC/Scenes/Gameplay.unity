@@ -519,9 +519,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32371cf919ed554478ff3afc5ae0cda6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 5
   moveSpeed: 8
   jumpPower: 10
-  health: 3
   whatIsGround:
     serializedVersion: 2
     m_Bits: 64
@@ -781,7 +781,7 @@ Transform:
   m_GameObject: {fileID: 1380496842}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 12, y: -3.5, z: 0}
+  m_LocalPosition: {x: 17.880001, y: -3.7399998, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -923,10 +923,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd0607d5589307443b9873bf219b8cd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 858092196}
+  health: 3
   reboundPower: 10
   detectionRadius: 8
   speed: 16
+  player: {fileID: 858092196}
 --- !u!95 &1380496848
 Animator:
   serializedVersion: 5

@@ -1,16 +1,14 @@
-using System.Runtime.InteropServices;
-using Unity.Mathematics;
-using Unity.VisualScripting;
+using System.Collections;
 using UnityEngine;
 
 public class PlayerBehaviour : MonoBehaviour
 {
+    [Header("Player Status")]
+    [SerializeField] private int health;
+
     [Header("Player Info")]
     [SerializeField] private float moveSpeed;
     [SerializeField] private float jumpPower;
-
-    [Header("Player Status")]
-    [SerializeField] private int health;
 
     [Header("Layer Info")]
     [SerializeField] private LayerMask whatIsGround;
@@ -31,11 +29,11 @@ public class PlayerBehaviour : MonoBehaviour
 
     void Update()
     {
-        PlayerIsDeath();
         PlayerInput();
         FlipSprite();
         IsGrounded();   
         AnimationState();
+        PlayerIsDeath();
     }
 
     private void PlayerInput()
