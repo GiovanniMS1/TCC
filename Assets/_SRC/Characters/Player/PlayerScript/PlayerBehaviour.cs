@@ -15,7 +15,7 @@ public class PlayerBehaviour : MonoBehaviour
     private Rigidbody2D rb2d;
     private Animator anim;
     private BoxCollider2D boxCollider;
-    private bool isFacingRight, takingDamage, attacking, isDeath;
+    private bool isFacingRight, takingDamage, attacking, blocking, isDeath;
     private float horizontalInput;
     
 
@@ -38,7 +38,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     private void PlayerInput()
     {
-        if(!takingDamage && !attacking && !isDeath)
+        if(!takingDamage && !attacking && !blocking && !isDeath)
             horizontalInput = Input.GetAxis("Horizontal");
         
         if(Input.GetButton("Jump") && IsGrounded())
@@ -46,9 +46,19 @@ public class PlayerBehaviour : MonoBehaviour
             Jump();
         }
 
-        if(Input.GetMouseButtonDown(0) && !attacking && IsGrounded())
+        if(Input.GetMouseButtonDown(0) && !attacking && !blocking && IsGrounded())
         {
             Attack();
+        }
+
+        if(Input.GetMouseButtonDown(1) && !blocking && IsGrounded())
+        {
+            Block();
+        }
+
+        if(Input.GetMouseButtonUp(1) && blocking && IsGrounded())
+        {
+            DisableBlock();
         }
     }
 
@@ -92,6 +102,7 @@ public class PlayerBehaviour : MonoBehaviour
                 Vector2 rebound = new Vector2(transform.position.x - direction.x, 0.4f).normalized;
                 rb2d.AddForce(rebound * reboundPower, ForceMode2D.Impulse);
                 DisableAttack();
+                DisableBlock();
             }
             else
             {
@@ -116,6 +127,16 @@ public class PlayerBehaviour : MonoBehaviour
         attacking = false;
     }
 
+    private void Block()
+    {
+        blocking = true;
+        rb2d.velocity = Vector2.zero;
+    }
+
+    private void DisableBlock()
+    {
+        blocking = false;
+    }
     private void AnimationState()
     {
         anim.SetFloat("xVelocity", Mathf.Abs(rb2d.velocity.x));
@@ -123,6 +144,7 @@ public class PlayerBehaviour : MonoBehaviour
         anim.SetBool("isJumping", !IsGrounded());
         anim.SetBool("takeDamage", takingDamage);
         anim.SetBool("isAttacking", attacking);
+        anim.SetBool("isBlocking", blocking);
         anim.SetBool("isDying", isDeath);
     }
 

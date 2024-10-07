@@ -91,6 +91,12 @@ public class EnemyController : MonoBehaviour
             Vector2 directionDamage = new Vector2(collision.gameObject.transform.position.x, 0);
             TakeDamage(directionDamage, reboundPower, 1);
         }
+    
+        if(collision.CompareTag("Shield"))
+        {
+            Vector2 direction = new Vector2(collision.gameObject.transform.position.x, 0);
+            TakeDamage(direction, reboundPower, 0);
+        }
     }
 
     public void TakeDamage(Vector2 direction, float reboundPower, int damage)
