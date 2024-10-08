@@ -3,8 +3,10 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    [Header("Enemy Info")]
+    [Header("Enemy Status")]
     [SerializeField] private int health = 3;
+
+    [Header("Enemy Info")]
     [SerializeField] private float reboundPower = 10f;
     [SerializeField] private float detectionRadius = 8.0f;
     [SerializeField] private float speed = 16.0f;
@@ -35,10 +37,10 @@ public class EnemyController : MonoBehaviour
     {
         if(direction.x < 0)
         {
-            transform.localScale = new Vector3(2, 2, 2);
+            transform.localScale = new Vector3(1, 1, 1);
         }
         if(direction.x > 0)
-            transform.localScale = new Vector3(-2, 2, 2);
+            transform.localScale = new Vector3(-1, 1, 1);
     }
 
     private void Chasing()
@@ -70,7 +72,7 @@ public class EnemyController : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.collider.CompareTag("Player"))
+        if(collision.collider.CompareTag("Player") && !isDead)
         {
             Vector2 directionDamage = new Vector2(transform.position.x, 0);
             PlayerBehaviour playerScript = collision.gameObject.GetComponent<PlayerBehaviour>();
@@ -124,17 +126,20 @@ public class EnemyController : MonoBehaviour
         anim.SetBool("isDead", isDead);
     }
 
-    public bool EnemyIsDeath()
+    public void EnemyIsDeath()
     {
         if(health <= 0)
         {
+            isDead = true;
             rb2d.velocity = Vector2.zero;
-            return isDead = true;
-        }
-            
+            Physics2D.IgnoreCollision(player.GetComponent<BoxCollider2D>(), gameObject.GetComponent<BoxCollider2D>(), true);
+        }  
         else
-            return isDead = false;
+        {
+            isDead = false;
+        }    
     }
+    
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;

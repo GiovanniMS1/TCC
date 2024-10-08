@@ -114,7 +114,6 @@ public class PlayerBehaviour : MonoBehaviour
     public void DisableDamage()
     { 
         takingDamage = false;
-        rb2d.velocity = Vector2.zero;
     }
 
     private void Attack()
