@@ -3,9 +3,6 @@ using UnityEngine;
 
 public class PlayerBehaviour : MonoBehaviour
 {
-    [Header("Player Status")]
-    [SerializeField] private int health;
-
     [Header("Player Info")]
     [SerializeField] private float moveSpeed;
     [SerializeField] private float jumpPower;
@@ -15,7 +12,8 @@ public class PlayerBehaviour : MonoBehaviour
     private Rigidbody2D rb2d;
     private Animator anim;
     private BoxCollider2D boxCollider;
-    private bool isFacingRight, takingDamage, attacking, blocking, isDeath;
+    private PlayerLife playerLife;
+    private bool isFacingRight, attacking, blocking;
     private float horizontalInput;
     
 
@@ -24,6 +22,7 @@ public class PlayerBehaviour : MonoBehaviour
         rb2d = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         boxCollider = GetComponent<BoxCollider2D>();
+        playerLife = GetComponent<PlayerLife>();
         isFacingRight = true;
     }
 
@@ -33,12 +32,11 @@ public class PlayerBehaviour : MonoBehaviour
         FlipSprite();
         IsGrounded();   
         AnimationState();
-        PlayerIsDeath();
     }
 
     private void PlayerInput()
     {
-        if(!takingDamage && !attacking && !blocking && !isDeath)
+        if(!playerLife.takingDamage && !attacking && !blocking && !playerLife.isDeath)
             horizontalInput = Input.GetAxis("Horizontal");
         
         if(Input.GetButton("Jump") && IsGrounded())
@@ -64,7 +62,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(!takingDamage && !attacking && !blocking && !isDeath)
+        if(!playerLife.takingDamage && !attacking && !blocking && !playerLife.isDeath)
         {
             rb2d.velocity = new Vector2(horizontalInput * moveSpeed, rb2d.velocity.y);
         }
@@ -91,37 +89,12 @@ public class PlayerBehaviour : MonoBehaviour
         return ground.collider != null;
     }
 
-    public void TakeDamage(Vector2 direction, float reboundPower, int damage)
-    {
-        if(!takingDamage)
-        {
-            takingDamage = true;
-            health -= damage;
-            if(!PlayerIsDeath())
-            {
-                Vector2 rebound = new Vector2(transform.position.x - direction.x, 0.4f).normalized;
-                rb2d.AddForce(rebound * reboundPower, ForceMode2D.Impulse);
-                DisableAttack();
-                DisableBlock();
-            }
-            else
-            {
-                rb2d.velocity = Vector2.zero;
-            }
-        }
-    }
-
-    public void DisableDamage()
-    { 
-        takingDamage = false;
-    }
-
     private void Attack()
     {
         attacking = true;
     }
 
-    private void DisableAttack()
+    public void DisableAttack()
     {
         attacking = false;
     }
@@ -129,7 +102,6 @@ public class PlayerBehaviour : MonoBehaviour
     private void Block()
     {
         blocking = true;
-        rb2d.velocity = Vector2.zero;
     }
 
     public void DisableBlock()
@@ -141,17 +113,7 @@ public class PlayerBehaviour : MonoBehaviour
         anim.SetFloat("xVelocity", Mathf.Abs(rb2d.velocity.x));
         anim.SetFloat("yVelocity", rb2d.velocity.y);
         anim.SetBool("isJumping", !IsGrounded());
-        anim.SetBool("takeDamage", takingDamage);
         anim.SetBool("isAttacking", attacking);
         anim.SetBool("isBlocking", blocking);
-        anim.SetBool("isDying", isDeath);
-    }
-
-    public bool PlayerIsDeath()
-    {
-        if(health <= 0)
-            return isDeath = true;
-        else
-            return isDeath = false;
     }
 }
