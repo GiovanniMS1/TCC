@@ -64,7 +64,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(!takingDamage && !isDeath)
+        if(!takingDamage && !attacking && !blocking && !isDeath)
         {
             rb2d.velocity = new Vector2(horizontalInput * moveSpeed, rb2d.velocity.y);
         }
@@ -132,7 +132,7 @@ public class PlayerBehaviour : MonoBehaviour
         rb2d.velocity = Vector2.zero;
     }
 
-    private void DisableBlock()
+    public void DisableBlock()
     {
         blocking = false;
     }

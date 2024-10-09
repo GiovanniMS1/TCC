@@ -7,13 +7,11 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private int health = 3;
 
     [Header("Enemy Info")]
-    [SerializeField] private float reboundPower = 10f;
-    [SerializeField] private float detectionRadius = 8.0f;
-    [SerializeField] private float speed = 16.0f;
-
-    [Header("Player Reference")]
-    public Transform player;
-
+    [SerializeField] private float reboundPower;
+    [SerializeField] private float detectionRadius;
+    [SerializeField] private float speed;
+    private Transform player;
+    private PlayerBehaviour playerScript;
     private Rigidbody2D rb2d;
     private Vector2 movement;
     private Animator anim;
@@ -24,6 +22,8 @@ public class EnemyController : MonoBehaviour
         playerIsAlive = true;
         rb2d = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        playerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBehaviour>();
     }
 
     void Update()
@@ -57,7 +57,7 @@ public class EnemyController : MonoBehaviour
 
                 FlipSprite(direction);
 
-                movement = new Vector2(direction.x, 0);
+                movement = new Vector2(direction.x, rb2d.velocity.y);
             }
             else
             {
@@ -75,8 +75,6 @@ public class EnemyController : MonoBehaviour
         if(collision.collider.CompareTag("Player") && !isDead)
         {
             Vector2 directionDamage = new Vector2(transform.position.x, 0);
-            PlayerBehaviour playerScript = collision.gameObject.GetComponent<PlayerBehaviour>();
-
             playerScript.TakeDamage(directionDamage, reboundPower, 1);
             playerIsAlive = !playerScript.PlayerIsDeath();
             if(!playerIsAlive)
@@ -98,6 +96,7 @@ public class EnemyController : MonoBehaviour
         {
             Vector2 direction = new Vector2(collision.gameObject.transform.position.x, 0);
             TakeDamage(direction, reboundPower, 0);
+            playerScript.DisableBlock();
         }
     }
 
