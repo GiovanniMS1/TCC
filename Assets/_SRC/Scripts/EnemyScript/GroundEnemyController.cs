@@ -123,7 +123,7 @@ public class GroundEnemyController : MonoBehaviour
 
     IEnumerator DisableDamage()
     {
-        yield return new WaitForSeconds(0.4f);
+        yield return new WaitForSeconds(0.5f);
         takingDamage = false;
         rb2d.velocity = Vector2.zero;
     }
