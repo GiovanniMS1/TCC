@@ -64,13 +64,13 @@ public class GroundEnemyController : MonoBehaviour
 
                 FlipSprite(direction);
 
-                movement = new Vector2(direction.x, 0);
+                movement = new Vector2(direction.x, -1);
             }
             else
             {
                 chasingPlayer = false;
 
-                movement = new Vector2(0, rb2d.velocity.y);
+                movement = Vector2.down;
             }
 
             if(!takingDamage)
