@@ -85,7 +85,7 @@ public class GroundEnemyController : MonoBehaviour
         {
             Vector2 directionDamage = new Vector2(transform.position.x, 0);
             playerLifeScript.TakeDamage(directionDamage, reboundPower, 1);
-            playerIsAlive = !playerLifeScript.PlayerIsDeath();
+            playerIsAlive = !playerLifeScript.isDeath;
             if(!playerIsAlive)
             {
                 chasingPlayer = false;

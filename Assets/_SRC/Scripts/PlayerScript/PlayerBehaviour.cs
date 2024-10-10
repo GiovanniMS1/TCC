@@ -13,7 +13,7 @@ public class PlayerBehaviour : MonoBehaviour
     private Animator anim;
     private BoxCollider2D boxCollider;
     private PlayerLife playerLife;
-    private bool isFacingRight, attacking, blocking;
+    private bool isFacingRight, isGrounded, attacking, blocking;
     private float horizontalInput;
     
 
@@ -39,22 +39,22 @@ public class PlayerBehaviour : MonoBehaviour
         if(!playerLife.takingDamage && !attacking && !blocking && !playerLife.isDeath)
             horizontalInput = Input.GetAxis("Horizontal");
         
-        if(Input.GetButton("Jump") && IsGrounded())
+        if(Input.GetButton("Jump") && isGrounded)
         {
             Jump();
         }
 
-        if(Input.GetMouseButtonDown(0) && !attacking && !blocking && IsGrounded())
+        if(Input.GetMouseButtonDown(0) && !attacking && !blocking && isGrounded)
         {
             Attack();
         }
 
-        if(Input.GetMouseButtonDown(1) && !blocking && IsGrounded())
+        if(Input.GetMouseButtonDown(1) && !blocking && isGrounded)
         {
             Block();
         }
 
-        if(Input.GetMouseButtonUp(1) && blocking && IsGrounded())
+        if(Input.GetMouseButtonUp(1) && blocking && isGrounded)
         {
             DisableBlock();
         }
@@ -86,12 +86,16 @@ public class PlayerBehaviour : MonoBehaviour
     private bool IsGrounded()
     {
         RaycastHit2D ground = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0, Vector2.down, 0.2f, whatIsGround);
-        return ground.collider != null;
+        if(ground.collider != null)
+            return isGrounded = true;
+        else
+            return isGrounded = false;
     }
 
     private void Attack()
     {
         attacking = true;
+        rb2d.velocity = Vector2.zero;
     }
 
     public void DisableAttack()
@@ -102,6 +106,7 @@ public class PlayerBehaviour : MonoBehaviour
     private void Block()
     {
         blocking = true;
+        rb2d.velocity = Vector2.zero;
     }
 
     public void DisableBlock()
@@ -112,7 +117,7 @@ public class PlayerBehaviour : MonoBehaviour
     {
         anim.SetFloat("xVelocity", Mathf.Abs(rb2d.velocity.x));
         anim.SetFloat("yVelocity", rb2d.velocity.y);
-        anim.SetBool("isJumping", !IsGrounded());
+        anim.SetBool("isJumping", !isGrounded);
         anim.SetBool("isAttacking", attacking);
         anim.SetBool("isBlocking", blocking);
     }
