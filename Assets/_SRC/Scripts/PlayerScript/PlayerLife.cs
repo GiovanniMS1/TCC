@@ -54,6 +54,7 @@ public class PlayerLife : MonoBehaviour
 
             if(!PlayerIsDeath())
             {
+                playerRb2d.velocity = Vector2.zero;
                 Vector2 rebound = new Vector2(transform.position.x - direction.x, 0.4f).normalized;
                 playerRb2d.AddForce(rebound * reboundPower, ForceMode2D.Impulse);
                 playerScript.DisableAttack();

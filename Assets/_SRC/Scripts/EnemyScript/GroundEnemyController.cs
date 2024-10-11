@@ -82,7 +82,7 @@ public class GroundEnemyController : MonoBehaviour
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if(collision.collider.CompareTag("Player") && !isDead)
+        if(collision.collider.CompareTag("Player") && !takingDamage && !isDead)
         {
             Vector2 directionDamage = new Vector2(transform.position.x, 0);
             playerLifeScript.TakeDamage(directionDamage, reboundPower, 1);
