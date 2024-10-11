@@ -37,9 +37,11 @@ public class PlayerBehaviour : MonoBehaviour
     private void PlayerInput()
     {
         if(!playerLife.takingDamage && !attacking && !blocking && !playerLife.isDeath)
+        {
             horizontalInput = Input.GetAxis("Horizontal");
+        }
         
-        if(Input.GetButtonDown("Jump") && !attacking && !blocking && isGrounded)
+        if(Input.GetButtonDown("Jump") && !playerLife.takingDamage && !attacking && !blocking && isGrounded && !playerLife.isDeath)
         {
             Jump();
         }
