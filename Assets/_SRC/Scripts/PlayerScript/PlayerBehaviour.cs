@@ -46,7 +46,7 @@ public class PlayerBehaviour : MonoBehaviour
             Jump();
         }
 
-        if(Input.GetKey(KeyCode.E) && !attacking && !blocking && isGrounded)
+        if(Input.GetKeyDown(KeyCode.E) && !attacking && !blocking && isGrounded)
         {
             Attack();
         }
