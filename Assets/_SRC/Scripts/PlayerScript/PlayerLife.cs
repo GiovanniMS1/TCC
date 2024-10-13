@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using System;
 
 public class PlayerLife : MonoBehaviour
 {
     [Header("Player Life")]
     [SerializeField] private int actualLife;
     [SerializeField] private int maxLife;
+    public event EventHandler playerDeath;
     public UnityEvent<int> changeLife;
     private Rigidbody2D playerRb2d;
     private PlayerBehaviour playerScript;
@@ -32,12 +34,12 @@ public class PlayerLife : MonoBehaviour
     {
         if(actualLife <= 0)
         {
-            Physics2D.IgnoreLayerCollision(6, 7, true);
+            Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Enemy"), true);
             return isDeath = true;
         }
         else
         {
-            Physics2D.IgnoreLayerCollision(6, 7, false);
+            Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Enemy"), false);
             return isDeath = false;
         }
     }
@@ -63,6 +65,7 @@ public class PlayerLife : MonoBehaviour
             }
             else
             {
+                playerDeath?.Invoke(this, EventArgs.Empty);
                 playerRb2d.velocity = Vector2.zero;
             }
         }

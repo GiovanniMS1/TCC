@@ -6,7 +6,7 @@ using UnityEngine;
 public class FlyEnemyController : MonoBehaviour
 {
     private Transform playerTransform;
-    public float distanceBetweenPlayer;
+    private float distanceBetweenPlayer;
     private Vector3 initialPoint;
     private Animator anim;
 
@@ -23,9 +23,9 @@ public class FlyEnemyController : MonoBehaviour
         AnimationState();
     }
 
-    private void CalculateDistance()
+    public float CalculateDistance()
     {
-        distanceBetweenPlayer = Vector2.Distance(transform.position, playerTransform.position);
+        return distanceBetweenPlayer = Vector2.Distance(transform.position, playerTransform.position);
     }
 
     public Vector3 GetInitialPoint()

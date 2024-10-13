@@ -12,7 +12,7 @@ public class MenuScript : MonoBehaviour
 
     public void Quit()
     {
-        Debug.Log("Saiu do jogo!");
+        UnityEditor.EditorApplication.isPlaying = false;
         Application.Quit();
     }
 }

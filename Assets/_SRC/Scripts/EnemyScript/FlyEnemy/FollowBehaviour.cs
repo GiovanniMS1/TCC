@@ -20,7 +20,7 @@ public class FollowBehaviour : StateMachineBehaviour
     {
         animator.transform.position = Vector2.MoveTowards(animator.transform.position, player.position, speedMovement * Time.deltaTime);
         flyEnemyController.FlipSprite(player.position);
-        if(flyEnemyController.distanceBetweenPlayer > 5f)
+        if(flyEnemyController.CalculateDistance() > 5f)
         {
             animator.SetTrigger("Return");
         }
