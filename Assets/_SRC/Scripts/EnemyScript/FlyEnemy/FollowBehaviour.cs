@@ -6,12 +6,14 @@ public class FollowBehaviour : StateMachineBehaviour
 {
     [SerializeField] private float speedMovement;
     private Transform player;
+    private PlayerLife playerLife;
     private FlyEnemyController flyEnemyController;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        playerLife = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerLife>();
         flyEnemyController = animator.gameObject.GetComponent<FlyEnemyController>();
     }
 
@@ -20,7 +22,12 @@ public class FollowBehaviour : StateMachineBehaviour
     {
         animator.transform.position = Vector2.MoveTowards(animator.transform.position, player.position, speedMovement * Time.deltaTime);
         flyEnemyController.FlipSprite(player.position);
-        if(flyEnemyController.CalculateDistance() > 5f)
+        if(flyEnemyController.CalculateDistance() >= 5f || playerLife.takingDamage)
+        {
+            animator.SetTrigger("Return");
+        }
+
+        if(flyEnemyController.GetTakeDamage())
         {
             animator.SetTrigger("Return");
         }

@@ -133,6 +133,7 @@ public class GroundEnemyController : MonoBehaviour
     {
         anim.SetBool("chasing", chasingPlayer);
         anim.SetBool("isDead", isDead);
+        anim.SetBool("Hit", takingDamage);
     }
 
     public void EnemyIsDeath()

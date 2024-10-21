@@ -18,20 +18,12 @@ public class ReturnBehaviour : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if(flyEnemyController.CalculateDistance() > 5f)
+        animator.transform.position = Vector2.MoveTowards(animator.transform.position, initialPoint, speedMovement * Time.deltaTime);
+        flyEnemyController.FlipSprite(initialPoint);
+        if(animator.transform.position == initialPoint)
         {
-            animator.transform.position = Vector2.MoveTowards(animator.transform.position, initialPoint, speedMovement * Time.deltaTime);
-            flyEnemyController.FlipSprite(initialPoint);
-            if(animator.transform.position == initialPoint)
-            {
-                animator.SetTrigger("Arrived");
-            }
+            animator.SetTrigger("Arrived");
         }
-        else
-        {
-            animator.SetTrigger("Chasing");
-        }
-        
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
