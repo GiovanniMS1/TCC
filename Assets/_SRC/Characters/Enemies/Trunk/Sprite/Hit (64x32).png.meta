@@ -1,28 +1,22 @@
 fileFormatVersion: 2
-guid: 47757b742946f2b4a9a0d317155ca94d
+guid: 7b80a8950df15224798f79cd817cd31c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -416780984952558027
-    second: Ceiling Out (46x30)_0
+      213: 2269405256764561083
+    second: Hit (64x32)_0
   - first:
-      213: 2314314920778314066
-    second: Ceiling Out (46x30)_1
+      213: -8636460183390901365
+    second: Hit (64x32)_1
   - first:
-      213: 1292382210298696710
-    second: Ceiling Out (46x30)_2
+      213: -5080670395297360898
+    second: Hit (64x32)_2
   - first:
-      213: -8082548112717281967
-    second: Ceiling Out (46x30)_3
+      213: 5825911995796837348
+    second: Hit (64x32)_3
   - first:
-      213: -6423072932531638425
-    second: Ceiling Out (46x30)_4
-  - first:
-      213: 8191567468446228319
-    second: Ceiling Out (46x30)_5
-  - first:
-      213: -4364673953694736866
-    second: Ceiling Out (46x30)_6
+      213: 2539410780444020406
+    second: Hit (64x32)_4
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -69,7 +63,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -131,13 +125,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Ceiling Out (46x30)_0
+      name: Hit (64x32)_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 46
-        height: 30
+        width: 64
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,20 +139,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c43514d81f2757f4ba77ffd6b6dda161
-      internalID: -416780984952558027
+      spriteID: 01235ba96d5e30a419e6305306078a27
+      internalID: 2269405256764561083
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ceiling Out (46x30)_1
+      name: Hit (64x32)_1
       rect:
         serializedVersion: 2
-        x: 46
+        x: 64
         y: 0
-        width: 46
-        height: 30
+        width: 64
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,20 +160,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 320c4e09352f2c34f8cd4093383a7c5d
-      internalID: 2314314920778314066
+      spriteID: cd643c4ae0f707843ac7ad81ded4a361
+      internalID: -8636460183390901365
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ceiling Out (46x30)_2
+      name: Hit (64x32)_2
       rect:
         serializedVersion: 2
-        x: 92
+        x: 128
         y: 0
-        width: 46
-        height: 30
+        width: 64
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -187,20 +181,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8cfdb2edfd581b84e822da69c606453e
-      internalID: 1292382210298696710
+      spriteID: 2ba23d2e850d29d4a859c039db5a6307
+      internalID: -5080670395297360898
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ceiling Out (46x30)_3
+      name: Hit (64x32)_3
       rect:
         serializedVersion: 2
-        x: 138
+        x: 192
         y: 0
-        width: 46
-        height: 30
+        width: 64
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -208,20 +202,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a83876d4bab3bde40a3682d2a9094df1
-      internalID: -8082548112717281967
+      spriteID: 9f5d08290fca3354f84e8b2f1e78ec17
+      internalID: 5825911995796837348
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ceiling Out (46x30)_4
+      name: Hit (64x32)_4
       rect:
         serializedVersion: 2
-        x: 184
+        x: 256
         y: 0
-        width: 46
-        height: 30
+        width: 64
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -229,50 +223,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0c177a7950b396444bec0204abbee919
-      internalID: -6423072932531638425
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Ceiling Out (46x30)_5
-      rect:
-        serializedVersion: 2
-        x: 230
-        y: 0
-        width: 46
-        height: 30
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 36a86a3787d2bfc4fa8c8f6ac894f744
-      internalID: 8191567468446228319
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Ceiling Out (46x30)_6
-      rect:
-        serializedVersion: 2
-        x: 276
-        y: 0
-        width: 46
-        height: 30
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8885b29eaba95294aa053c6e934ffcbf
-      internalID: -4364673953694736866
+      spriteID: f90b2feb8cb92944da271dff0bd07d8f
+      internalID: 2539410780444020406
       vertices: []
       indices: 
       edges: []
@@ -288,13 +240,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Ceiling Out (46x30)_0: -416780984952558027
-      Ceiling Out (46x30)_1: 2314314920778314066
-      Ceiling Out (46x30)_2: 1292382210298696710
-      Ceiling Out (46x30)_3: -8082548112717281967
-      Ceiling Out (46x30)_4: -6423072932531638425
-      Ceiling Out (46x30)_5: 8191567468446228319
-      Ceiling Out (46x30)_6: -4364673953694736866
+      Hit (64x32)_0: 2269405256764561083
+      Hit (64x32)_1: -8636460183390901365
+      Hit (64x32)_2: -5080670395297360898
+      Hit (64x32)_3: 5825911995796837348
+      Hit (64x32)_4: 2539410780444020406
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

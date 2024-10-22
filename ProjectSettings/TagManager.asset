@@ -8,6 +8,7 @@ TagManager:
   - Sword
   - Enemy
   - Shield
+  - Bullet
   layers:
   - Default
   - TransparentFX
@@ -17,7 +18,7 @@ TagManager:
   - UI
   - Player
   - Enemy
-  - 
+  - Shoot
   - 
   - 
   - 
@@ -50,6 +51,9 @@ TagManager:
     locked: 0
   - name: Enemy
     uniqueID: 3629975821
+    locked: 0
+  - name: Shoot
+    uniqueID: 1722515629
     locked: 0
   - name: Player
     uniqueID: 4124510233

@@ -1,28 +1,40 @@
 fileFormatVersion: 2
-guid: 47757b742946f2b4a9a0d317155ca94d
+guid: 96bf27d86cf79ab44a5830732f6aed12
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -416780984952558027
-    second: Ceiling Out (46x30)_0
+      213: 7289260420643192476
+    second: Attack (64x32)_0
   - first:
-      213: 2314314920778314066
-    second: Ceiling Out (46x30)_1
+      213: 7062094376242145339
+    second: Attack (64x32)_1
   - first:
-      213: 1292382210298696710
-    second: Ceiling Out (46x30)_2
+      213: 418397035706068968
+    second: Attack (64x32)_2
   - first:
-      213: -8082548112717281967
-    second: Ceiling Out (46x30)_3
+      213: 2723492132813748224
+    second: Attack (64x32)_3
   - first:
-      213: -6423072932531638425
-    second: Ceiling Out (46x30)_4
+      213: -2693617739765738453
+    second: Attack (64x32)_4
   - first:
-      213: 8191567468446228319
-    second: Ceiling Out (46x30)_5
+      213: -1269295560006733985
+    second: Attack (64x32)_5
   - first:
-      213: -4364673953694736866
-    second: Ceiling Out (46x30)_6
+      213: 8368872209163142836
+    second: Attack (64x32)_6
+  - first:
+      213: -7339147700469260274
+    second: Attack (64x32)_7
+  - first:
+      213: -6982609949668605121
+    second: Attack (64x32)_8
+  - first:
+      213: 710986402241354771
+    second: Attack (64x32)_9
+  - first:
+      213: -8045852313996240462
+    second: Attack (64x32)_10
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -131,13 +143,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Ceiling Out (46x30)_0
+      name: Attack (64x32)_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 46
-        height: 30
+        width: 64
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,20 +157,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c43514d81f2757f4ba77ffd6b6dda161
-      internalID: -416780984952558027
+      spriteID: ee2e58c73bed277448323a059d388c14
+      internalID: 7289260420643192476
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ceiling Out (46x30)_1
+      name: Attack (64x32)_1
       rect:
         serializedVersion: 2
-        x: 46
+        x: 64
         y: 0
-        width: 46
-        height: 30
+        width: 64
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,20 +178,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 320c4e09352f2c34f8cd4093383a7c5d
-      internalID: 2314314920778314066
+      spriteID: 9337d051b76c59a42a1ef05ac3fcbfe2
+      internalID: 7062094376242145339
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ceiling Out (46x30)_2
+      name: Attack (64x32)_2
       rect:
         serializedVersion: 2
-        x: 92
+        x: 128
         y: 0
-        width: 46
-        height: 30
+        width: 64
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -187,20 +199,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8cfdb2edfd581b84e822da69c606453e
-      internalID: 1292382210298696710
+      spriteID: 3a101c3f9bf1f77428093145c944643e
+      internalID: 418397035706068968
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ceiling Out (46x30)_3
+      name: Attack (64x32)_3
       rect:
         serializedVersion: 2
-        x: 138
+        x: 192
         y: 0
-        width: 46
-        height: 30
+        width: 64
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -208,20 +220,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a83876d4bab3bde40a3682d2a9094df1
-      internalID: -8082548112717281967
+      spriteID: 9ab7340ef9cca904ab7a2871de5e0e71
+      internalID: 2723492132813748224
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ceiling Out (46x30)_4
+      name: Attack (64x32)_4
       rect:
         serializedVersion: 2
-        x: 184
+        x: 256
         y: 0
-        width: 46
-        height: 30
+        width: 64
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -229,20 +241,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0c177a7950b396444bec0204abbee919
-      internalID: -6423072932531638425
+      spriteID: d06e31ce1be7a27408acabbbac930877
+      internalID: -2693617739765738453
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ceiling Out (46x30)_5
+      name: Attack (64x32)_5
       rect:
         serializedVersion: 2
-        x: 230
+        x: 320
         y: 0
-        width: 46
-        height: 30
+        width: 64
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -250,20 +262,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 36a86a3787d2bfc4fa8c8f6ac894f744
-      internalID: 8191567468446228319
+      spriteID: 74be80a481bc4b04f8c82e6a06c87411
+      internalID: -1269295560006733985
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ceiling Out (46x30)_6
+      name: Attack (64x32)_6
       rect:
         serializedVersion: 2
-        x: 276
+        x: 384
         y: 0
-        width: 46
-        height: 30
+        width: 64
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -271,8 +283,92 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8885b29eaba95294aa053c6e934ffcbf
-      internalID: -4364673953694736866
+      spriteID: fda4937a47c53a44e9c4d6db4aacce2a
+      internalID: 8368872209163142836
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Attack (64x32)_7
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 0
+        width: 64
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8ffed9e3e6df9249953c4f6cec742b0
+      internalID: -7339147700469260274
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Attack (64x32)_8
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 64
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0bee4b63c37ea8145aead43bffd8dd39
+      internalID: -6982609949668605121
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Attack (64x32)_9
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 0
+        width: 64
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce737bf13d2d0944eb0d6ba173a55803
+      internalID: 710986402241354771
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Attack (64x32)_10
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 0
+        width: 64
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cceb5ab9e9aa7174f989e522c2c8d9e5
+      internalID: -8045852313996240462
       vertices: []
       indices: 
       edges: []
@@ -288,13 +384,17 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Ceiling Out (46x30)_0: -416780984952558027
-      Ceiling Out (46x30)_1: 2314314920778314066
-      Ceiling Out (46x30)_2: 1292382210298696710
-      Ceiling Out (46x30)_3: -8082548112717281967
-      Ceiling Out (46x30)_4: -6423072932531638425
-      Ceiling Out (46x30)_5: 8191567468446228319
-      Ceiling Out (46x30)_6: -4364673953694736866
+      Attack (64x32)_0: 7289260420643192476
+      Attack (64x32)_1: 7062094376242145339
+      Attack (64x32)_10: -8045852313996240462
+      Attack (64x32)_2: 418397035706068968
+      Attack (64x32)_3: 2723492132813748224
+      Attack (64x32)_4: -2693617739765738453
+      Attack (64x32)_5: -1269295560006733985
+      Attack (64x32)_6: 8368872209163142836
+      Attack (64x32)_7: -7339147700469260274
+      Attack (64x32)_8: -6982609949668605121
+      Attack (64x32)_9: 710986402241354771
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
