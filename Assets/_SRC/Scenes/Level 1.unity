@@ -266,7 +266,7 @@ GameObject:
   m_Component:
   - component: {fileID: 124921724}
   - component: {fileID: 124921725}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: ShieldRange
   m_TagString: Shield
   m_Icon: {fileID: 0}
@@ -1069,8 +1069,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 858092196}
-  - {fileID: 784428837}
   - {fileID: 1764519855397967580}
+  - {fileID: 784428837}
   - {fileID: 2063873837}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1234,6 +1234,7 @@ GameObject:
   - component: {fileID: 784428840}
   - component: {fileID: 784428839}
   - component: {fileID: 784428838}
+  - component: {fileID: 784428841}
   m_Layer: 7
   m_Name: Bat
   m_TagString: Enemy
@@ -1341,7 +1342,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02fde4c7a91971d46b065a05602d0ae5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 3
   reboundPower: 6
 --- !u!61 &784428839
 BoxCollider2D:
@@ -1375,7 +1375,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0055365562, y: -0.017015934}
+  m_Offset: {x: 0.009758949, y: -0.022114158}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -1386,7 +1386,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.4136028, y: 0.83461237}
+  m_Size: {x: 0.8630123, y: 0.69186616}
   m_EdgeRadius: 0
 --- !u!50 &784428840
 Rigidbody2D:
@@ -1415,6 +1415,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 7
+--- !u!114 &784428841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 784428834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35099bbffa8bf2f4aabe8e954b31027f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  life: 3
+  takingDamage: 0
+  isDead: 0
 --- !u!1 &804577818
 GameObject:
   m_ObjectHideFlags: 3
@@ -2218,7 +2233,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1368096836}
   - component: {fileID: 1368096837}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: SwordRange
   m_TagString: Sword
   m_Icon: {fileID: 0}
@@ -2272,7 +2287,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.635853, y: -0.5308589}
+  m_Offset: {x: 0.7036756, y: -0.022959828}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -2283,7 +2298,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.2766663, y: 0.9333221}
+  m_Size: {x: 1.63468, y: 1.9491203}
   m_EdgeRadius: 0
 --- !u!1 &1486954844
 GameObject:
@@ -6056,6 +6071,7 @@ GameObject:
   - component: {fileID: 2063873839}
   - component: {fileID: 2063873838}
   - component: {fileID: 2063873842}
+  - component: {fileID: 2063873843}
   m_Layer: 7
   m_Name: Trunk
   m_TagString: Enemy
@@ -6072,7 +6088,7 @@ Transform:
   m_GameObject: {fileID: 2063873836}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 7.5, y: -0.514, z: 0}
+  m_LocalPosition: {x: 5, y: -0.514, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6150,7 +6166,7 @@ Rigidbody2D:
   m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 4
+  m_Constraints: 7
 --- !u!95 &2063873840
 Animator:
   serializedVersion: 5
@@ -6236,9 +6252,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a81d2e3d4e09ecf4d9cc25985c8ef2a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 3
   controllShoot: {fileID: 431198305}
-  shootDistance: 6
+  shootDistance: 3
   reboundPower: 6
   playerLayer:
     serializedVersion: 2
@@ -6247,6 +6262,21 @@ MonoBehaviour:
   timeLastShoot: -3
   enemyBullet: {fileID: 2783483139542721517, guid: a50b1ccbd44d4a4489ee0353ea17e030, type: 3}
   waitTimeToShoot: 0.6
+--- !u!114 &2063873843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2063873836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35099bbffa8bf2f4aabe8e954b31027f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  life: 3
+  takingDamage: 0
+  isDead: 0
 --- !u!1 &2095996369
 GameObject:
   m_ObjectHideFlags: 0
@@ -6343,7 +6373,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd0607d5589307443b9873bf219b8cd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 3
   speed: 3
   reboundPower: 6
   detectionRadius: 3
@@ -6356,7 +6385,7 @@ Transform:
   m_GameObject: {fileID: 8022113746825300179}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10, y: -0.6, z: 0}
+  m_LocalPosition: {x: -5, y: -0.6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6521,13 +6550,29 @@ GameObject:
   - component: {fileID: 3351294512789027357}
   - component: {fileID: 2152913130423481691}
   - component: {fileID: 68141835764596728}
+  - component: {fileID: 8022113746825300180}
   m_Layer: 7
   m_Name: Zombie Toast
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
+--- !u!114 &8022113746825300180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8022113746825300179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35099bbffa8bf2f4aabe8e954b31027f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  life: 3
+  takingDamage: 0
+  isDead: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

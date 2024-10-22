@@ -7,6 +7,7 @@ public class FollowBehaviour : StateMachineBehaviour
     [SerializeField] private float speedMovement;
     private Transform player;
     private PlayerLife playerLife;
+    private EnemyLife enemyLife;
     private FlyEnemyController flyEnemyController;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
@@ -15,6 +16,7 @@ public class FollowBehaviour : StateMachineBehaviour
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         playerLife = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerLife>();
         flyEnemyController = animator.gameObject.GetComponent<FlyEnemyController>();
+        enemyLife = animator.gameObject.GetComponent<EnemyLife>();
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -27,7 +29,7 @@ public class FollowBehaviour : StateMachineBehaviour
             animator.SetTrigger("Return");
         }
 
-        if(flyEnemyController.GetTakeDamage())
+        if(enemyLife.takingDamage)
         {
             animator.SetTrigger("Return");
         }

@@ -7,8 +7,13 @@ public class BulletEnemy : MonoBehaviour
     [SerializeField] private float velocity;
     [SerializeField] private float reboundPower;
     [SerializeField] private int damage;
+    private PlayerLife playerLife;
     public float lifeTime;
 
+    private void Start()
+    {
+        playerLife = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerLife>();
+    }
     private void Update()
     {
         ShootTranslate();
@@ -20,12 +25,18 @@ public class BulletEnemy : MonoBehaviour
         transform.Translate(Time.deltaTime * velocity * Vector2.right);
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(other.TryGetComponent(out PlayerLife playerLife))
+        if(collision.CompareTag("Player"))
         {
             Vector2 directionDamage = new Vector2(transform.position.x, 0);
             playerLife.TakeDamage(directionDamage, reboundPower, 1);
+            DestroyBullet();
+        }
+        else if(collision.TryGetComponent(out EnemyLife enemyLife))
+        {
+            Vector2 directionDamage = new Vector2(transform.position.x, 0);
+            enemyLife.TakeDamage(directionDamage, reboundPower, 1);
             DestroyBullet();
         }
         else

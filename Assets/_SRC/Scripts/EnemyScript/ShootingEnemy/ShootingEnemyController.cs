@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ShootingEnemyController : MonoBehaviour
 {
-    [SerializeField] private int health;
+    //[SerializeField] private int health;
     [SerializeField] private Transform controllShoot;
     [SerializeField] private float shootDistance;
     [SerializeField] private float reboundPower;
@@ -12,19 +12,21 @@ public class ShootingEnemyController : MonoBehaviour
     private PlayerLife playerLifeScript;
     private PlayerBehaviour playerMovementScript;
     private Transform playerTransform;
-    private bool playerInRange, playerIsAlive, takingDamage, isDead;
+    private bool playerInRange, playerIsAlive;
     public float timeBetweenShoots;
     public float timeLastShoot;
     public GameObject enemyBullet;
     public float waitTimeToShoot;
     private Animator anim;
     private Rigidbody2D rb2d;
+    private EnemyLife enemyLife;
 
     private void Start()
     {
         playerIsAlive = true;
         rb2d = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        enemyLife = GetComponent<EnemyLife>();
         playerTransform = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         playerLifeScript = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerLife>();
         playerMovementScript = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBehaviour>();
@@ -34,24 +36,22 @@ public class ShootingEnemyController : MonoBehaviour
         Vector2 direction = (playerTransform.position - transform.position).normalized;
         FlipSprite(direction);
         PlayerInRange();
-        EnemyIsDeath();
+        AnimationState();
     }
 
     private void FlipSprite(Vector2 direction)
     {
         if(direction.x < 0)
-        {
-            transform.localScale = new Vector3(1, 1, 1);
-        }
+            transform.eulerAngles = new Vector3(0,180,0);
         if(direction.x > 0)
-            transform.localScale = new Vector3(-1, 1, 1);
+            transform.eulerAngles = new Vector3(0,0,0);
     }
     
     private void PlayerInRange()
     {
         playerInRange = Physics2D.Raycast(controllShoot.position, transform.right, shootDistance, playerLayer);
 
-        if(IsPlayerAlive() && playerInRange && !takingDamage && !isDead)
+        if(IsPlayerAlive() && playerInRange && !enemyLife.takingDamage && !enemyLife.isDead)
         {
             if(Time.time > timeBetweenShoots + timeLastShoot)
             {
@@ -69,37 +69,20 @@ public class ShootingEnemyController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.CompareTag("Sword") && !isDead)
+        if(collision.CompareTag("Sword") && !enemyLife.isDead)
         {
             Vector2 directionDamage = new Vector2(collision.gameObject.transform.position.x, 0);
-            TakeDamage(directionDamage, reboundPower, 1);
-        }
-    
-        if(collision.CompareTag("Shield") && !isDead)
-        {
-            Vector2 direction = new Vector2(collision.gameObject.transform.position.x, 0);
-            TakeDamage(direction, reboundPower, 0);
-            playerMovementScript.DisableBlock();
+            enemyLife.TakeDamage(directionDamage, reboundPower, 1);
         }
     }
 
-    public void TakeDamage(Vector2 direction, float reboundPower, int damage)
+    private void OnCollisionStay2D(Collision2D collision)
     {
-        if(!takingDamage)
+        if(collision.collider.CompareTag("Player") && !enemyLife.takingDamage && !enemyLife.isDead)
         {
-            takingDamage = true;
-            health -= damage;
-            Vector2 rebound = new Vector2(transform.position.x - direction.x, 0.4f).normalized;
-            rb2d.AddForce(rebound * reboundPower, ForceMode2D.Impulse);
-            StartCoroutine(DisableDamage());
+            Vector2 directionDamage = new Vector2(transform.position.x, 0);
+            playerLifeScript.TakeDamage(directionDamage, reboundPower, 1);
         }
-    }
-
-    IEnumerator DisableDamage()
-    {
-        yield return new WaitForSeconds(0.5f);
-        takingDamage = false;
-        rb2d.velocity = Vector2.zero;
     }
 
     private bool IsPlayerAlive()
@@ -107,18 +90,9 @@ public class ShootingEnemyController : MonoBehaviour
         return playerIsAlive != playerLifeScript.isDeath;
     }
 
-    public void EnemyIsDeath()
+    private void AnimationState()
     {
-        if(health <= 0)
-        {
-            isDead = true;
-            rb2d.velocity = Vector2.zero;
-            Destroy(gameObject);
-        }  
-        else
-        {
-            isDead = false;
-        }    
+        anim.SetBool("Hit", enemyLife.takingDamage);
     }
 
     private void OnDrawGizmos()
