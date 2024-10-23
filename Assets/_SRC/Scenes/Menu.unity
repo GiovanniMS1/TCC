@@ -1512,7 +1512,6 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1227240600}
   - {fileID: 1791410764}
   - {fileID: 1075664058}
   - {fileID: 1101377309}
@@ -2703,7 +2702,7 @@ Transform:
   - {fileID: 1102084694}
   - {fileID: 126394213}
   - {fileID: 2088917685}
-  m_Father: {fileID: 616167757}
+  m_Father: {fileID: 1268126286}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1268126282
 GameObject:
@@ -2800,6 +2799,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1227240600}
   - {fileID: 616167757}
   - {fileID: 1038784872}
   - {fileID: 511046709}
@@ -4450,7 +4450,7 @@ MonoBehaviour:
     rgba: 4294967295
   m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
-  m_colorMode: 3
+  m_colorMode: 2
   m_fontColorGradient:
     topLeft: {r: 1, g: 1, b: 1, a: 1}
     topRight: {r: 1, g: 1, b: 1, a: 1}

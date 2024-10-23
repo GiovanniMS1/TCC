@@ -13,7 +13,7 @@ public class PlayerBehaviour : MonoBehaviour
     private Animator anim;
     private BoxCollider2D boxCollider;
     private PlayerLife playerLife;
-    private bool isFacingRight, isGrounded, attacking, blocking;
+    public bool isFacingRight, isGrounded, attacking, blocking;
     private float horizontalInput;
     
 
@@ -113,6 +113,12 @@ public class PlayerBehaviour : MonoBehaviour
 
     public void DisableBlock()
     {
+        StartCoroutine(DisableBlockDelay());
+    }
+
+    private IEnumerator DisableBlockDelay()
+    {
+        yield return new WaitForSeconds(0.1f);
         blocking = false;
     }
     private void AnimationState()

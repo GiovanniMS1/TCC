@@ -49,9 +49,7 @@ public class PlayerLife : MonoBehaviour
         if(!takingDamage)
         {
             takingDamage = true;
-
             actualLife -= damage;
-
             changeLife.Invoke(actualLife);
 
             if(!PlayerIsDeath())

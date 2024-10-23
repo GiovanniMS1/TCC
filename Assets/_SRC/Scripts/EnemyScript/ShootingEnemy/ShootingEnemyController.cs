@@ -20,6 +20,7 @@ public class ShootingEnemyController : MonoBehaviour
     private Animator anim;
     private Rigidbody2D rb2d;
     private EnemyLife enemyLife;
+    private Vector3 direction;
 
     private void Start()
     {
@@ -33,23 +34,27 @@ public class ShootingEnemyController : MonoBehaviour
     }
     private void Update()
     {
-        Vector2 direction = (playerTransform.position - transform.position).normalized;
-        FlipSprite(direction);
+        
+        FlipSprite(Direction());
         PlayerInRange();
         AnimationState();
     }
 
+    private Vector2 Direction()
+    {
+        return direction = new Vector3(playerTransform.position.x - transform.position.x, 0, 0).normalized;
+    }
     private void FlipSprite(Vector2 direction)
     {
         if(direction.x < 0)
-            transform.eulerAngles = new Vector3(0,180,0);
-        if(direction.x > 0)
             transform.eulerAngles = new Vector3(0,0,0);
+        if(direction.x > 0)
+            transform.eulerAngles = new Vector3(0,180,0);
     }
     
     private void PlayerInRange()
     {
-        playerInRange = Physics2D.Raycast(controllShoot.position, transform.right, shootDistance, playerLayer);
+        playerInRange = Physics2D.Raycast(controllShoot.position, direction, shootDistance, playerLayer);
 
         if(IsPlayerAlive() && playerInRange && !enemyLife.takingDamage && !enemyLife.isDead)
         {
@@ -98,6 +103,6 @@ public class ShootingEnemyController : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawLine(controllShoot.position, controllShoot.position + transform.right * shootDistance);
+        Gizmos.DrawLine(controllShoot.position, controllShoot.position + direction * shootDistance);
     }
 }

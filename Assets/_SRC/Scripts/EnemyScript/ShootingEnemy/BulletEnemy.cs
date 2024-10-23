@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class BulletEnemy : MonoBehaviour
@@ -7,42 +8,58 @@ public class BulletEnemy : MonoBehaviour
     [SerializeField] private float velocity;
     [SerializeField] private float reboundPower;
     [SerializeField] private int damage;
-    private PlayerLife playerLife;
+    public Vector3 directionBullet;
+    private PlayerBehaviour playerMovement;
     public float lifeTime;
+    private Rigidbody2D rb2d;
 
     private void Start()
     {
-        playerLife = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerLife>();
+        playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBehaviour>();
+        rb2d = GetComponent<Rigidbody2D>();
+        if(transform.position.x > playerMovement.transform.position.x)
+        {
+            directionBullet = Vector3.left;
+        }
+        else
+        {
+            directionBullet = Vector3.right;
+        }
     }
     private void Update()
     {
-        ShootTranslate();
         BulletLifeTime();
     }
 
-    private void ShootTranslate()
+    private void FixedUpdate()
     {
-        transform.Translate(Time.deltaTime * velocity * Vector2.right);
+        rb2d.velocity = directionBullet * velocity;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.CompareTag("Player"))
+        if(collision.CompareTag("Shield"))
+        {
+            Vector3 shieldNormal = collision.transform.right;
+            directionBullet = Vector2.Reflect(directionBullet, shieldNormal);
+            transform.localScale = new Vector3(-transform.localScale.x, 1, 1);
+            playerMovement.DisableBlock();
+        }
+
+        else if(collision.TryGetComponent(out PlayerLife playerLife))
         {
             Vector2 directionDamage = new Vector2(transform.position.x, 0);
             playerLife.TakeDamage(directionDamage, reboundPower, 1);
             DestroyBullet();
         }
+        
         else if(collision.TryGetComponent(out EnemyLife enemyLife))
         {
             Vector2 directionDamage = new Vector2(transform.position.x, 0);
             enemyLife.TakeDamage(directionDamage, reboundPower, 1);
             DestroyBullet();
         }
-        else
-        {
-            DestroyBullet();
-        }
+            
     }
 
     private void BulletLifeTime()

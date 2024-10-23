@@ -52,11 +52,11 @@ TagManager:
   - name: Enemy
     uniqueID: 3629975821
     locked: 0
-  - name: Shoot
-    uniqueID: 1722515629
-    locked: 0
   - name: Player
     uniqueID: 4124510233
+    locked: 0
+  - name: Shoot
+    uniqueID: 1722515629
     locked: 0
   - name: Ground
     uniqueID: 2711990883
