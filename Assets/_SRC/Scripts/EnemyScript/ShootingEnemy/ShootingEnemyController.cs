@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ShootingEnemyController : MonoBehaviour
 {
-    //[SerializeField] private int health;
     [SerializeField] private Transform controllShoot;
     [SerializeField] private float shootDistance;
     [SerializeField] private float reboundPower;
