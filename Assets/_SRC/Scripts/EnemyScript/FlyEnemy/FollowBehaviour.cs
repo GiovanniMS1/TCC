@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class FollowBehaviour : StateMachineBehaviour
@@ -24,12 +25,7 @@ public class FollowBehaviour : StateMachineBehaviour
     {
         animator.transform.position = Vector2.MoveTowards(animator.transform.position, player.position, speedMovement * Time.deltaTime);
         flyEnemyController.FlipSprite(player.position);
-        if(flyEnemyController.CalculateDistance() >= 5f || playerLife.takingDamage)
-        {
-            animator.SetTrigger("Return");
-        }
-
-        if(enemyLife.takingDamage)
+        if(enemyLife.takingDamage || flyEnemyController.CalculateDistance() > 5f)
         {
             animator.SetTrigger("Return");
         }

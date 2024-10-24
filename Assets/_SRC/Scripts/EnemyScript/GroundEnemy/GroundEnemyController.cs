@@ -114,7 +114,7 @@ public class GroundEnemyController : MonoBehaviour
         anim.SetBool("isDead", enemyLife.isDead);
         anim.SetBool("Hit", enemyLife.takingDamage);
     }
-    private void OnDrawGizmosSelected()
+    private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, detectionRadius);

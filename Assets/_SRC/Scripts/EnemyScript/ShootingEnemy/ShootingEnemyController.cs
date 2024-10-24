@@ -11,7 +11,7 @@ public class ShootingEnemyController : MonoBehaviour
     private PlayerLife playerLifeScript;
     private PlayerBehaviour playerMovementScript;
     private Transform playerTransform;
-    private bool playerInRange, playerIsAlive;
+    private bool playerInRange, playerIsAlive, isShooting;
     public float timeBetweenShoots;
     public float timeLastShoot;
     public GameObject enemyBullet;
@@ -20,6 +20,7 @@ public class ShootingEnemyController : MonoBehaviour
     private Rigidbody2D rb2d;
     private EnemyLife enemyLife;
     private Vector3 direction;
+    private Vector3 lockedDirection;
 
     private void Start()
     {
@@ -33,9 +34,12 @@ public class ShootingEnemyController : MonoBehaviour
     }
     private void Update()
     {
-        
-        FlipSprite(Direction());
-        PlayerInRange();
+        if(!enemyLife.takingDamage && !isShooting && playerIsAlive)
+        {
+            PlayerInRange();
+            FlipSprite(Direction());
+        }
+
         AnimationState();
     }
 
@@ -60,6 +64,8 @@ public class ShootingEnemyController : MonoBehaviour
             if(Time.time > timeBetweenShoots + timeLastShoot)
             {
                 timeLastShoot = Time.time;
+                lockedDirection = Direction();
+                isShooting = true;
                 anim.SetTrigger("Shoot");
                 Invoke(nameof(Shoot), waitTimeToShoot);
             }
@@ -68,7 +74,19 @@ public class ShootingEnemyController : MonoBehaviour
 
     private void Shoot()
     {
-        Instantiate(enemyBullet, controllShoot.position, controllShoot.rotation);
+        if(!enemyLife.takingDamage && isShooting)
+        {
+            GameObject bullet = Instantiate(enemyBullet, controllShoot.position, controllShoot.rotation);
+            BulletEnemy bulletScript = bullet.GetComponent<BulletEnemy>();
+            bulletScript.SetInitialDirection(lockedDirection);
+            StartCoroutine(DisableIsShooting());
+        }
+    }
+    
+    IEnumerator DisableIsShooting()
+    {
+        yield return new WaitForSeconds(0.5f);
+        isShooting = false;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -77,7 +95,17 @@ public class ShootingEnemyController : MonoBehaviour
         {
             Vector2 directionDamage = new Vector2(collision.gameObject.transform.position.x, 0);
             enemyLife.TakeDamage(directionDamage, reboundPower, 1);
+            if (isShooting)
+            {
+                CancelShoot();
+            }
         }
+    }
+
+    private void CancelShoot()
+    {
+        isShooting = false;
+        anim.ResetTrigger("Shoot");
     }
 
     private void OnCollisionStay2D(Collision2D collision)
@@ -102,6 +130,7 @@ public class ShootingEnemyController : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawLine(controllShoot.position, controllShoot.position + direction * shootDistance);
+        Vector3 debugDirection = (playerTransform != null) ? new Vector3(playerTransform.position.x - transform.position.x, 0, 0).normalized : Vector3.left;
+        Gizmos.DrawLine(controllShoot.position, controllShoot.position + debugDirection * shootDistance);
     }
 }

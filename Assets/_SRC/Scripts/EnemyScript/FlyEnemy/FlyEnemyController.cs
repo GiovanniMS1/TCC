@@ -13,7 +13,6 @@ public class FlyEnemyController : MonoBehaviour
     private float distanceBetweenPlayer;
     private Vector3 initialPoint;
     private Animator anim;
-    private Rigidbody2D rb2d;
     private EnemyLife enemyLife;
 
     private void Start()
@@ -21,7 +20,6 @@ public class FlyEnemyController : MonoBehaviour
         playerTransform = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         playerLifeScript = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerLife>();
         playerMovementScript = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBehaviour>();
-        rb2d = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         enemyLife = GetComponent<EnemyLife>();
         initialPoint = transform.position;
@@ -55,12 +53,13 @@ public class FlyEnemyController : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionStay2D(Collision2D collision)
     {
-        if(collision.collider.CompareTag("Player") && !enemyLife.takingDamage && !enemyLife.isDead)
+        if(collision.collider.CompareTag("Player") && !enemyLife.takingDamage && !enemyLife.isDead && !playerLifeScript.takingDamage)
         {
             Vector2 directionDamage = new Vector2(transform.position.x, 0);
             playerLifeScript.TakeDamage(directionDamage, reboundPower, 1);
+            anim.SetTrigger("Return");
         }
     }
 
@@ -83,5 +82,14 @@ public class FlyEnemyController : MonoBehaviour
     {
         anim.SetFloat("Distance", distanceBetweenPlayer);
         anim.SetBool("Hit", enemyLife.takingDamage);
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        if(distanceBetweenPlayer <= 5f && playerTransform != null)
+        {
+            Gizmos.DrawLine(transform.position, playerTransform.position);
+        }
     }
 }

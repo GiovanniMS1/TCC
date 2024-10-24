@@ -91,6 +91,15 @@ public class PlayerLife : MonoBehaviour
         changeLife.Invoke(actualLife);
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.CompareTag("DeathZone"))
+        {
+            TakeDamage(Vector2.zero, 0, 3);
+            playerDeath?.Invoke(this, EventArgs.Empty);
+        }
+    }
+
     private void AnimationState()
     {  
         anim.SetBool("takeDamage", takingDamage);

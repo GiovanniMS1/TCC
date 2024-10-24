@@ -17,14 +17,6 @@ public class BulletEnemy : MonoBehaviour
     {
         playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBehaviour>();
         rb2d = GetComponent<Rigidbody2D>();
-        if(transform.position.x > playerMovement.transform.position.x)
-        {
-            directionBullet = Vector3.left;
-        }
-        else
-        {
-            directionBullet = Vector3.right;
-        }
     }
     private void Update()
     {
@@ -34,6 +26,11 @@ public class BulletEnemy : MonoBehaviour
     private void FixedUpdate()
     {
         rb2d.velocity = directionBullet * velocity;
+    }
+
+    public void SetInitialDirection(Vector3 initialDirection)
+    {
+        directionBullet = initialDirection.x < 0 ? Vector3.left : Vector3.right;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
