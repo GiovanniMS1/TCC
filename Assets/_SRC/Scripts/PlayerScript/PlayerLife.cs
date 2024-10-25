@@ -7,8 +7,8 @@ using System;
 public class PlayerLife : MonoBehaviour
 {
     [Header("Player Life")]
+    public int maxLife;
     [SerializeField] private int actualLife;
-    [SerializeField] private int maxLife;
     public event EventHandler playerDeath;
     public UnityEvent<int> changeLife;
     private Rigidbody2D playerRb2d;
@@ -95,7 +95,10 @@ public class PlayerLife : MonoBehaviour
     {
         if(collision.CompareTag("DeathZone"))
         {
-            TakeDamage(Vector2.zero, 0, 3);
+            actualLife = 0;
+            isDeath = true;
+            playerRb2d.velocity = Vector2.zero;
+            changeLife.Invoke(actualLife);
             playerDeath?.Invoke(this, EventArgs.Empty);
         }
     }
