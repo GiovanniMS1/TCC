@@ -111,7 +111,6 @@ public class GroundEnemyController : MonoBehaviour
     private void AnimationState()
     {
         anim.SetBool("Chasing", chasingPlayer);
-        anim.SetBool("isDead", enemyLife.isDead);
         anim.SetBool("Hit", enemyLife.takingDamage);
     }
     private void OnDrawGizmos()

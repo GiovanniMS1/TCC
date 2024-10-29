@@ -27,12 +27,14 @@ public class MenuGameOver : MonoBehaviour
     public void Restart()
     {
         ResetPhysic();
+        playerLife.playerDeath -= ActiveMenu;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void HomeMenu(string name)
     {
         ResetPhysic();
+        playerLife.playerDeath -= ActiveMenu;
         SceneManager.LoadScene(name);
     }
 }

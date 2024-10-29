@@ -39,6 +39,15 @@ public class EnemyLife : MonoBehaviour
         rb2d.velocity = Vector2.zero;
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.CompareTag("DeathZone"))
+        {
+            life = 0;
+            takingDamage = true;
+            isDead = true;
+        }
+    }
     private void EnemyIsDeath()
     {
         if(life <= 0)
