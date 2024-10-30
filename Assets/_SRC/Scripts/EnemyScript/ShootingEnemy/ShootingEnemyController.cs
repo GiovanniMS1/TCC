@@ -93,8 +93,7 @@ public class ShootingEnemyController : MonoBehaviour
     {
         if(collision.CompareTag("Sword") && !enemyLife.isDead)
         {
-            Vector2 directionDamage = new Vector2(collision.gameObject.transform.position.x, 0);
-            enemyLife.TakeDamage(directionDamage, reboundPower, 1);
+            enemyLife.TakeDamage(1);
             if (isShooting)
             {
                 CancelShoot();

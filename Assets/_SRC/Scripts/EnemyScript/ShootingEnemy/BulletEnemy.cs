@@ -52,8 +52,7 @@ public class BulletEnemy : MonoBehaviour
         
         else if(collision.TryGetComponent(out EnemyLife enemyLife))
         {
-            Vector2 directionDamage = new Vector2(transform.position.x, 0);
-            enemyLife.TakeDamage(directionDamage, reboundPower, 1);
+            enemyLife.TakeDamage(1);
             DestroyBullet();
         }
             

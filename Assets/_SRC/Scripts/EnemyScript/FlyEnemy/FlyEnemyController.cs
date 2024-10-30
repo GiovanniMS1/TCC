@@ -14,7 +14,7 @@ public class FlyEnemyController : MonoBehaviour
     private Vector3 initialPoint;
     private Animator anim;
     private EnemyLife enemyLife;
-
+    private Rigidbody2D rb;
     private void Start()
     {
         playerTransform = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
@@ -22,6 +22,7 @@ public class FlyEnemyController : MonoBehaviour
         playerMovementScript = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBehaviour>();
         anim = GetComponent<Animator>();
         enemyLife = GetComponent<EnemyLife>();
+        rb = GetComponent<Rigidbody2D>();
         initialPoint = transform.position;
     }
 
@@ -67,8 +68,7 @@ public class FlyEnemyController : MonoBehaviour
     {
         if(collision.CompareTag("Sword") && !enemyLife.isDead)
         {
-            Vector2 directionDamage = new Vector2(collision.gameObject.transform.position.x, 0);
-            enemyLife.TakeDamage(directionDamage, reboundPower, 1);
+            enemyLife.TakeDamage(1);
         }
     
         if(collision.CompareTag("Shield") && !enemyLife.isDead)

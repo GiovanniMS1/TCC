@@ -9,6 +9,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     [Header("Layer Info")]
     [SerializeField] private LayerMask whatIsGround;
+    [SerializeField] private ParticleSystem dust;
     private Rigidbody2D rb2d;
     private Animator anim;
     private BoxCollider2D boxCollider;
@@ -72,6 +73,8 @@ public class PlayerBehaviour : MonoBehaviour
 
     private void Jump()
     {
+        CreateDust();
+        SoundManager.Instance.PlaySound2D("Jumping");
         rb2d.velocity = new Vector2(rb2d.velocity.x, jumpPower);
     }
     private void FlipSprite()
@@ -98,6 +101,7 @@ public class PlayerBehaviour : MonoBehaviour
     {
         attacking = true;
         rb2d.velocity = Vector2.zero;
+        SoundManager.Instance.PlaySound2D("SwordSlash");
     }
 
     public void DisableAttack()
@@ -128,5 +132,17 @@ public class PlayerBehaviour : MonoBehaviour
         anim.SetBool("isJumping", !isGrounded);
         anim.SetBool("isAttacking", attacking);
         anim.SetBool("isBlocking", blocking);
+    }
+
+    private void CreateDust()
+    {
+        dust.Play();
+    }
+
+    public void PlaySFX()
+    {
+        if(horizontalInput == 0) return;
+
+        SoundManager.Instance.PlaySound3D("PlayerWalking", transform.position);
     }
 }

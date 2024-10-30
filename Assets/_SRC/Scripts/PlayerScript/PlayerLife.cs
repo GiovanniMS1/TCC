@@ -9,6 +9,8 @@ public class PlayerLife : MonoBehaviour
     [Header("Player Life")]
     public int maxLife;
     [SerializeField] private int actualLife;
+    [SerializeField] private GameObject blood;
+    public static BoxCollider2D bc2d;
     public event EventHandler playerDeath;
     public UnityEvent<int> changeLife;
     private Rigidbody2D playerRb2d;
@@ -23,6 +25,7 @@ public class PlayerLife : MonoBehaviour
         playerScript = GetComponent<PlayerBehaviour>();
         playerRb2d = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        bc2d = GetComponent<BoxCollider2D>();
     }
 
     private void Update()
@@ -60,6 +63,7 @@ public class PlayerLife : MonoBehaviour
                 playerScript.DisableAttack();
                 playerScript.DisableBlock();
                 StartCoroutine(DisableDamage());
+                Instantiate(blood, transform.position, Quaternion.identity);
             }
             else
             {

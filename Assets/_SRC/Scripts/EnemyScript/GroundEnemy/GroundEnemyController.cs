@@ -71,7 +71,7 @@ public class GroundEnemyController : MonoBehaviour
                 movement = Vector2.down;
             }
 
-            if(!enemyLife.takingDamage)
+            if(!enemyLife.takingDamage && !enemyLife.isRebounding)
             {
                 rb2d.MovePosition(rb2d.position + movement * speed * Time.deltaTime);
             }
@@ -96,14 +96,13 @@ public class GroundEnemyController : MonoBehaviour
     {
         if(collision.CompareTag("Sword") && !enemyLife.isDead)
         {
-            Vector2 directionDamage = new Vector2(collision.gameObject.transform.position.x, 0);
-            enemyLife.TakeDamage(directionDamage, reboundPower, 1);
+            enemyLife.TakeDamage(1);
         }
     
         if(collision.CompareTag("Shield") && !enemyLife.isDead)
         {
             Vector2 direction = new Vector2(collision.gameObject.transform.position.x, 0);
-            enemyLife.TakeDamage(direction, reboundPower, 0);
+            enemyLife.Rebound(direction, reboundPower);
             playerMovementScript.DisableBlock();
         }
     }

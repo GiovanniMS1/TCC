@@ -1,17 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 
 public class EnemyLife : MonoBehaviour
 {
     [Header("Enemy Life Status")]
     [SerializeField] private int life;
+    [SerializeField] private GameObject blood;
     private Rigidbody2D rb2d;
-    public bool takingDamage, isDead;
+    public bool takingDamage, isDead, isRebounding;
 
     private void Start()
     {
-
         rb2d = GetComponent<Rigidbody2D>();
     }
 
@@ -20,23 +21,38 @@ public class EnemyLife : MonoBehaviour
         EnemyIsDeath();
     }
 
-    public void TakeDamage(Vector2 direction, float reboundPower, int damage)
+    public void TakeDamage(int damage)
     {
         if(!takingDamage)
         {
             takingDamage = true;
             life -= damage;
-            Vector2 rebound = new Vector2(transform.position.x - direction.x, 0.4f).normalized;
-            rb2d.AddForce(rebound * reboundPower, ForceMode2D.Impulse);
+            rb2d.velocity = Vector2.zero;
             StartCoroutine(DisableDamage());
         }
     }
 
+    public void Rebound(Vector2 direction, float reboundPower)
+    {
+        if(!isRebounding)
+        {
+            isRebounding = true;
+            Vector2 rebound = new Vector2(transform.position.x - direction.x, 0.4f).normalized;
+            rb2d.AddForce(rebound * reboundPower, ForceMode2D.Impulse);
+            StartCoroutine(DisableRebound());
+        }
+    }
+
+    IEnumerator DisableRebound()
+    {
+        yield return new WaitForSeconds(0.5f);
+        isRebounding = false;
+        rb2d.velocity = Vector2.zero;
+    }
     IEnumerator DisableDamage()
     {
         yield return new WaitForSeconds(0.5f);
         takingDamage = false;
-        rb2d.velocity = Vector2.zero;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -62,6 +78,12 @@ public class EnemyLife : MonoBehaviour
         }    
     }
 
+    private void OnDestroy()
+    {
+        if (!isDead) return;
+        Instantiate(blood, transform.position, Quaternion.identity);
+        SoundManager.Instance.PlaySound2D("Explosion");
+    }
     private void DestroyEnemy()
     {
         if(isDead)
