@@ -431,19 +431,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundEffects:
-  - groupID: PlayerWalking
-    clips:
-    - {fileID: 8300000, guid: 10d1bb1f8fc12fb4cb3918c22333cb6b, type: 3}
   - groupID: SwordSlash
     clips:
     - {fileID: 8300000, guid: 3447f485a93896740b180b2ad6eede35, type: 3}
-    - {fileID: 8300000, guid: 791492ee5d3e07e49a713aad7fe15506, type: 3}
   - groupID: Explosion
     clips:
     - {fileID: 8300000, guid: 3366de1b2b08c3b44a85d1c0e43a5e65, type: 3}
   - groupID: Jumping
     clips:
     - {fileID: 8300000, guid: 8cc2cee24a8745743bcbc48e3819c940, type: 3}
+  - groupID: Footstep
+    clips:
+    - {fileID: 8300000, guid: 10d1bb1f8fc12fb4cb3918c22333cb6b, type: 3}
+    - {fileID: 8300000, guid: 10a4f8ab8ef61844c8d20221df2015c0, type: 3}
+    - {fileID: 8300000, guid: d3c8b5950c991d84cac5ad0beef123b7, type: 3}
+    - {fileID: 8300000, guid: 479b7cca2e28d484eb9134846cf36aa3, type: 3}
+    - {fileID: 8300000, guid: 454080544f849424f83a1952a69c74f5, type: 3}
+    - {fileID: 8300000, guid: d4e510265e868d44395c4baaab9c22eb, type: 3}
+    - {fileID: 8300000, guid: 2d5ef26e52f978543abb9c80b8d9cd09, type: 3}
+    - {fileID: 8300000, guid: 36c319a58b8d18c4d96a5dcb8853b7bf, type: 3}
+  - groupID: Hit
+    clips:
+    - {fileID: 8300000, guid: 8b23b175a78d6b5458322e3a6c9905d0, type: 3}
 --- !u!4 &106138178
 Transform:
   m_ObjectHideFlags: 0
@@ -2030,6 +2039,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   jumpPower: 7
+  footstepInterval: 0.35
   whatIsGround:
     serializedVersion: 2
     m_Bits: 8
@@ -14961,6 +14971,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   reboundPower: 6
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 136
 --- !u!50 &3259096079955415122
 Rigidbody2D:
   serializedVersion: 4

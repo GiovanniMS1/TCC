@@ -54,6 +54,7 @@ public class PlayerLife : MonoBehaviour
             takingDamage = true;
             actualLife -= damage;
             changeLife.Invoke(actualLife);
+            SoundManager.Instance.PlaySound2D("Hit");
 
             if(!PlayerIsDeath())
             {

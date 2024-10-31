@@ -7,7 +7,6 @@ public class FollowBehaviour : StateMachineBehaviour
 {
     [SerializeField] private float speedMovement;
     private Transform player;
-    private PlayerLife playerLife;
     private EnemyLife enemyLife;
     private FlyEnemyController flyEnemyController;
     private Rigidbody2D rb;
@@ -16,7 +15,6 @@ public class FollowBehaviour : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-        playerLife = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerLife>();
         flyEnemyController = animator.gameObject.GetComponent<FlyEnemyController>();
         enemyLife = animator.gameObject.GetComponent<EnemyLife>();
         rb = animator.gameObject.GetComponent<Rigidbody2D>();
@@ -38,10 +36,10 @@ public class FollowBehaviour : StateMachineBehaviour
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
-    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
-        
-    }
+    //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    //{
+    //    
+    //}
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
     //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

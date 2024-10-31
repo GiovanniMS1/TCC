@@ -6,6 +6,7 @@ public class PlayerBehaviour : MonoBehaviour
     [Header("Player Info")]
     [SerializeField] private float moveSpeed;
     [SerializeField] private float jumpPower;
+    [SerializeField] private float footstepInterval;
 
     [Header("Layer Info")]
     [SerializeField] private LayerMask whatIsGround;
@@ -16,6 +17,7 @@ public class PlayerBehaviour : MonoBehaviour
     private PlayerLife playerLife;
     public bool isFacingRight, isGrounded, attacking, blocking;
     private float horizontalInput;
+    private float footstepTimer;
     
 
     void Start()
@@ -33,6 +35,7 @@ public class PlayerBehaviour : MonoBehaviour
         FlipSprite();
         IsGrounded();   
         AnimationState();
+        CheckPlayerSteps();
     }
 
     private void PlayerInput()
@@ -97,6 +100,20 @@ public class PlayerBehaviour : MonoBehaviour
             return isGrounded = false;
     }
 
+    private void CheckPlayerSteps()
+    {
+        
+        if (isGrounded && Mathf.Abs(horizontalInput) > 0.1f)
+        {
+            footstepTimer -= Time.deltaTime;
+            if (footstepTimer <= 0)
+            {
+                SoundManager.Instance.PlaySound2D("Footstep");
+                footstepTimer = footstepInterval;
+            }
+        }
+    }
+
     private void Attack()
     {
         attacking = true;
@@ -139,10 +156,4 @@ public class PlayerBehaviour : MonoBehaviour
         dust.Play();
     }
 
-    public void PlaySFX()
-    {
-        if(horizontalInput == 0) return;
-
-        SoundManager.Instance.PlaySound3D("PlayerWalking", transform.position);
-    }
 }

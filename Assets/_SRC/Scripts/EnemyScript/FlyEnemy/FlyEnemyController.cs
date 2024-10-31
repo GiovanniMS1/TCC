@@ -7,6 +7,7 @@ public class FlyEnemyController : MonoBehaviour
 {
     [Header("Enemy Status")]
     [SerializeField] private float reboundPower;
+    [SerializeField] private LayerMask obstacleLayer;
     private Transform playerTransform;
     private PlayerLife playerLifeScript;
     private PlayerBehaviour playerMovementScript;
@@ -28,13 +29,28 @@ public class FlyEnemyController : MonoBehaviour
 
     private void Update()
     {
-        CalculateDistance();
+        if(HasLineOfSight())
+        {
+            CalculateDistance();
+        }
+        
         AnimationState();
     }
 
     public float CalculateDistance()
     {
         return distanceBetweenPlayer = Vector2.Distance(transform.position, playerTransform.position);
+    }
+
+    private bool HasLineOfSight()
+    {
+        Vector2 directionToPlayer = playerTransform.position - transform.position;
+        float distanceToPlayer = Vector2.Distance(transform.position, playerTransform.position);
+
+        // Verifica se há algum obstáculo entre o morcego e o jogador
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, directionToPlayer, distanceToPlayer, obstacleLayer);
+
+        return hit.collider == null; // Se `null`, a linha de visão está limpa
     }
 
     public Vector3 GetInitialPoint()
@@ -82,14 +98,5 @@ public class FlyEnemyController : MonoBehaviour
     {
         anim.SetFloat("Distance", distanceBetweenPlayer);
         anim.SetBool("Hit", enemyLife.takingDamage);
-    }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        if(distanceBetweenPlayer <= 5f && playerTransform != null)
-        {
-            Gizmos.DrawLine(transform.position, playerTransform.position);
-        }
     }
 }
