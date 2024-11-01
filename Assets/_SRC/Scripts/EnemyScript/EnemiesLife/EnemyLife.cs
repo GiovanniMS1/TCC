@@ -27,6 +27,7 @@ public class EnemyLife : MonoBehaviour
         {
             takingDamage = true;
             life -= damage;
+            if(life >= 1) SoundManager.Instance.PlaySound2D("EnemyHit");
             rb2d.velocity = Vector2.zero;
             StartCoroutine(DisableDamage());
         }

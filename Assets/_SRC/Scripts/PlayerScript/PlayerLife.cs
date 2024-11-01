@@ -54,7 +54,7 @@ public class PlayerLife : MonoBehaviour
             takingDamage = true;
             actualLife -= damage;
             changeLife.Invoke(actualLife);
-            SoundManager.Instance.PlaySound2D("Hit");
+            if (actualLife >= 1) SoundManager.Instance.PlaySound2D("Hit");
 
             if(!PlayerIsDeath())
             {
@@ -70,6 +70,7 @@ public class PlayerLife : MonoBehaviour
             {
                 playerDeath?.Invoke(this, EventArgs.Empty);
                 playerRb2d.velocity = Vector2.zero;
+                SoundManager.Instance.PlaySound2D("Dying");
             }
         }
     }
@@ -105,6 +106,7 @@ public class PlayerLife : MonoBehaviour
             playerRb2d.velocity = Vector2.zero;
             changeLife.Invoke(actualLife);
             playerDeath?.Invoke(this, EventArgs.Empty);
+            SoundManager.Instance.PlaySound2D("Dying");
         }
     }
 
