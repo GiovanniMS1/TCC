@@ -27,6 +27,7 @@ public class ReturnBehaviour : StateMachineBehaviour
 
         if(Vector2.Distance(animator.transform.position, initialPoint) < 0.1f)
         {
+            animator.transform.position = initialPoint;
             rb.velocity = Vector2.zero;
             animator.SetTrigger("Arrived");
         }

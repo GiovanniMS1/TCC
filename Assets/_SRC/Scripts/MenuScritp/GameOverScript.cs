@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System;
 
-public class MenuGameOver : MonoBehaviour
+public class GameOverScript : MonoBehaviour
 {
     public GameObject menuGameOver;
     private PlayerLife playerLife;
@@ -31,7 +31,7 @@ public class MenuGameOver : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
-    public void HomeMenu(string name)
+    public void BackMenu(string name)
     {
         ResetPhysic();
         playerLife.playerDeath -= ActiveMenu;

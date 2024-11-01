@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BackgroundMenuScript : MonoBehaviour
+public class BackgroundScript : MonoBehaviour
 {
     [SerializeField] private Vector2 speedParallax;
     private Vector2 offset;

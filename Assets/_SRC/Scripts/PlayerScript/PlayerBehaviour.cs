@@ -18,7 +18,7 @@ public class PlayerBehaviour : MonoBehaviour
     public bool isFacingRight, isGrounded, attacking, blocking;
     private float horizontalInput;
     private float footstepTimer;
-    
+    private PauseScript pauseGame;
 
     void Start()
     {
@@ -27,10 +27,12 @@ public class PlayerBehaviour : MonoBehaviour
         boxCollider = GetComponent<BoxCollider2D>();
         playerLife = GetComponent<PlayerLife>();
         isFacingRight = true;
+        pauseGame = GameObject.FindAnyObjectByType<PauseScript>();
     }
 
     void Update()
     {
+        if(playerLife.isDeath) return;
         PlayerInput();
         FlipSprite();
         IsGrounded();   
@@ -40,29 +42,34 @@ public class PlayerBehaviour : MonoBehaviour
 
     private void PlayerInput()
     {
-        if(!playerLife.takingDamage && !attacking && !blocking && !playerLife.isDeath)
+        if(!playerLife.takingDamage && !attacking && !blocking && !playerLife.isDeath && !PauseScript.paused)
         {
             horizontalInput = Input.GetAxis("Horizontal");
         }
         
-        if(Input.GetButtonDown("Jump") && !playerLife.takingDamage && !attacking && !blocking && isGrounded && !playerLife.isDeath)
+        if(Input.GetKeyDown(KeyCode.Space) && !playerLife.takingDamage && !attacking && !blocking && isGrounded && !playerLife.isDeath && !PauseScript.paused)
         {
             Jump();
         }
 
-        if(Input.GetKeyDown(KeyCode.E) && !attacking && !blocking && isGrounded)
+        if(Input.GetKeyDown(KeyCode.E) && !attacking && !blocking && isGrounded && !PauseScript.paused)
         {
             Attack();
         }
 
-        if(Input.GetKeyDown(KeyCode.LeftShift) && !blocking && isGrounded)
+        if(Input.GetKeyDown(KeyCode.LeftShift) && !blocking && isGrounded && !PauseScript.paused)
         {
             Block();
         }
 
-        if(Input.GetKeyUp(KeyCode.LeftShift) && blocking && isGrounded)
+        if(Input.GetKeyUp(KeyCode.LeftShift) && blocking && isGrounded && !PauseScript.paused)
         {
             DisableBlock();
+        }
+
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            pauseGame.SetPauseMenu(!PauseScript.paused);
         }
     }
 

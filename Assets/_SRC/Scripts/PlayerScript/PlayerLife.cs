@@ -33,7 +33,7 @@ public class PlayerLife : MonoBehaviour
         AnimationState();
     }
 
-    private bool PlayerIsDeath()
+    public bool PlayerIsDeath()
     {
         if(actualLife <= 0)
         {
