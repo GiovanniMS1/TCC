@@ -1,12 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ReturnBehaviour : StateMachineBehaviour
 {
     [SerializeField] private float speedMovement;
-    private Vector3 initialPoint;
     private FlyEnemyController flyEnemyController;
+    private Vector3 initialPoint;
     private Rigidbody2D rb;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
@@ -20,13 +18,27 @@ public class ReturnBehaviour : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        Vector2 direction = (initialPoint - animator.transform.position).normalized;
-        rb.velocity = direction * speedMovement;
-
-        flyEnemyController.FlipSprite(initialPoint);
-
-        if(Vector2.Distance(animator.transform.position, initialPoint) < 0.1f)
+        if (flyEnemyController.pathPositions.Count > 0)
         {
+            // Determina o ponto alvo e a direção
+            Vector3 targetPosition = flyEnemyController.pathPositions[flyEnemyController.pathPositions.Count - 1];
+            Vector2 direction = (targetPosition - animator.transform.position).normalized;
+
+            // Vira o sprite para a direção do caminho
+            flyEnemyController.FlipSprite(targetPosition);
+
+            // Move o morcego usando o Rigidbody2D
+            rb.velocity = direction * speedMovement;
+
+            // Checa se o morcego chegou perto do ponto
+            if (Vector2.Distance(animator.transform.position, targetPosition) < 0.1f)
+            {
+                flyEnemyController.pathPositions.RemoveAt(flyEnemyController.pathPositions.Count - 1);
+            }
+        }
+        else
+        {
+            // Para o morcego ao chegar ao ponto inicial
             animator.transform.position = initialPoint;
             rb.velocity = Vector2.zero;
             animator.SetTrigger("Arrived");
@@ -34,10 +46,10 @@ public class ReturnBehaviour : StateMachineBehaviour
     }
 
     //OnStateExit is called when a transition ends and the state machine finishes evaluating this state
-    //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    
-    //}
+    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        flyEnemyController.ClearPath();
+    }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
     //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

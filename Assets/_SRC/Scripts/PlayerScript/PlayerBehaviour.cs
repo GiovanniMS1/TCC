@@ -55,11 +55,13 @@ public class PlayerBehaviour : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.E) && !attacking && !blocking && isGrounded && !PauseScript.paused)
         {
             Attack();
+            horizontalInput = 0;
         }
 
         if(Input.GetKeyDown(KeyCode.LeftShift) && !blocking && isGrounded && !PauseScript.paused)
         {
             Block();
+            horizontalInput = 0;
         }
 
         if(Input.GetKeyUp(KeyCode.LeftShift) && blocking && isGrounded && !PauseScript.paused)
@@ -109,7 +111,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     private void CheckPlayerSteps()
     {
-        
+        if (!isGrounded || Mathf.Abs(horizontalInput) == 0) return;
         if (isGrounded && Mathf.Abs(horizontalInput) > 0.1f)
         {
             footstepTimer -= Time.deltaTime;
@@ -135,6 +137,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     private void Block()
     {
+        SoundManager.Instance.PlaySound2D("PullShield");
         blocking = true;
         rb2d.velocity = Vector2.zero;
     }

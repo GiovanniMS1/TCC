@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -15,7 +13,7 @@ public class FlyEnemyController : MonoBehaviour
     private Vector3 initialPoint;
     private Animator anim;
     private EnemyLife enemyLife;
-    private Rigidbody2D rb;
+    public List<Vector3> pathPositions = new List<Vector3>();
     private void Start()
     {
         playerTransform = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
@@ -23,7 +21,6 @@ public class FlyEnemyController : MonoBehaviour
         playerMovementScript = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBehaviour>();
         anim = GetComponent<Animator>();
         enemyLife = GetComponent<EnemyLife>();
-        rb = GetComponent<Rigidbody2D>();
         initialPoint = transform.position;
     }
 
@@ -35,6 +32,22 @@ public class FlyEnemyController : MonoBehaviour
         }
         
         AnimationState();
+    }
+
+    // Função para armazenar a posição atual no caminho
+    public void StorePathPosition()
+    {
+        // Verifica a última posição registrada para evitar pontos muito próximos
+        if (pathPositions.Count == 0 || Vector3.Distance(transform.position, pathPositions[pathPositions.Count - 1]) > 0.5f)
+        {
+            pathPositions.Add(transform.position);
+        }
+    }
+
+    public void ClearPath()
+    {
+        // Limpa o caminho quando o morcego retorna ao ponto inicial
+        pathPositions.Clear();
     }
 
     public float CalculateDistance()
@@ -89,6 +102,7 @@ public class FlyEnemyController : MonoBehaviour
     
         if(collision.CompareTag("Shield") && !enemyLife.isDead)
         {
+            SoundManager.Instance.PlaySound2D("Blocked");
             anim.SetTrigger("Return");
             playerMovementScript.DisableBlock();
         }

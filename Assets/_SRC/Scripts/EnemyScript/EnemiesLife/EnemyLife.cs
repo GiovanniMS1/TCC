@@ -1,7 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
 
 public class EnemyLife : MonoBehaviour
 {
@@ -63,6 +61,8 @@ public class EnemyLife : MonoBehaviour
             life = 0;
             takingDamage = true;
             isDead = true;
+            DestroyEnemy();
+            SoundManager.Instance.PlaySound2D("Explosion");
         }
     }
     private void EnemyIsDeath()

@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class FollowBehaviour : StateMachineBehaviour
@@ -24,22 +21,31 @@ public class FollowBehaviour : StateMachineBehaviour
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         //animator.transform.position = Vector2.MoveTowards(animator.transform.position, player.position, speedMovement * Time.deltaTime);
-        Vector2 direction = (player.position - animator.transform.position).normalized;
-        rb.velocity = direction * speedMovement;
-
-        flyEnemyController.FlipSprite(player.position);
-
-        if(enemyLife.takingDamage || flyEnemyController.CalculateDistance() > 5f)
+        if (enemyLife.takingDamage || flyEnemyController.CalculateDistance() > 5f)
         {
             animator.SetTrigger("Return");
+            return;
         }
+
+        // Direção para o jogador
+        Vector2 direction = (player.position - animator.transform.position).normalized;
+
+        // Aplica a velocidade no Rigidbody2D
+        rb.velocity = direction * speedMovement;
+
+        // Registra o caminho para poder retornar mais tarde
+        flyEnemyController.StorePathPosition();
+
+        // Vira o sprite para a direção do jogador
+        flyEnemyController.FlipSprite(player.position);
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
-    //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    
-    //}
+    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        // Para o movimento ao sair do estado
+        rb.velocity = Vector2.zero;
+    }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
     //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

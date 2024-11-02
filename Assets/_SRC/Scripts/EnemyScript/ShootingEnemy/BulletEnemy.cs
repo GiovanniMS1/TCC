@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class BulletEnemy : MonoBehaviour
@@ -37,6 +34,7 @@ public class BulletEnemy : MonoBehaviour
     {
         if(collision.CompareTag("Shield"))
         {
+            SoundManager.Instance.PlaySound2D("Blocked");
             Vector3 shieldNormal = collision.transform.right;
             directionBullet = Vector2.Reflect(directionBullet, shieldNormal);
             transform.localScale = new Vector3(-transform.localScale.x, 1, 1);

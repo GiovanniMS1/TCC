@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GroundEnemyController : MonoBehaviour
@@ -101,6 +99,7 @@ public class GroundEnemyController : MonoBehaviour
     
         if(collision.CompareTag("Shield") && !enemyLife.isDead)
         {
+            SoundManager.Instance.PlaySound2D("Blocked");
             Vector2 direction = new Vector2(collision.gameObject.transform.position.x, 0);
             enemyLife.Rebound(direction, reboundPower);
             playerMovementScript.DisableBlock();

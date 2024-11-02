@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ShootingEnemyController : MonoBehaviour
@@ -63,6 +62,7 @@ public class ShootingEnemyController : MonoBehaviour
         {
             if(Time.time > timeBetweenShoots + timeLastShoot)
             {
+                SoundManager.Instance.PlaySound2D("ShootingEnemy");
                 timeLastShoot = Time.time;
                 lockedDirection = Direction();
                 isShooting = true;
