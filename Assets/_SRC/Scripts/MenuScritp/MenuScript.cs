@@ -12,17 +12,16 @@ public class MenuScript : MonoBehaviour
     private void Start()
     {
         LoadVolume();
-        MusicManager.Instance.PlayMusic("MainMenu");
     }
+
     public void Play()
     {
-        SceneManager.LoadScene(1);
-        MusicManager.Instance.PlayMusic("Tutorial");
+        SceneTransition.Instance.DissolveExit(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     public void Quit()
     {
-        //UnityEditor.EditorApplication.isPlaying = false;
+        SceneTransition.Instance.DissolveExit(SceneManager.GetActiveScene().buildIndex);
         Application.Quit();
     }
 

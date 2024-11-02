@@ -49,4 +49,22 @@ public class MusicManager : MonoBehaviour
             yield return null;
         }
     }
+
+    public void StopMusic()
+    {
+        StartCoroutine(AnimateMusicCrossOutfade());
+    }
+
+    public IEnumerator AnimateMusicCrossOutfade(float fadeDuration = 0.5f)
+    {
+        float percent = 0;
+        while (percent < 1)
+        {
+            percent += Time.deltaTime * 1 / fadeDuration;
+            musicSource.volume = Mathf.Lerp(1f, 0, percent);
+            yield return null;
+        }
+
+        musicSource.Stop();
+    }
 }

@@ -191,6 +191,7 @@ MonoBehaviour:
   - groupID: Jumping
     clips:
     - {fileID: 8300000, guid: 8cc2cee24a8745743bcbc48e3819c940, type: 3}
+    - {fileID: 8300000, guid: 993e10630cb2af34e87804c3f4202801, type: 3}
   - groupID: SwordSlash
     clips:
     - {fileID: 8300000, guid: 3447f485a93896740b180b2ad6eede35, type: 3}
@@ -207,9 +208,6 @@ MonoBehaviour:
   - groupID: EnemyHit
     clips:
     - {fileID: 8300000, guid: 101337862ced96c4c84774795ca8e8b2, type: 3}
-  - groupID: Explosion
-    clips:
-    - {fileID: 8300000, guid: 3366de1b2b08c3b44a85d1c0e43a5e65, type: 3}
   - groupID: Blocked
     clips:
     - {fileID: 8300000, guid: 4559c48db9fdc924ebcc5df945696883, type: 3}
@@ -222,8 +220,11 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 7f4494cf92570ac46a34620c495a8aca, type: 3}
   - groupID: ShootingEnemy
     clips:
-    - {fileID: 8300000, guid: 3a46746067ba8dc49822eafad9fbe03b, type: 3}
     - {fileID: 8300000, guid: 0d2e30dc6748f5445b0a6436b711b28d, type: 3}
+    - {fileID: 8300000, guid: 3a46746067ba8dc49822eafad9fbe03b, type: 3}
+  - groupID: Explosion
+    clips:
+    - {fileID: 8300000, guid: 3366de1b2b08c3b44a85d1c0e43a5e65, type: 3}
 --- !u!114 &7114474190747281233
 MonoBehaviour:
   m_ObjectHideFlags: 0

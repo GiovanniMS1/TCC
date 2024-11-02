@@ -21,13 +21,13 @@ public class PauseScript : MonoBehaviour
     public void Reset()
     {
         Time.timeScale = 1;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneTransition.Instance.DissolveExit(1);
     }
 
     public void BackMenu(string name)
     {
         Time.timeScale = 1;
-        SceneManager.LoadScene(name);
+        SceneTransition.Instance.DissolveExit(0);
     }
     
 }

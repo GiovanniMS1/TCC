@@ -26,13 +26,13 @@ public class GameOverScript : MonoBehaviour
     {
         ResetPhysic();
         playerLife.playerDeath -= ActiveMenu;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneTransition.Instance.DissolveExit(1);
     }
 
     public void BackMenu(string name)
     {
         ResetPhysic();
         playerLife.playerDeath -= ActiveMenu;
-        SceneManager.LoadScene(name);
+        SceneTransition.Instance.DissolveExit(0);
     }
 }
