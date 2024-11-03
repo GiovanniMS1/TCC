@@ -24,7 +24,7 @@ public class PauseScript : MonoBehaviour
         SceneTransition.Instance.DissolveExit(1);
     }
 
-    public void BackMenu(string name)
+    public void BackMenu()
     {
         Time.timeScale = 1;
         SceneTransition.Instance.DissolveExit(0);

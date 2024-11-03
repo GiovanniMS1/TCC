@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Playables;
 using UnityEngine.SceneManagement;
 
 public class SceneTransition : MonoBehaviour
@@ -11,6 +12,7 @@ public class SceneTransition : MonoBehaviour
     public float timeToDissolveEntry;
     public float timeToDissolveExit;
     public string musicLevel;
+    public float waitTimeToPlayMusic;
 
     private void Awake()
     {
@@ -29,16 +31,16 @@ public class SceneTransition : MonoBehaviour
         StartCoroutine(DissolveEntry());
     }
     private IEnumerator DissolveEntry()
-    {
-        yield return new WaitForSeconds(1f);
-
-        MusicManager.Instance.PlayMusic(musicLevel);
-
+    {  
         LeanTween.alphaCanvas(dissolveCanvasGroup, 0f, timeToDissolveEntry).setOnComplete(()=>
         {
             dissolveCanvasGroup.blocksRaycasts = false;
             dissolveCanvasGroup.interactable = false;
         });
+
+        yield return new WaitForSeconds(waitTimeToPlayMusic);
+
+        MusicManager.Instance.PlayMusic(musicLevel);
     }
 
     public void DissolveExit(int indexScene)

@@ -55,7 +55,7 @@ public class MusicManager : MonoBehaviour
         StartCoroutine(AnimateMusicCrossOutfade());
     }
 
-    public IEnumerator AnimateMusicCrossOutfade(float fadeDuration = 0.5f)
+    public IEnumerator AnimateMusicCrossOutfade(float fadeDuration = 1f)
     {
         float percent = 0;
         while (percent < 1)

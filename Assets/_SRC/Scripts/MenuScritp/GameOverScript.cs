@@ -29,7 +29,7 @@ public class GameOverScript : MonoBehaviour
         SceneTransition.Instance.DissolveExit(1);
     }
 
-    public void BackMenu(string name)
+    public void BackMenu()
     {
         ResetPhysic();
         playerLife.playerDeath -= ActiveMenu;

@@ -16,6 +16,7 @@ public class PlayerBehaviour : MonoBehaviour
     private BoxCollider2D boxCollider;
     private PlayerLife playerLife;
     public bool isFacingRight, isGrounded, attacking, blocking;
+    private bool canMove = false;
     private float horizontalInput;
     private float footstepTimer;
     private PauseScript pauseGame;
@@ -32,7 +33,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     void Update()
     {
-        if(playerLife.isDeath) return;
+        if(playerLife.isDeath || !canMove) return;
         PlayerInput();
         FlipSprite();
         IsGrounded();   
@@ -164,6 +165,16 @@ public class PlayerBehaviour : MonoBehaviour
     private void CreateDust()
     {
         dust.Play();
+    }
+
+    public void EnablePlayerControl()
+    {
+        canMove = true;
+    }
+
+    public void DisablePlayerControl()
+    {
+        canMove = false;
     }
 
 }
