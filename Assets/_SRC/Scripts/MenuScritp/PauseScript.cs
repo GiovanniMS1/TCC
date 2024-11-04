@@ -10,9 +10,11 @@ public class PauseScript : MonoBehaviour
     public AudioMixer audioMixer;
     public Slider musicSlider;
     public Slider sfxSlider;
+    private PlayerBehaviour playerBehaviour;
 
     void Start()
     {
+        playerBehaviour = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBehaviour>();
         SetPauseMenu(false);
         LoadVolume();
     }
@@ -43,12 +45,14 @@ public class PauseScript : MonoBehaviour
     {
         Time.timeScale = 1;
         SceneTransition.Instance.DissolveExit(SceneManager.GetActiveScene().buildIndex);
+        playerBehaviour.DisablePlayerControl();
     }
 
     public void BackMenu()
     {
         Time.timeScale = 1;
         SceneTransition.Instance.DissolveExit(0);
+        playerBehaviour.DisablePlayerControl();
     }
 
     public void UpdateMusicVolume(float volume)

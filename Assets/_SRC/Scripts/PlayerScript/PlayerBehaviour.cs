@@ -73,6 +73,7 @@ public class PlayerBehaviour : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Escape))
         {
             pauseGame.SetPauseMenu(!PauseScript.paused);
+            // Tem dois erros (pause abre se estiver mexendo no volume, cursor não some se fechar o menu com a tecla ESC)
         }
     }
 
