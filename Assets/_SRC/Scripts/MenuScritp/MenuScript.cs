@@ -10,6 +10,8 @@ public class MenuScript : MonoBehaviour
     public Slider sfxSlider;
     private void Start()
     {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
         LoadVolume();
     }
 

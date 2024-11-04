@@ -33,6 +33,16 @@ public class PauseScript : MonoBehaviour
         }
     }
 
+    public void BlockInput()
+    {
+        playerBehaviour.DisablePlayerControl();
+    }
+
+    public void DisblockInput()
+    {
+        playerBehaviour.EnablePlayerControl();
+    }
+
     public void SetPauseMenu(bool isPaused)
     {
         paused = isPaused;
@@ -45,14 +55,14 @@ public class PauseScript : MonoBehaviour
     {
         Time.timeScale = 1;
         SceneTransition.Instance.DissolveExit(SceneManager.GetActiveScene().buildIndex);
-        playerBehaviour.DisablePlayerControl();
+        BlockInput();
     }
 
     public void BackMenu()
     {
         Time.timeScale = 1;
         SceneTransition.Instance.DissolveExit(0);
-        playerBehaviour.DisablePlayerControl();
+        BlockInput();
     }
 
     public void UpdateMusicVolume(float volume)

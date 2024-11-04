@@ -6,12 +6,7 @@ using UnityEngine.Playables;
 public class NextLevelScript : MonoBehaviour
 {
     public PlayableDirector playableDirector;
-    private MenuScript menuScript;
 
-    private void Start()
-    {
-        menuScript = FindObjectOfType<MenuScript>();
-    }
     public void NextLevel()
     {
         playableDirector.Play();
@@ -21,4 +16,10 @@ public class NextLevelScript : MonoBehaviour
     {
         SceneTransition.Instance.DissolveNextLevel();
     }
+
+    public void BackToMenu()
+    {
+        SceneTransition.Instance.DissolveExit(0);
+    }
+
 }
