@@ -905,6 +905,7 @@ GameObject:
   - component: {fileID: 521473379}
   - component: {fileID: 521473380}
   - component: {fileID: 521473381}
+  - component: {fileID: 521473382}
   m_Layer: 5
   m_Name: GUI
   m_TagString: Untagged
@@ -957,6 +958,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 1486954844}
+--- !u!114 &521473382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 521473378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5457fb94f1ff0664cb67cd3c98ee3c42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &556420986
 GameObject:
   m_ObjectHideFlags: 0
@@ -7043,6 +7056,7 @@ GameObject:
   - component: {fileID: 1179440963}
   - component: {fileID: 1179440962}
   - component: {fileID: 1179440961}
+  - component: {fileID: 1179440964}
   m_Layer: 5
   m_Name: BotaoMenu
   m_TagString: Untagged
@@ -7164,6 +7178,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1179440959}
   m_CullTransparentMesh: 1
+--- !u!114 &1179440964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1179440959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 521473382}
+          m_TargetAssemblyTypeName: ClickScript, Assembly-CSharp
+          m_MethodName: PlayClickSound
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: Hover
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 521473382}
+          m_TargetAssemblyTypeName: ClickScript, Assembly-CSharp
+          m_MethodName: PlayClickSound
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: Click
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1281936117
 GameObject:
   m_ObjectHideFlags: 0
@@ -9440,6 +9499,7 @@ GameObject:
   - component: {fileID: 1525511360}
   - component: {fileID: 1525511359}
   - component: {fileID: 1525511358}
+  - component: {fileID: 1525511361}
   m_Layer: 5
   m_Name: BotaoMenu
   m_TagString: Untagged
@@ -9561,6 +9621,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1525511356}
   m_CullTransparentMesh: 1
+--- !u!114 &1525511361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1525511356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 521473382}
+          m_TargetAssemblyTypeName: ClickScript, Assembly-CSharp
+          m_MethodName: PlayClickSound
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: Hover
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 521473382}
+          m_TargetAssemblyTypeName: ClickScript, Assembly-CSharp
+          m_MethodName: PlayClickSound
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: Click
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1553389343
 GameObject:
   m_ObjectHideFlags: 0
@@ -9573,6 +9678,7 @@ GameObject:
   - component: {fileID: 1553389347}
   - component: {fileID: 1553389346}
   - component: {fileID: 1553389345}
+  - component: {fileID: 1553389348}
   m_Layer: 5
   m_Name: BotaoResetar
   m_TagString: Untagged
@@ -9694,6 +9800,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1553389343}
   m_CullTransparentMesh: 1
+--- !u!114 &1553389348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1553389343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 521473382}
+          m_TargetAssemblyTypeName: ClickScript, Assembly-CSharp
+          m_MethodName: PlayClickSound
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: Hover
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 521473382}
+          m_TargetAssemblyTypeName: ClickScript, Assembly-CSharp
+          m_MethodName: PlayClickSound
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: Click
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1591881404
 GameObject:
   m_ObjectHideFlags: 0
@@ -14648,6 +14799,7 @@ GameObject:
   - component: {fileID: 1912548122}
   - component: {fileID: 1912548121}
   - component: {fileID: 1912548120}
+  - component: {fileID: 1912548123}
   m_Layer: 5
   m_Name: BotaoContinuar
   m_TagString: Untagged
@@ -14769,6 +14921,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1912548118}
   m_CullTransparentMesh: 1
+--- !u!114 &1912548123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1912548118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 521473382}
+          m_TargetAssemblyTypeName: ClickScript, Assembly-CSharp
+          m_MethodName: PlayClickSound
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: Hover
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 521473382}
+          m_TargetAssemblyTypeName: ClickScript, Assembly-CSharp
+          m_MethodName: PlayClickSound
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: Click
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1915338998
 GameObject:
   m_ObjectHideFlags: 0
@@ -14944,6 +15141,7 @@ GameObject:
   - component: {fileID: 1947095015}
   - component: {fileID: 1947095014}
   - component: {fileID: 1947095013}
+  - component: {fileID: 1947095016}
   m_Layer: 5
   m_Name: BotaoResetar
   m_TagString: Untagged
@@ -15065,6 +15263,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1947095011}
   m_CullTransparentMesh: 1
+--- !u!114 &1947095016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1947095011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 521473382}
+          m_TargetAssemblyTypeName: ClickScript, Assembly-CSharp
+          m_MethodName: PlayClickSound
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: Hover
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 521473382}
+          m_TargetAssemblyTypeName: ClickScript, Assembly-CSharp
+          m_MethodName: PlayClickSound
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: Click
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1956034005
 GameObject:
   m_ObjectHideFlags: 0
@@ -15856,6 +16099,10 @@ PrefabInstance:
     - target: {fileID: 2999084326265077521, guid: ca1f61c642473a2459a3b3662e03adc9, type: 3}
       propertyPath: m_Name
       value: AudioManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 2999084326265077521, guid: ca1f61c642473a2459a3b3662e03adc9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7763394931999125627, guid: ca1f61c642473a2459a3b3662e03adc9, type: 3}
       propertyPath: m_LocalPosition.x

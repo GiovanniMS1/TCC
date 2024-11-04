@@ -225,6 +225,17 @@ MonoBehaviour:
   - groupID: Explosion
     clips:
     - {fileID: 8300000, guid: 3366de1b2b08c3b44a85d1c0e43a5e65, type: 3}
+  - groupID: Hover
+    clips:
+    - {fileID: 8300000, guid: a4bb954582bdf1444a652aa9e272f6e1, type: 3}
+  - groupID: Click
+    clips:
+    - {fileID: 8300000, guid: 1037a8328187a5344a4e49928f58bff4, type: 3}
+    - {fileID: 8300000, guid: 0f7bb57be2780f147a24a2293757a5ba, type: 3}
+    - {fileID: 8300000, guid: 0af235bfceccd274db5c256232d7426a, type: 3}
+  - groupID: StartGame
+    clips:
+    - {fileID: 8300000, guid: 5b38c4e05d91c4e49b84b14eb1150b1d, type: 3}
 --- !u!114 &7114474190747281233
 MonoBehaviour:
   m_ObjectHideFlags: 0
