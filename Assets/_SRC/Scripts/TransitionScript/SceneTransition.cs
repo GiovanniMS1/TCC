@@ -45,8 +45,8 @@ public class SceneTransition : MonoBehaviour
 
     public void DissolveExit(int indexScene)
     {
-        dissolveCanvasGroup.blocksRaycasts = false;
-        dissolveCanvasGroup.interactable = false;
+        dissolveCanvasGroup.blocksRaycasts = true;
+        dissolveCanvasGroup.interactable = true;
 
         MusicManager.Instance.StopMusic();
 

@@ -21,7 +21,7 @@ public class PauseScript : MonoBehaviour
     public void Reset()
     {
         Time.timeScale = 1;
-        SceneTransition.Instance.DissolveExit(1);
+        SceneTransition.Instance.DissolveExit(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void BackMenu()

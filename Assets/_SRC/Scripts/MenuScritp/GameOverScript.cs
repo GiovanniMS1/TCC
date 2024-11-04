@@ -26,7 +26,7 @@ public class GameOverScript : MonoBehaviour
     {
         ResetPhysic();
         playerLife.playerDeath -= ActiveMenu;
-        SceneTransition.Instance.DissolveExit(1);
+        SceneTransition.Instance.DissolveExit(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void BackMenu()

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4977988013151525490}
   - component: {fileID: 5257090301326597794}
   m_Layer: 0
-  m_Name: DeathZone
+  m_Name: DeathZoneTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
