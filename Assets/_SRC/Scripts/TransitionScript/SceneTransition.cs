@@ -55,5 +55,31 @@ public class SceneTransition : MonoBehaviour
             SceneManager.LoadScene(indexScene);
         });
     }
+
+    public void DissolveExitGame()
+    {
+        dissolveCanvasGroup.blocksRaycasts = true;
+        dissolveCanvasGroup.interactable = true;
+
+        MusicManager.Instance.StopMusic();
+
+        LeanTween.alphaCanvas(dissolveCanvasGroup, 1f, timeToDissolveExit).setOnComplete(()=>
+        {
+            Application.Quit();
+        });
+    }
+
+    public void DissolveNextLevel()
+    {
+        dissolveCanvasGroup.blocksRaycasts = true;
+        dissolveCanvasGroup.interactable = true;
+
+        MusicManager.Instance.StopMusic();
+
+        LeanTween.alphaCanvas(dissolveCanvasGroup, 1f, timeToDissolveExit).setOnComplete(()=>
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        });
+    }
     
 }

@@ -1253,7 +1253,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.2420387, y: -0.02025, z: -10}
+  m_LocalPosition: {x: 3.236842, y: -0.02, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2201,7 +2201,7 @@ Transform:
   m_GameObject: {fileID: 869925381}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.75, y: -0.02, z: -10}
+  m_LocalPosition: {x: 3, y: -0.02, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2549,6 +2549,8 @@ PlayableDirector:
     value: {fileID: 774564435}
   - key: {fileID: -5193571452528582537, guid: 3ab0e1b1808bfdb4885f32d1f55ed381, type: 2}
     value: {fileID: 2052480684}
+  - key: {fileID: 7789784871989465822, guid: 3ab0e1b1808bfdb4885f32d1f55ed381, type: 2}
+    value: {fileID: 0}
   m_ExposedReferences:
     m_References: []
 --- !u!4 &934647231
@@ -12990,6 +12992,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 5472545759989403009, guid: f81756c81817d6945924ae9a34b048dc, type: 3}
+      propertyPath: musicLevel
+      value: Fase 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5472545759989403009, guid: f81756c81817d6945924ae9a34b048dc, type: 3}
       propertyPath: shouldTransition
       value: 1
       objectReference: {fileID: 0}
@@ -15030,10 +15036,6 @@ PrefabInstance:
     - target: {fileID: 2999084326265077521, guid: ca1f61c642473a2459a3b3662e03adc9, type: 3}
       propertyPath: m_Name
       value: AudioManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 2999084326265077521, guid: ca1f61c642473a2459a3b3662e03adc9, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7763394931999125627, guid: ca1f61c642473a2459a3b3662e03adc9, type: 3}
       propertyPath: m_LocalPosition.x

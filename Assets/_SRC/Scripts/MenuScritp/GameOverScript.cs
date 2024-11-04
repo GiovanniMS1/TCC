@@ -20,6 +20,8 @@ public class GameOverScript : MonoBehaviour
     private void ActiveMenu(object sender, EventArgs e)
     {
         menuGameOver.SetActive(true);
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
     }
 
     public void Restart()

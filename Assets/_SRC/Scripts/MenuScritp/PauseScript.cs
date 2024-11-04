@@ -6,9 +6,24 @@ public class PauseScript : MonoBehaviour
     public GameObject pauseMenu;
     public static bool paused;
 
+
     void Start()
     {
         SetPauseMenu(false);
+    }
+
+    private void ChangeCursor()
+    {
+        if(paused)
+        {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+        }
+        else
+        {
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+        }
     }
 
     public void SetPauseMenu(bool isPaused)
@@ -16,6 +31,7 @@ public class PauseScript : MonoBehaviour
         paused = isPaused;
         Time.timeScale = paused ? 0 : 1;
         pauseMenu.SetActive(paused);
+        ChangeCursor();
     }
 
     public void Reset()

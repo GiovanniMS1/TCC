@@ -230,8 +230,6 @@ MonoBehaviour:
     - {fileID: 8300000, guid: a4bb954582bdf1444a652aa9e272f6e1, type: 3}
   - groupID: Click
     clips:
-    - {fileID: 8300000, guid: 1037a8328187a5344a4e49928f58bff4, type: 3}
-    - {fileID: 8300000, guid: 0f7bb57be2780f147a24a2293757a5ba, type: 3}
     - {fileID: 8300000, guid: 0af235bfceccd274db5c256232d7426a, type: 3}
   - groupID: StartGame
     clips:
@@ -267,6 +265,12 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 4f68e2f6bc3e9574faa7f2b25dacf61e, type: 3}
   - trackName: Tutorial
     clip: {fileID: 8300000, guid: a3d5c7cd7a87c62449ac1cf3ac979e44, type: 3}
+  - trackName: Fase 1
+    clip: {fileID: 8300000, guid: 06906d718be5b6a4cb2df8732bf39832, type: 3}
+  - trackName: Fase 2
+    clip: {fileID: 8300000, guid: bef0cef2ded0f0645ad90c6e5bdd4965, type: 3}
+  - trackName: Fase 3
+    clip: {fileID: 8300000, guid: 1f2ad53bacc245642854dbdc8ea71a9b, type: 3}
 --- !u!114 &4495698308106961656
 MonoBehaviour:
   m_ObjectHideFlags: 0

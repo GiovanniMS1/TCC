@@ -2,12 +2,10 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Audio;
 using UnityEngine.UI;
-using UnityEditor;
 
 public class MenuScript : MonoBehaviour
 {
     public AudioMixer audioMixer;
-
     public Slider musicSlider;
     public Slider sfxSlider;
     private void Start()
@@ -15,15 +13,14 @@ public class MenuScript : MonoBehaviour
         LoadVolume();
     }
 
-    public void Play()
+    public void Play(int levelIndex)
     {
-        SceneTransition.Instance.DissolveExit(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneTransition.Instance.DissolveExit(levelIndex);
     }
 
     public void Quit()
     {
-        SceneTransition.Instance.DissolveExit(SceneManager.GetActiveScene().buildIndex);
-        Application.Quit();
+        SceneTransition.Instance.DissolveExitGame();
     }
 
     public void UpdateMusicVolume(float volume)
