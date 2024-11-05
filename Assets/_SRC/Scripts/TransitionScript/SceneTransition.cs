@@ -1,12 +1,13 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Analytics;
 using UnityEngine.Playables;
 using UnityEngine.SceneManagement;
 
 public class SceneTransition : MonoBehaviour
 {
     public static SceneTransition Instance;
-
+    private PlayerBehaviour playerBehaviour;
     [Header("Dissolve")]
     public CanvasGroup dissolveCanvasGroup;
     public float timeToDissolveEntry;
@@ -29,9 +30,22 @@ public class SceneTransition : MonoBehaviour
     private void Start()
     {
         StartCoroutine(DissolveEntry());
+        GetPlayerComponent();
+    }
+
+    private void GetPlayerComponent()
+    {
+        if(playerBehaviour == null)
+        {
+            return;
+        }
+        else
+        {
+            playerBehaviour = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBehaviour>();
+        }
     }
     private IEnumerator DissolveEntry()
-    {  
+    {   
         LeanTween.alphaCanvas(dissolveCanvasGroup, 0f, timeToDissolveEntry).setOnComplete(()=>
         {
             dissolveCanvasGroup.blocksRaycasts = false;

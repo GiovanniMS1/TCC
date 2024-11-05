@@ -855,7 +855,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.436624, y: -0.019399999, z: -10}
+  m_LocalPosition: {x: 4.393961, y: -0.019399999, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -906,7 +906,6 @@ GameObject:
   - component: {fileID: 521473379}
   - component: {fileID: 521473380}
   - component: {fileID: 521473381}
-  - component: {fileID: 521473383}
   - component: {fileID: 521473382}
   m_Layer: 5
   m_Name: GUI
@@ -976,19 +975,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5457fb94f1ff0664cb67cd3c98ee3c42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &521473383
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 521473378}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9409f590d79292a449c83afe7aee68dd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playableDirector: {fileID: 0}
 --- !u!1 &556420986
 GameObject:
   m_ObjectHideFlags: 0
@@ -2212,7 +2198,7 @@ GameObject:
   m_Component:
   - component: {fileID: 997208842}
   - component: {fileID: 997208844}
-  - component: {fileID: 997208843}
+  - component: {fileID: 997208845}
   m_Layer: 0
   m_Name: TutorialCinematicEnding
   m_TagString: Untagged
@@ -2235,18 +2221,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2089895820}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &997208843
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 997208841}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0edd3be52302d874bb9e174517b01bc4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!320 &997208844
 PlayableDirector:
   m_ObjectHideFlags: 0
@@ -2274,6 +2248,18 @@ PlayableDirector:
     value: {fileID: 774564435}
   m_ExposedReferences:
     m_References: []
+--- !u!114 &997208845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 997208841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0edd3be52302d874bb9e174517b01bc4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &998909799
 GameObject:
   m_ObjectHideFlags: 0
@@ -2324,9 +2310,9 @@ MonoBehaviour:
   onTriggerEnter:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 521473383}
-        m_TargetAssemblyTypeName: NextLevelScript, Assembly-CSharp
-        m_MethodName: NextLevel
+      - m_Target: {fileID: 997208845}
+        m_TargetAssemblyTypeName: CinematicController, Assembly-CSharp
+        m_MethodName: PlayCinematic
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2339,7 +2325,7 @@ MonoBehaviour:
   onTriggerExit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 521473383}
+      - m_Target: {fileID: 2089895821}
         m_TargetAssemblyTypeName: NextLevelScript, Assembly-CSharp
         m_MethodName: TransitionNextLevel
         m_Mode: 1
@@ -16519,6 +16505,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2089895820}
+  - component: {fileID: 2089895821}
   m_Layer: 0
   m_Name: Cinematics
   m_TagString: Untagged
@@ -16543,6 +16530,19 @@ Transform:
   - {fileID: 997208842}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2089895821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2089895819}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9409f590d79292a449c83afe7aee68dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playableDirector: {fileID: 997208844}
 --- !u!1 &2095996369
 GameObject:
   m_ObjectHideFlags: 0

@@ -2622,7 +2622,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.439548, y: -0.02003, z: -10}
+  m_LocalPosition: {x: 4.396878, y: -0.02003, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5076,9 +5076,9 @@ PlayableDirector:
   - key: {fileID: 7160162248633193712, guid: 3ab0e1b1808bfdb4885f32d1f55ed381, type: 2}
     value: {fileID: 774564435}
   - key: {fileID: -5193571452528582537, guid: 3ab0e1b1808bfdb4885f32d1f55ed381, type: 2}
-    value: {fileID: 0}
+    value: {fileID: 299426719}
   - key: {fileID: 7789784871989465822, guid: 3ab0e1b1808bfdb4885f32d1f55ed381, type: 2}
-    value: {fileID: 0}
+    value: {fileID: 858092193}
   m_ExposedReferences:
     m_References: []
 --- !u!4 &934647231
@@ -22746,9 +22746,9 @@ MonoBehaviour:
   onTriggerEnter:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 573976408}
-        m_TargetAssemblyTypeName: NextLevelScript, Assembly-CSharp
-        m_MethodName: NextLevel
+      - m_Target: {fileID: 1280510053}
+        m_TargetAssemblyTypeName: CinematicController, Assembly-CSharp
+        m_MethodName: PlayCinematic
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

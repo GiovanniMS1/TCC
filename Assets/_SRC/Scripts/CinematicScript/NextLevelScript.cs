@@ -6,7 +6,6 @@ using UnityEngine.Playables;
 public class NextLevelScript : MonoBehaviour
 {
     public PlayableDirector playableDirector;
-
     public void NextLevel()
     {
         playableDirector.Play();
