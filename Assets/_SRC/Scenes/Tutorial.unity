@@ -855,7 +855,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.393961, y: -0.019399999, z: -10}
+  m_LocalPosition: {x: 3.2339852, y: -0.01938, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10369,7 +10369,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 521473381}
         m_TargetAssemblyTypeName: PauseScript, Assembly-CSharp
-        m_MethodName: BlockInput
+        m_MethodName: BlockPlayerInput
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -16542,7 +16542,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9409f590d79292a449c83afe7aee68dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playableDirector: {fileID: 997208844}
 --- !u!1 &2095996369
 GameObject:
   m_ObjectHideFlags: 0
@@ -17958,7 +17957,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 521473381}
         m_TargetAssemblyTypeName: PauseScript, Assembly-CSharp
-        m_MethodName: DisblockInput
+        m_MethodName: AllowPlayerInput
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

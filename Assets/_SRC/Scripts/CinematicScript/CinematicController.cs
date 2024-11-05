@@ -4,12 +4,12 @@ using UnityEngine.Playables;
 public class CinematicController : MonoBehaviour
 {
     private PlayableDirector playableDirector;
-    private PlayerBehaviour playerBehaviour;
+    private PlayerBehaviour playerCanMove;
 
     public void Awake()
     {
         playableDirector = GetComponent<PlayableDirector>();
-        playerBehaviour = FindObjectOfType<PlayerBehaviour>();
+        playerCanMove = FindObjectOfType<PlayerBehaviour>();
 
         // Registra o evento para desbloquear o jogador quando a cinemática terminar
         playableDirector.stopped += OnCinematicEnd;
@@ -18,7 +18,7 @@ public class CinematicController : MonoBehaviour
     public void PlayCinematic()
     {
         // Bloqueia o controle do jogador quando a cinemática inicia
-        playerBehaviour.DisablePlayerControl();
+        playerCanMove.DisablePlayerControl();
 
         // Inicia a cinemática
         playableDirector.Play();
@@ -29,6 +29,6 @@ public class CinematicController : MonoBehaviour
         playableDirector.stopped -= OnCinematicEnd;
 
         // Libera o controle do jogador quando a cinemática termina
-        playerBehaviour.EnablePlayerControl();
+        playerCanMove.EnablePlayerControl();
     }
 }

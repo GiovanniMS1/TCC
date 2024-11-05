@@ -48,7 +48,7 @@ public class PlayerBehaviour : MonoBehaviour
             horizontalInput = Input.GetAxis("Horizontal");
         }
         
-        if(Input.GetKeyDown(KeyCode.Space) && !playerLife.takingDamage && !attacking && !blocking && isGrounded && !playerLife.isDeath && !PauseScript.paused)
+        if(Input.GetButtonDown("Jump") && !playerLife.takingDamage && !attacking && !blocking && isGrounded && !playerLife.isDeath && !PauseScript.paused)
         {
             Jump();
         }
@@ -73,7 +73,6 @@ public class PlayerBehaviour : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Escape))
         {
             pauseGame.SetPauseMenu(!PauseScript.paused);
-            // Tem dois erros (pause abre se estiver mexendo no volume, cursor não some se fechar o menu com a tecla ESC)
         }
     }
 

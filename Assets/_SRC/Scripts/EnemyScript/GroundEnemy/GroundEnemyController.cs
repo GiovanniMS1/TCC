@@ -33,7 +33,11 @@ public class GroundEnemyController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Chasing();
+        if(playerIsAlive && !enemyLife.isDead)
+        {
+            Chasing();
+        }
+        
     }
 
     private void FlipSprite(Vector2 direction)
@@ -48,31 +52,28 @@ public class GroundEnemyController : MonoBehaviour
 
     private void Chasing()
     {
-        if(playerIsAlive && !enemyLife.isDead)
+        float distanceToPlayer = Vector2.Distance(transform.position, playerTransform.position);
+
+        if(distanceToPlayer < detectionRadius)
         {
-            float distanceToPlayer = Vector2.Distance(transform.position, playerTransform.position);
+            chasingPlayer = true;
 
-            if(distanceToPlayer < detectionRadius)
-            {
-                chasingPlayer = true;
+            Vector2 direction = (playerTransform.position - transform.position).normalized;
 
-                Vector2 direction = (playerTransform.position - transform.position).normalized;
+            FlipSprite(direction);
 
-                FlipSprite(direction);
+            movement = new Vector2(direction.x, -1);
+        }
+        else
+        {
+            chasingPlayer = false;
 
-                movement = new Vector2(direction.x, -1);
-            }
-            else
-            {
-                chasingPlayer = false;
+            movement = Vector2.down;
+        }
 
-                movement = Vector2.down;
-            }
-
-            if(!enemyLife.takingDamage && !enemyLife.isRebounding)
-            {
-                rb2d.MovePosition(rb2d.position + movement * speed * Time.deltaTime);
-            }
+        if(!enemyLife.takingDamage && !enemyLife.isRebounding)
+        {
+            rb2d.MovePosition(rb2d.position + movement * speed * Time.deltaTime);
         }
     }
 

@@ -20,17 +20,17 @@ public class ReturnBehaviour : StateMachineBehaviour
     {
         if (flyEnemyController.pathPositions.Count > 0)
         {
-            // Determina o ponto alvo e a direção
+            // Pega o ponto atual e define a direção
             Vector3 targetPosition = flyEnemyController.pathPositions[flyEnemyController.pathPositions.Count - 1];
             Vector2 direction = (targetPosition - animator.transform.position).normalized;
-
-            // Vira o sprite para a direção do caminho
-            flyEnemyController.FlipSprite(targetPosition);
 
             // Move o morcego usando o Rigidbody2D
             rb.velocity = direction * speedMovement;
 
-            // Checa se o morcego chegou perto do ponto
+            // Vira o sprite para a direção do caminho
+            flyEnemyController.FlipSprite(targetPosition);
+
+            // Se o morcego estiver perto o suficiente do ponto, remove o ponto
             if (Vector2.Distance(animator.transform.position, targetPosition) < 0.1f)
             {
                 flyEnemyController.pathPositions.RemoveAt(flyEnemyController.pathPositions.Count - 1);
@@ -38,10 +38,17 @@ public class ReturnBehaviour : StateMachineBehaviour
         }
         else
         {
-            // Para o morcego ao chegar ao ponto inicial
-            animator.transform.position = initialPoint;
-            rb.velocity = Vector2.zero;
-            animator.SetTrigger("Arrived");
+            // Mantém o morcego voltando ao ponto inicial sem teleporte
+            Vector2 direction = (initialPoint - animator.transform.position).normalized;
+            rb.velocity = direction * speedMovement;
+
+            // Quando chega ao ponto inicial, finaliza o estado
+            if (Vector2.Distance(animator.transform.position, initialPoint) < 0.1f)
+            {
+                animator.transform.position = initialPoint;
+                rb.velocity = Vector2.zero;
+                animator.SetTrigger("Arrived");
+            }
         }
     }
 
@@ -49,6 +56,7 @@ public class ReturnBehaviour : StateMachineBehaviour
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         flyEnemyController.ClearPath();
+        rb.velocity = Vector2.zero;
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

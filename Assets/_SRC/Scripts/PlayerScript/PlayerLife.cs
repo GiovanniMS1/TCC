@@ -54,10 +54,10 @@ public class PlayerLife : MonoBehaviour
             actualLife -= damage;
             changeLife.Invoke(actualLife);
             if (actualLife >= 1) SoundManager.Instance.PlaySound2D("Hit");
+            playerRb2d.velocity = Vector2.zero;
 
             if(!PlayerIsDeath())
             {
-                playerRb2d.velocity = Vector2.zero;
                 Vector2 rebound = new Vector2(transform.position.x - direction.x, 0.4f).normalized;
                 playerRb2d.AddForce(rebound * reboundPower, ForceMode2D.Impulse);
                 playerScript.DisableAttack();
@@ -67,6 +67,7 @@ public class PlayerLife : MonoBehaviour
             }
             else
             {
+                playerScript.DisablePlayerControl();
                 playerDeath?.Invoke(this, EventArgs.Empty);
                 playerRb2d.velocity = Vector2.zero;
                 SoundManager.Instance.PlaySound2D("Dying");

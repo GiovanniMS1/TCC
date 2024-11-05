@@ -5,12 +5,6 @@ using UnityEngine.Playables;
 
 public class NextLevelScript : MonoBehaviour
 {
-    public PlayableDirector playableDirector;
-    public void NextLevel()
-    {
-        playableDirector.Play();
-    }
-
     public void TransitionNextLevel()
     {
         SceneTransition.Instance.DissolveNextLevel();
