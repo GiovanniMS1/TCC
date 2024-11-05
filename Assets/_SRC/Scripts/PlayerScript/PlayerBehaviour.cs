@@ -130,10 +130,12 @@ public class PlayerBehaviour : MonoBehaviour
         attacking = true;
         rb2d.velocity = Vector2.zero;
         SoundManager.Instance.PlaySound2D("SwordSlash");
+        StartCoroutine(DisableAttack());
     }
 
-    public void DisableAttack()
+    public IEnumerator DisableAttack()
     {
+        yield return new WaitForSeconds(0.45f);
         attacking = false;
     }
 
