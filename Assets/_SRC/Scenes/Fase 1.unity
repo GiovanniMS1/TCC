@@ -22762,7 +22762,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 573976408}
         m_TargetAssemblyTypeName: NextLevelScript, Assembly-CSharp
-        m_MethodName: BackToMenu
+        m_MethodName: TransitionNextLevel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -18,6 +18,8 @@ public class LevelManager : MonoBehaviour
 
         int unlockedLevel = PlayerPrefs.GetInt("UnlockedLevel", 0);
 
+        unlockedLevel = Mathf.Clamp(unlockedLevel, 0, buttons.Length);
+
         for(int i = 0; i < buttons.Length; i++)
         {
             buttons[i].interactable = false;
