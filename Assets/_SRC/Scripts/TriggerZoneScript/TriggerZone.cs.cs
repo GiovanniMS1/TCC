@@ -1,12 +1,12 @@
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class TriggerZone : MonoBehaviour
 {
     public bool oneShot = false;
     private bool alreadyEntered = false;
     private bool alreadyExited = false;
-
     public string collisionTag;
     public UnityEvent onTriggerEnter;
     public UnityEvent onTriggerExit;
@@ -23,6 +23,8 @@ public class TriggerZone : MonoBehaviour
 
         if (oneShot)
             alreadyEntered = true;
+
+        UnlockNewLevel();
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -37,5 +39,11 @@ public class TriggerZone : MonoBehaviour
 
         if (oneShot)
             alreadyExited = true;
+    }
+
+    void UnlockNewLevel()
+    {
+        PlayerPrefs.SetInt("UnlockedLevel", SceneManager.GetActiveScene().buildIndex);
+        PlayerPrefs.Save();
     }
 }
