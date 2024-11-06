@@ -2926,7 +2926,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1854040653}
   m_HandleRect: {fileID: 1854040652}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0.99999934
   m_Size: 0.8564903
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -4612,16 +4612,17 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Hist\xF3ria:\r\n - Felipe Gon\xC7aves e Giovanni Marchan\r\n\r\nPrograma\xE7\xE3o:\r\n
-    - Giovanni Marchan\r\n - BravePixelG\r\n - Raycastly\r\n\r\nFonte:\r\n - Pixellari
-    by Zacchary Dempsey-Plante\r\n\nGFX:\r\n - Wooden Pixel Art GUI by Narik\r\n\nPlayer
-    sprite:\n -  Knight Character Pack v3.0 by RgsDev\r\n\r\r\nMonster's sprites:\r\n
-    - Felipe Gon\xE7alves\r\n - Pixel Adventure 2 by Pixel Frog\r\n\r\nEnviroment's
+  m_text: "\nHist\xF3ria:\r\n - Felipe Gon\xC7aves e Giovanni Marchan\r\n\r\nPrograma\xE7\xE3o:\r\n
+    - Giovanni Marchan\r\n - BravePixelG\r\n - Raycastly\r\n - RehopeGames\r\n\r\nFonte:\r\n
+    - Pixellari by Zacchary Dempsey-Plante\r\n\nGFX:\r\n - Wooden Pixel Art GUI by
+    Narik\r\n\nPlayer sprite:\n -  Knight Character Pack v3.0 by RgsDev\r\n\r\r\nMonster's
+    sprites:\r\n - Felipe Gon\xE7alves\r\n - Pixel Adventure 2 by Pixel Frog\r\n\r\nEnviroment's
     sprites:\r\n - Felipe Gon\xE7alves\r\n - Sunny Land by Ansimuz\r\n - Free Swamp
-    2D Tileset Pixel Art by CraftPix\r\n\r\nGUI:\r\n - Giovanni Marchan\r\n - LeanTween
-    by Dented Pixel\n\r\nMusics:\r\n - 8Bit Music - 062022 by GWriterStudio\r\n -
-    8-bit Game by moodmode\r\n - 8-Bit Hero by PHANTASTICBEATS\r\n\r\nSFX:\r\n -
-    Pixabay\r\n - OpenGameArt\r\r"
+    2D Tileset Pixel Art by CraftPix\r\n - Pixel Adventure 1 by Pixel Frog\n - Pixel
+    Art Environment/Platformer Pack by Lifty\n\r\nGUI:\r\n - Giovanni Marchan\r\n
+    - LeanTween by Dented Pixel\n\r\nMusics:\r\n - 8Bit Music - 062022 by GWriterStudio\r\n
+    - 8-bit Game by moodmode\r\n - 8-Bit Hero by PHANTASTICBEATS\r\n\r\nSFX:\r\n
+    - Pixabay\r\n - OpenGameArt\r\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c2c46f9eacf72bd4780e270a6e28f782, type: 2}
   m_sharedMaterial: {fileID: -2637095408545572769, guid: c2c46f9eacf72bd4780e270a6e28f782, type: 2}

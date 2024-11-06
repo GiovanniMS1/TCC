@@ -113,6 +113,7 @@ public class PlayerBehaviour : MonoBehaviour
     private void CheckPlayerSteps()
     {
         if (!isGrounded || Mathf.Abs(horizontalInput) == 0) return;
+
         if (isGrounded && Mathf.Abs(horizontalInput) > 0.1f)
         {
             footstepTimer -= Time.deltaTime;
@@ -178,5 +179,4 @@ public class PlayerBehaviour : MonoBehaviour
     {
         canMove = false;
     }
-
 }
