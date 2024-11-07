@@ -93,17 +93,19 @@ public class GroundEnemyController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.CompareTag("Sword") && !enemyLife.isDead)
+        if(collision.gameObject.CompareTag("Sword") && !enemyLife.isDead)
         {
             enemyLife.TakeDamage(1);
+            Vector2 direction = new Vector2(collision.gameObject.transform.position.x, 0);
+            enemyLife.Rebound(direction, 3);
         }
     
-        if(collision.CompareTag("Shield") && !enemyLife.isDead)
+        if(collision.gameObject.CompareTag("Shield") && !enemyLife.isDead)
         {
+            playerMovementScript.DisableBlock();
             SoundManager.Instance.PlaySound2D("Blocked");
             Vector2 direction = new Vector2(collision.gameObject.transform.position.x, 0);
             enemyLife.Rebound(direction, reboundPower);
-            playerMovementScript.DisableBlock();
         }
     }
 

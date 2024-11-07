@@ -261,7 +261,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bfda56da833e2384a9677cd3c976a436, type: 3}
-  m_Name: Phase1Ending
+  m_Name: Phase3Ending
   m_EditorClassIdentifier: 
   m_Version: 0
   m_Tracks:
@@ -409,17 +409,17 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: {x: 77, y: 7, z: 0}
+        value: {x: 101, y: 1, z: 0}
         inSlope: {x: 0, y: 0, z: 0}
-        outSlope: {x: 6, y: 0, z: 0}
+        outSlope: {x: 5.3333335, y: 0, z: 0}
         tangentMode: 0
         weightedMode: 0
         inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
         time: 1.5
-        value: {x: 86, y: 7, z: 0}
-        inSlope: {x: 6, y: 0, z: 0}
+        value: {x: 109, y: 1, z: 0}
+        inSlope: {x: 5.3333335, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
         weightedMode: 0
@@ -476,17 +476,17 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 77
+        value: 101
         inSlope: 0
-        outSlope: 6
+        outSlope: 5.3333335
         tangentMode: 65
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 1.5
-        value: 86
-        inSlope: 6
+        value: 109
+        inSlope: 5.3333335
         outSlope: 0
         tangentMode: 69
         weightedMode: 0
@@ -506,7 +506,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 7
+        value: 1
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -515,7 +515,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 1.5
-        value: 7
+        value: 1
         inSlope: 0
         outSlope: 0
         tangentMode: 136

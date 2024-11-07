@@ -54,7 +54,6 @@ public class PlayerLife : MonoBehaviour
             actualLife -= damage;
             changeLife.Invoke(actualLife);
             if (actualLife >= 1) SoundManager.Instance.PlaySound2D("Hit");
-            playerRb2d.velocity = Vector2.zero;
 
             if(!PlayerIsDeath())
             {

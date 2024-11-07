@@ -11,29 +11,35 @@ public class PlayerBehaviour : MonoBehaviour
     [Header("Layer Info")]
     [SerializeField] private LayerMask whatIsGround;
     [SerializeField] private ParticleSystem dust;
+    
     private Rigidbody2D rb2d;
     private Animator anim;
     private BoxCollider2D boxCollider;
+    private BoxCollider2D shield;
     private PlayerLife playerLife;
-    public bool isFacingRight, isGrounded, attacking, blocking;
-    private bool canMove = false;
+    private PauseScript pauseGame;
+
+    public bool isFacingRight, canMove;
+    private bool isGrounded, attacking, blocking;
     private float horizontalInput;
     private float footstepTimer;
-    private PauseScript pauseGame;
 
     void Start()
     {
+        isFacingRight = true;
+        canMove = false;
         rb2d = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         boxCollider = GetComponent<BoxCollider2D>();
+        shield = GetComponentInChildren<BoxCollider2D>();
         playerLife = GetComponent<PlayerLife>();
-        isFacingRight = true;
         pauseGame = GameObject.FindAnyObjectByType<PauseScript>();
     }
 
     void Update()
     {
-        if(playerLife.isDeath || !canMove) return;
+        if(playerLife.isDeath || !canMove || PauseScript.paused) return;
+
         PlayerInput();
         FlipSprite();
         IsGrounded();   
@@ -43,36 +49,14 @@ public class PlayerBehaviour : MonoBehaviour
 
     private void PlayerInput()
     {
-        if(!playerLife.takingDamage && !attacking && !blocking && !playerLife.isDeath && !PauseScript.paused)
+        if(!playerLife.takingDamage && !playerLife.isDeath && !PauseScript.paused)
         {
             horizontalInput = Input.GetAxis("Horizontal");
-        }
-        
-        if(Input.GetButtonDown("Jump") && !playerLife.takingDamage && !attacking && !blocking && isGrounded && !playerLife.isDeath && !PauseScript.paused)
-        {
-            Jump();
-        }
-
-        if(Input.GetKeyDown(KeyCode.E) && !attacking && !blocking && isGrounded && !PauseScript.paused)
-        {
-            Attack();
-            horizontalInput = 0;
-        }
-
-        if(Input.GetKeyDown(KeyCode.LeftShift) && !blocking && isGrounded && !PauseScript.paused)
-        {
-            Block();
-            horizontalInput = 0;
-        }
-
-        if(Input.GetKeyUp(KeyCode.LeftShift) && blocking && isGrounded && !PauseScript.paused)
-        {
-            DisableBlock();
-        }
-
-        if(Input.GetKeyDown(KeyCode.Escape))
-        {
-            pauseGame.SetPauseMenu(!PauseScript.paused);
+            if(Input.GetButtonDown("Jump") && isGrounded) Jump();
+            if(Input.GetButtonDown("Fire1") && isGrounded && !attacking) {Attack(); horizontalInput = 0;}
+            if (Input.GetButtonDown("Fire2") && isGrounded && !blocking) {Block(); horizontalInput = 0;}
+            if (Input.GetButtonUp("Fire2") && blocking) DisableBlock();
+            if (Input.GetButtonDown("Cancel")) pauseGame.SetPauseMenu(!PauseScript.paused);
         }
     }
 
@@ -90,6 +74,7 @@ public class PlayerBehaviour : MonoBehaviour
         SoundManager.Instance.PlaySound2D("Jumping");
         rb2d.velocity = new Vector2(rb2d.velocity.x, jumpPower);
     }
+
     private void FlipSprite()
     {
         if(isFacingRight && horizontalInput < 0f || !isFacingRight && horizontalInput > 0f)
@@ -104,15 +89,12 @@ public class PlayerBehaviour : MonoBehaviour
     private bool IsGrounded()
     {
         RaycastHit2D ground = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0, Vector2.down, 0.2f, whatIsGround);
-        if(ground.collider != null)
-            return isGrounded = true;
-        else
-            return isGrounded = false;
+        return isGrounded = ground.collider != null;
     }
 
     private void CheckPlayerSteps()
     {
-        if (!isGrounded || Mathf.Abs(horizontalInput) == 0) return;
+        if (!isGrounded || Mathf.Abs(horizontalInput) == 0 || attacking || blocking) return;
 
         if (isGrounded && Mathf.Abs(horizontalInput) > 0.1f)
         {
@@ -127,6 +109,8 @@ public class PlayerBehaviour : MonoBehaviour
 
     private void Attack()
     {
+        if (attacking) return;
+
         attacking = true;
         rb2d.velocity = Vector2.zero;
         SoundManager.Instance.PlaySound2D("SwordSlash");
@@ -156,6 +140,7 @@ public class PlayerBehaviour : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         blocking = false;
     }
+
     private void AnimationState()
     {
         anim.SetFloat("xVelocity", Mathf.Abs(rb2d.velocity.x));
