@@ -15,7 +15,6 @@ public class PlayerBehaviour : MonoBehaviour
     private Rigidbody2D rb2d;
     private Animator anim;
     private BoxCollider2D boxCollider;
-    private BoxCollider2D shield;
     private PlayerLife playerLife;
     private PauseScript pauseGame;
 
@@ -31,7 +30,6 @@ public class PlayerBehaviour : MonoBehaviour
         rb2d = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         boxCollider = GetComponent<BoxCollider2D>();
-        shield = GetComponentInChildren<BoxCollider2D>();
         playerLife = GetComponent<PlayerLife>();
         pauseGame = GameObject.FindAnyObjectByType<PauseScript>();
     }
@@ -111,7 +109,6 @@ public class PlayerBehaviour : MonoBehaviour
     {
         if (attacking) return;
 
-        attacking = true;
         rb2d.velocity = Vector2.zero;
         SoundManager.Instance.PlaySound2D("SwordSlash");
         StartCoroutine(DisableAttack());
@@ -119,7 +116,8 @@ public class PlayerBehaviour : MonoBehaviour
 
     public IEnumerator DisableAttack()
     {
-        yield return new WaitForSeconds(0.45f);
+        attacking = true;
+        yield return new WaitForSeconds(0.5f);
         attacking = false;
     }
 

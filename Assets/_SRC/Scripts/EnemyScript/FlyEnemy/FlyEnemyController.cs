@@ -95,12 +95,12 @@ public class FlyEnemyController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.CompareTag("Sword") && !enemyLife.isDead)
+        if(collision.gameObject.CompareTag("Sword") && !enemyLife.isDead)
         {
             enemyLife.TakeDamage(1);
         }
     
-        if(collision.CompareTag("Shield") && !enemyLife.isDead)
+        if(collision.gameObject.CompareTag("Shield") && !enemyLife.isDead)
         {
             SoundManager.Instance.PlaySound2D("Blocked");
             anim.SetTrigger("Return");

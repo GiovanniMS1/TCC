@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Hit_Enemy_Animation
+  m_Name: Chameleon_Hit_Animation
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -21,21 +21,21 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: 4457663794195168306, guid: 32ca3b9d7e7d05248b07c51bf903e885, type: 3}
-    - time: 0.016666668
-      value: {fileID: -5364657433725072944, guid: 32ca3b9d7e7d05248b07c51bf903e885, type: 3}
-    - time: 0.033333335
-      value: {fileID: -4947864620551752270, guid: 32ca3b9d7e7d05248b07c51bf903e885, type: 3}
-    - time: 0.05
-      value: {fileID: 8733631668352107246, guid: 32ca3b9d7e7d05248b07c51bf903e885, type: 3}
-    - time: 0.06666667
-      value: {fileID: -7612900313820856468, guid: 32ca3b9d7e7d05248b07c51bf903e885, type: 3}
+      value: {fileID: -1517127373124647554, guid: 55b35b46383929143a01d372f25c1ccb, type: 3}
+    - time: 0.083333336
+      value: {fileID: 7606828424425268948, guid: 55b35b46383929143a01d372f25c1ccb, type: 3}
+    - time: 0.16666667
+      value: {fileID: -7336032172952701361, guid: 55b35b46383929143a01d372f25c1ccb, type: 3}
+    - time: 0.25
+      value: {fileID: 2040186456984773144, guid: 55b35b46383929143a01d372f25c1ccb, type: 3}
+    - time: 0.33333334
+      value: {fileID: 8416034946683413540, guid: 55b35b46383929143a01d372f25c1ccb, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
     script: {fileID: 0}
     flags: 2
-  m_SampleRate: 60
+  m_SampleRate: 12
   m_WrapMode: 0
   m_Bounds:
     m_Center: {x: 0, y: 0, z: 0}
@@ -52,22 +52,22 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: 4457663794195168306, guid: 32ca3b9d7e7d05248b07c51bf903e885, type: 3}
-    - {fileID: -5364657433725072944, guid: 32ca3b9d7e7d05248b07c51bf903e885, type: 3}
-    - {fileID: -4947864620551752270, guid: 32ca3b9d7e7d05248b07c51bf903e885, type: 3}
-    - {fileID: 8733631668352107246, guid: 32ca3b9d7e7d05248b07c51bf903e885, type: 3}
-    - {fileID: -7612900313820856468, guid: 32ca3b9d7e7d05248b07c51bf903e885, type: 3}
+    - {fileID: -1517127373124647554, guid: 55b35b46383929143a01d372f25c1ccb, type: 3}
+    - {fileID: 7606828424425268948, guid: 55b35b46383929143a01d372f25c1ccb, type: 3}
+    - {fileID: -7336032172952701361, guid: 55b35b46383929143a01d372f25c1ccb, type: 3}
+    - {fileID: 2040186456984773144, guid: 55b35b46383929143a01d372f25c1ccb, type: 3}
+    - {fileID: 8416034946683413540, guid: 55b35b46383929143a01d372f25c1ccb, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.083333336
+    m_StopTime: 0.41666666
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
     m_HasAdditiveReferencePose: 0
-    m_LoopTime: 1
+    m_LoopTime: 0
     m_LoopBlend: 0
     m_LoopBlendOrientation: 0
     m_LoopBlendPositionY: 0
@@ -82,7 +82,7 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 0.016666668
+  - time: 0.083333336
     functionName: DestroyEnemy
     data: 
     objectReferenceParameter: {fileID: 0}

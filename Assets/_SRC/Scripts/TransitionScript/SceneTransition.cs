@@ -1,7 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.Analytics;
-using UnityEngine.Playables;
 using UnityEngine.SceneManagement;
 
 public class SceneTransition : MonoBehaviour
@@ -82,5 +80,4 @@ public class SceneTransition : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         });
     }
-    
 }

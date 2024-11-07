@@ -34,6 +34,7 @@ public class BulletEnemy : MonoBehaviour
     {
         if(collision.CompareTag("Shield"))
         {
+            Debug.Log("Colidiu com a bala");
             SoundManager.Instance.PlaySound2D("Blocked");
             Vector3 shieldNormal = collision.transform.right;
             directionBullet = Vector2.Reflect(directionBullet, shieldNormal);

@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 1914606748819305142}
   - component: {fileID: 1949660315506738637}
   - component: {fileID: 2308644249400410115}
-  - component: {fileID: 6993658340599057461}
   - component: {fileID: 45324324314930356}
+  - component: {fileID: 6993658340599057461}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -185,26 +185,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.45, y: 1.15}
   m_EdgeRadius: 0.03
---- !u!114 &6993658340599057461
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 502395586272596838}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec579e9a47ca81b4db0d7791fc193c4c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxLife: 3
-  actualLife: 3
-  blood: {fileID: 6536558886776448717, guid: 3cab4583f14f44144a5ab1315bcc51e4, type: 3}
-  changeLife:
-    m_PersistentCalls:
-      m_Calls: []
-  takingDamage: 0
-  isDeath: 0
 --- !u!114 &45324324314930356
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -226,6 +206,26 @@ MonoBehaviour:
   dust: {fileID: 1293938210816911042}
   isFacingRight: 0
   canMove: 0
+--- !u!114 &6993658340599057461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 502395586272596838}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec579e9a47ca81b4db0d7791fc193c4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxLife: 3
+  actualLife: 3
+  blood: {fileID: 6536558886776448717, guid: 3cab4583f14f44144a5ab1315bcc51e4, type: 3}
+  changeLife:
+    m_PersistentCalls:
+      m_Calls: []
+  takingDamage: 0
+  isDeath: 0
 --- !u!1 &638577767769596242
 GameObject:
   m_ObjectHideFlags: 0
@@ -304,7 +304,7 @@ GameObject:
   - component: {fileID: 6873380957383259736}
   - component: {fileID: 1293938210816911042}
   - component: {fileID: 4580743376551985608}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DustPS
   m_TagString: Untagged
   m_Icon: {fileID: 0}

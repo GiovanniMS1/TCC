@@ -12,7 +12,7 @@ public class PauseScript : MonoBehaviour
     public Slider sfxSlider;
     private PlayerBehaviour playerBehaviour;
 
-    void Start()
+    private void Start()
     {
         playerBehaviour = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBehaviour>();
         SetPauseMenu(false);
