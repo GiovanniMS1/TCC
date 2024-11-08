@@ -118,6 +118,11 @@ public class PlayerBehaviour : MonoBehaviour
         rb2d.velocity = new Vector2(rb2d.velocity.x, reboundVelocity);
     }
 
+    public void EnemyRebound()
+    {
+        rb2d.velocity = new Vector2(rb2d.velocity.x, rb2d.velocity.y);
+    }
+
     private void Jump()
     {
         CreateDust();
@@ -152,6 +157,7 @@ public class PlayerBehaviour : MonoBehaviour
             if (footstepTimer <= 0)
             {
                 SoundManager.Instance.PlaySound2D("Footstep");
+                CreateDust();
                 footstepTimer = footstepInterval;
             }
         }

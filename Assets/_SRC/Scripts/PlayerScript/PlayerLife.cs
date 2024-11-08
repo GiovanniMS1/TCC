@@ -50,6 +50,8 @@ public class PlayerLife : MonoBehaviour
     {
         if(!takingDamage)
         {
+            playerRb2d.velocity = Vector2.zero;
+            playerScript.DisablePlayerControl();
             takingDamage = true;
             actualLife -= damage;
             changeLife.Invoke(actualLife);
@@ -77,6 +79,7 @@ public class PlayerLife : MonoBehaviour
     private IEnumerator DisableDamage()
     {
         yield return new WaitForSeconds(0.6f);
+        playerScript.EnablePlayerControl();
         takingDamage = false;
     }
 
@@ -96,13 +99,14 @@ public class PlayerLife : MonoBehaviour
         changeLife.Invoke(actualLife);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerExit2D(Collider2D collision)
     {
         if(collision.CompareTag("DeathZone"))
         {
+            gameObject.SetActive(false);        
+            playerRb2d.velocity = Vector2.zero;
             actualLife = 0;
             isDeath = true;
-            playerRb2d.velocity = Vector2.zero;
             changeLife.Invoke(actualLife);
             playerDeath?.Invoke(this, EventArgs.Empty);
             SoundManager.Instance.PlaySound2D("Dying");

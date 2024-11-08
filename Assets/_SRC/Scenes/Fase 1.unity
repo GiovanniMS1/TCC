@@ -275,7 +275,7 @@ MonoBehaviour:
   reboundPower: 6
   obstacleLayer:
     serializedVersion: 2
-    m_Bits: 136
+    m_Bits: 8
   pathPositions: []
 --- !u!61 &33549217
 BoxCollider2D:
@@ -2853,7 +2853,7 @@ MonoBehaviour:
   reboundPower: 6
   obstacleLayer:
     serializedVersion: 2
-    m_Bits: 136
+    m_Bits: 8
   pathPositions: []
 --- !u!61 &332397080
 BoxCollider2D:
@@ -5870,7 +5870,7 @@ MonoBehaviour:
   reboundPower: 6
   obstacleLayer:
     serializedVersion: 2
-    m_Bits: 136
+    m_Bits: 8
   pathPositions: []
 --- !u!61 &825416428
 BoxCollider2D:
@@ -6183,7 +6183,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2acf2b6ef9e3b0c448591460f0ccdc66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  oneShot: 1
+  oneShot: 0
   collisionTag: Player
   onTriggerEnter:
     m_PersistentCalls:
@@ -19522,17 +19522,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 626658411}
     m_Modifications:
-    - target: {fileID: 45324324314930356, guid: eaf56795e9feeb949a8581e61071a1fb, type: 3}
-      propertyPath: reboundVelocity
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 502395586272596838, guid: eaf56795e9feeb949a8581e61071a1fb, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 2294923334584756837, guid: eaf56795e9feeb949a8581e61071a1fb, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3372512347685041723, guid: eaf56795e9feeb949a8581e61071a1fb, type: 3}
       propertyPath: m_LocalPosition.x
@@ -20857,7 +20849,7 @@ MonoBehaviour:
   reboundPower: 6
   obstacleLayer:
     serializedVersion: 2
-    m_Bits: 136
+    m_Bits: 8
   pathPositions: []
 --- !u!61 &2053430095
 BoxCollider2D:
@@ -21369,7 +21361,7 @@ MonoBehaviour:
   reboundPower: 6
   obstacleLayer:
     serializedVersion: 2
-    m_Bits: 136
+    m_Bits: 8
   pathPositions: []
 --- !u!61 &2120319913
 BoxCollider2D:
