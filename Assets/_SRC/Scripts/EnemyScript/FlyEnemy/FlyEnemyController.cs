@@ -26,7 +26,7 @@ public class FlyEnemyController : MonoBehaviour
 
     private void Update()
     {
-        if(HasLineOfSight())
+        if(!playerLifeScript.PlayerIsDeath() && HasLineOfSight())
         {
             CalculateDistance();
         }
@@ -112,5 +112,6 @@ public class FlyEnemyController : MonoBehaviour
     {
         anim.SetFloat("Distance", distanceBetweenPlayer);
         anim.SetBool("Hit", enemyLife.takingDamage);
+        anim.SetBool("PlayerIsAlive", !playerLifeScript.PlayerIsDeath());
     }
 }

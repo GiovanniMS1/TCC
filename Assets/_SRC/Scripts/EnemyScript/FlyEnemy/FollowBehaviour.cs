@@ -21,7 +21,7 @@ public class FollowBehaviour : StateMachineBehaviour
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         //animator.transform.position = Vector2.MoveTowards(animator.transform.position, player.position, speedMovement * Time.deltaTime);
-        if (enemyLife.takingDamage || flyEnemyController.CalculateDistance() > 5f)
+        if (enemyLife.takingDamage || flyEnemyController.CalculateDistance() >= 5f)
         {
             animator.SetTrigger("Return");
             return;

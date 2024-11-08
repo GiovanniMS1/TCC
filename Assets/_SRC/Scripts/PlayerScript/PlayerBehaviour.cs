@@ -23,6 +23,9 @@ public class PlayerBehaviour : MonoBehaviour
     private float horizontalInput;
     private float footstepTimer;
 
+    private float attackCooldown = 0.5f;
+    private float lastAttackTime;
+
     void Start()
     {
         isFacingRight = true;
@@ -107,16 +110,17 @@ public class PlayerBehaviour : MonoBehaviour
 
     private void Attack()
     {
-        if (attacking) return;
-
+        if (Time.time - lastAttackTime < attackCooldown || attacking) return;
+        attacking = true;
+        lastAttackTime = Time.time;
         rb2d.velocity = Vector2.zero;
+        anim.SetTrigger("Attack");
         SoundManager.Instance.PlaySound2D("SwordSlash");
         StartCoroutine(DisableAttack());
     }
 
     public IEnumerator DisableAttack()
     {
-        attacking = true;
         yield return new WaitForSeconds(0.5f);
         attacking = false;
     }
@@ -144,7 +148,6 @@ public class PlayerBehaviour : MonoBehaviour
         anim.SetFloat("xVelocity", Mathf.Abs(rb2d.velocity.x));
         anim.SetFloat("yVelocity", rb2d.velocity.y);
         anim.SetBool("isJumping", !isGrounded);
-        anim.SetBool("isAttacking", attacking);
         anim.SetBool("isBlocking", blocking);
     }
 
