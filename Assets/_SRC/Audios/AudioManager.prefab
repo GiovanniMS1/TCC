@@ -210,14 +210,8 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 101337862ced96c4c84774795ca8e8b2, type: 3}
   - groupID: Blocked
     clips:
-    - {fileID: 8300000, guid: 4559c48db9fdc924ebcc5df945696883, type: 3}
     - {fileID: 8300000, guid: 0a22d0121d2290745ae4ca35e36894eb, type: 3}
     - {fileID: 8300000, guid: 615fa0bae37a6c441b80bc54019c2a8f, type: 3}
-    - {fileID: 8300000, guid: 9c6ec199c9cd3f049877ba401f12d083, type: 3}
-    - {fileID: 8300000, guid: 73efaa4b4dcb81d439bc0ce087bd1adb, type: 3}
-    - {fileID: 8300000, guid: c332ab64b907e6c459f9cfd23fd94af9, type: 3}
-    - {fileID: 8300000, guid: 26016e444c30c0b4bb1dd15aee11f4e3, type: 3}
-    - {fileID: 8300000, guid: 7f4494cf92570ac46a34620c495a8aca, type: 3}
   - groupID: ShootingEnemy
     clips:
     - {fileID: 8300000, guid: 0d2e30dc6748f5445b0a6436b711b28d, type: 3}

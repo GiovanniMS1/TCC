@@ -7,6 +7,7 @@ public class PlayerBehaviour : MonoBehaviour
     [SerializeField] private float moveSpeed;
     [SerializeField] private float jumpPower;
     [SerializeField] private float footstepInterval;
+    [SerializeField] private float reboundVelocity;
 
     [Header("Layer Info")]
     [SerializeField] private LayerMask whatIsGround;
@@ -25,6 +26,10 @@ public class PlayerBehaviour : MonoBehaviour
 
     private float attackCooldown = 0.5f;
     private float lastAttackTime;
+    private float coyoteTime = 0.2f;
+    private float coyoteTimeCounter;
+    private float jumpBufferTime = 0.2f;
+    private float jumpBufferCounter;
 
     void Start()
     {
@@ -32,7 +37,7 @@ public class PlayerBehaviour : MonoBehaviour
         canMove = false;
         rb2d = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-        boxCollider = GetComponent<BoxCollider2D>();
+        boxCollider = GameObject.FindGameObjectWithTag("FloorDetection").GetComponent<BoxCollider2D>();
         playerLife = GetComponent<PlayerLife>();
         pauseGame = GameObject.FindAnyObjectByType<PauseScript>();
     }
@@ -53,11 +58,50 @@ public class PlayerBehaviour : MonoBehaviour
         if(!playerLife.takingDamage && !playerLife.isDeath && !PauseScript.paused)
         {
             horizontalInput = Input.GetAxis("Horizontal");
-            if(Input.GetButtonDown("Jump") && isGrounded) Jump();
-            if(Input.GetButtonDown("Fire1") && isGrounded && !attacking) {Attack(); horizontalInput = 0;}
-            if (Input.GetButtonDown("Fire2") && isGrounded && !blocking) {Block(); horizontalInput = 0;}
-            if (Input.GetButtonUp("Fire2") && blocking) DisableBlock();
-            if (Input.GetButtonDown("Cancel")) pauseGame.SetPauseMenu(!PauseScript.paused);
+            if(IsGrounded())
+            {
+                coyoteTimeCounter = coyoteTime;
+            }
+            else
+            {
+                coyoteTimeCounter -= Time.deltaTime;
+            }
+            if(Input.GetButtonDown("Jump"))
+            {
+                jumpBufferCounter = jumpBufferTime;
+            }
+            else
+            {
+                jumpBufferCounter -= Time.deltaTime;
+            }
+            if(coyoteTimeCounter > 0f && jumpBufferCounter > 0f)
+            {
+                Jump();
+                jumpBufferCounter = 0f;
+            }
+            if(Input.GetButtonUp("Jump") && rb2d.velocity.y > 0f)
+            {
+                rb2d.velocity = new Vector2(rb2d.velocity.x, rb2d.velocity.y * 0.5f);
+                coyoteTimeCounter = 0f;
+            }
+            if(Input.GetButtonDown("Fire1") && IsGrounded() && !attacking)
+            {
+                Attack(); 
+                horizontalInput = 0;
+            }
+            if (Input.GetButtonDown("Fire2") && IsGrounded() && !blocking)
+            {
+                Block();
+                horizontalInput = 0;
+            }
+            if (Input.GetButtonUp("Fire2") && blocking)
+            {
+                DisableBlock();
+            }
+            if (Input.GetButtonDown("Cancel"))
+            {
+                pauseGame.SetPauseMenu(!PauseScript.paused);
+            }
         }
     }
 
@@ -67,6 +111,11 @@ public class PlayerBehaviour : MonoBehaviour
         {
             rb2d.velocity = new Vector2(horizontalInput * moveSpeed, rb2d.velocity.y);
         }
+    }
+
+    public void Rebound()
+    {
+        rb2d.velocity = new Vector2(rb2d.velocity.x, reboundVelocity);
     }
 
     private void Jump()
@@ -115,8 +164,14 @@ public class PlayerBehaviour : MonoBehaviour
         lastAttackTime = Time.time;
         rb2d.velocity = Vector2.zero;
         anim.SetTrigger("Attack");
-        SoundManager.Instance.PlaySound2D("SwordSlash");
+        StartCoroutine(AttackSlashSound());
         StartCoroutine(DisableAttack());
+    }
+
+    private IEnumerator AttackSlashSound()
+    {
+        yield return new WaitForSeconds(0.16f);
+        SoundManager.Instance.PlaySound2D("SwordSlash");
     }
 
     public IEnumerator DisableAttack()

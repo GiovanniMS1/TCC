@@ -798,7 +798,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -88485217
-  m_SortingLayer: 6
+  m_SortingLayer: 9
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -4613,7 +4613,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "\nHist\xF3ria:\r\n - Felipe Gon\xC7aves e Giovanni Marchan\r\n\r\nPrograma\xE7\xE3o:\r\n
-    - Giovanni Marchan\r\n - BravePixelG\r\n - Raycastly\r\n - RehopeGames\r\n\r\nFonte:\r\n
+    - Giovanni Marchan\r\n - BravePixelG\r\n - Raycastly\r\n - RehopeGames\n - bendux\r\n\r\nFonte:\r\n
     - Pixellari by Zacchary Dempsey-Plante\r\n\nGFX:\r\n - Wooden Pixel Art GUI by
     Narik\r\n\nPlayer sprite:\n -  Knight Character Pack v3.0 by RgsDev\r\n\r\r\nMonster's
     sprites:\r\n - Felipe Gon\xE7alves\r\n - Pixel Adventure 2 by Pixel Frog\r\n\r\nEnviroment's
@@ -5415,7 +5415,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -88485217
-  m_SortingLayer: 6
+  m_SortingLayer: 9
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -8332,7 +8332,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -88485217
-  m_SortingLayer: 6
+  m_SortingLayer: 9
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}

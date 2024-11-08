@@ -54,6 +54,18 @@ public class EnemyLife : MonoBehaviour
         takingDamage = false;
     }
 
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if(other.gameObject.CompareTag("Player"))
+        {
+            if(other.GetContact(0).normal.y <= -0.9f)
+            {
+                TakeDamage(1);
+                other.gameObject.GetComponent<PlayerBehaviour>().Rebound();
+            }
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.CompareTag("DeathZone"))

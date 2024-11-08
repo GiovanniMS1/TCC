@@ -10,6 +10,7 @@ TagManager:
   - Shield
   - Bullet
   - DeathZone
+  - FloorDetection
   layers:
   - Default
   - TransparentFX
@@ -50,11 +51,20 @@ TagManager:
   - name: Background
     uniqueID: 1902411327
     locked: 0
-  - name: Enemy
+  - name: EnemyBackBackground
     uniqueID: 3629975821
+    locked: 0
+  - name: BackgroundFrontEnemy
+    uniqueID: 3768229667
+    locked: 0
+  - name: EnemyFrontBackground
+    uniqueID: 2066297923
     locked: 0
   - name: Player
     uniqueID: 4124510233
+    locked: 0
+  - name: BackgroundFrontPlayer
+    uniqueID: 2741353147
     locked: 0
   - name: Shoot
     uniqueID: 1722515629

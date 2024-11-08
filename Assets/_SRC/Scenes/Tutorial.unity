@@ -193,8 +193,8 @@ Transform:
   m_GameObject: {fileID: 22359205}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -583.3334, y: 1990, z: 0}
-  m_LocalScale: {x: 333.33334, y: 333.33334, z: 333.33334}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 71707112}
@@ -327,7 +327,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 2
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 519420031}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -1348,7 +1348,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Segure o bot\xE3o direito do mouse para defender"
+  m_text: "Segure o bot\xE3o direito do mouse para se defender de inimigos ou de
+    proj\xE9teis"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c2c46f9eacf72bd4780e270a6e28f782, type: 2}
   m_sharedMaterial: {fileID: -2637095408545572769, guid: c2c46f9eacf72bd4780e270a6e28f782, type: 2}
@@ -1904,7 +1905,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 2
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 519420031}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -2404,8 +2405,8 @@ Transform:
   m_GameObject: {fileID: 530414428}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -583.3334, y: 1990, z: 0}
-  m_LocalScale: {x: 333.33334, y: 333.33334, z: 333.33334}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1944236100}
@@ -2556,8 +2557,8 @@ Transform:
   m_GameObject: {fileID: 568524323}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -583.3334, y: 1990, z: 0}
-  m_LocalScale: {x: 333.33334, y: 333.33334, z: 333.33334}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1596630909}
@@ -3034,7 +3035,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -88485217
-  m_SortingLayer: 6
+  m_SortingLayer: 9
   m_SortingOrder: 1
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -4371,7 +4372,7 @@ GameObject:
   - component: {fileID: 998909802}
   - component: {fileID: 998909801}
   m_Layer: 0
-  m_Name: TriggerPassarDeFase
+  m_Name: EndTutorial
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -4390,7 +4391,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1421264796}
+  m_Father: {fileID: 1100529887}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &998909801
 MonoBehaviour:
@@ -4720,6 +4721,7 @@ Transform:
   - {fileID: 686297351}
   - {fileID: 1421264796}
   - {fileID: 831954510}
+  - {fileID: 998909800}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1113194796
@@ -8813,7 +8815,6 @@ Transform:
   - {fileID: 1140592525}
   - {fileID: 1756242122}
   - {fileID: 337813920}
-  - {fileID: 998909800}
   m_Father: {fileID: 1100529887}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1449028602
@@ -9687,7 +9688,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1582976413
-  m_SortingLayer: 5
+  m_SortingLayer: 8
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -13917,7 +13918,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 2
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 519420031}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -15558,7 +15559,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 2
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 519420031}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -16421,6 +16422,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 2294923334584756837, guid: eaf56795e9feeb949a8581e61071a1fb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3372512347685041723, guid: eaf56795e9feeb949a8581e61071a1fb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -16460,14 +16465,6 @@ PrefabInstance:
     - target: {fileID: 3372512347685041723, guid: eaf56795e9feeb949a8581e61071a1fb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8596118247733383027, guid: eaf56795e9feeb949a8581e61071a1fb, type: 3}
-      propertyPath: m_Size.y
-      value: 1.2502449
-      objectReference: {fileID: 0}
-    - target: {fileID: 8596118247733383027, guid: eaf56795e9feeb949a8581e61071a1fb, type: 3}
-      propertyPath: m_Offset.y
-      value: -0.37239742
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
