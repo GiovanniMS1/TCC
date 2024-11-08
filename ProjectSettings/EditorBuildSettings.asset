@@ -13,10 +13,10 @@ EditorBuildSettings:
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
     path: Assets/_SRC/Scenes/Fase 1.unity
-    guid: 34e23b33a4e357645b0295a4e6f13a1a
+    guid: 86313702841354049874e32329333a7a
   - enabled: 1
     path: Assets/_SRC/Scenes/Fase 2.unity
-    guid: 86313702841354049874e32329333a7a
+    guid: 34e23b33a4e357645b0295a4e6f13a1a
   - enabled: 1
     path: Assets/_SRC/Scenes/Fase 3.unity
     guid: 71d86dd1de7dbb74dae3f8ebc3a26218

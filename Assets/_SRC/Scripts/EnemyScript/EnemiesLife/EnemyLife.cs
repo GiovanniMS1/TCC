@@ -56,13 +56,12 @@ public class EnemyLife : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if(other.gameObject.CompareTag("Player"))
+        if(!other.gameObject.CompareTag("Player")) return;
+
+        if(other.GetContact(0).normal.y <= -0.9f)
         {
-            if(other.GetContact(0).normal.y <= -0.9f)
-            {
-                TakeDamage(1);
-                other.gameObject.GetComponent<PlayerBehaviour>().Rebound();
-            }
+            TakeDamage(1);
+            other.gameObject.GetComponent<PlayerBehaviour>().Rebound();
         }
     }
 
