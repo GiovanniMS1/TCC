@@ -238,4 +238,5 @@ MonoBehaviour:
   dissolveCanvasGroup: {fileID: 7755449678163436933}
   timeToDissolveEntry: 1
   timeToDissolveExit: 1
-  musicLevel: Tutorial
+  musicLevel: MainMenu
+  waitTimeToPlayMusic: 0
