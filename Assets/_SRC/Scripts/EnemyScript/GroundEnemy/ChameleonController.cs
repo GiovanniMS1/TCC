@@ -143,6 +143,18 @@ public class ChameleonController : MonoBehaviour
             enemyLife.Rebound(direction, reboundPower);
             playerMovementScript.DisableBlock();
         }
+
+        // Se eu quiser que a lingua também dê dano só tirar o comentário!
+        if(collision.CompareTag("Player") && !enemyLife.takingDamage && !enemyLife.isDead)
+        {
+            Vector2 directionDamage = new Vector2(transform.position.x, 0);
+            playerLifeScript.TakeDamage(directionDamage, reboundPower, 1);
+            playerIsAlive = !playerLifeScript.isDeath;
+            if(!playerIsAlive)
+            {
+                chasingPlayer = false;
+            }
+        }
     }
 
     private void AnimationState()
