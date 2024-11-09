@@ -148,7 +148,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: -88485217
-  m_SortingOrder: 10
+  m_SortingOrder: 100
   m_TargetDisplay: 0
 --- !u!114 &3248244565762350247
 MonoBehaviour:
@@ -239,4 +239,4 @@ MonoBehaviour:
   timeToDissolveEntry: 1
   timeToDissolveExit: 1
   musicLevel: MainMenu
-  waitTimeToPlayMusic: 0
+  waitTimeToPlayMusic: 1
