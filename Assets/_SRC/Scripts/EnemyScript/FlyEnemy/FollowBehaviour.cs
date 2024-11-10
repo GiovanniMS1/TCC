@@ -15,6 +15,8 @@ public class FollowBehaviour : StateMachineBehaviour
         flyEnemyController = animator.gameObject.GetComponent<FlyEnemyController>();
         enemyLife = animator.gameObject.GetComponent<EnemyLife>();
         rb = animator.gameObject.GetComponent<Rigidbody2D>();
+        rb.constraints = RigidbodyConstraints2D.None;
+        rb.constraints = RigidbodyConstraints2D.FreezeRotation;
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

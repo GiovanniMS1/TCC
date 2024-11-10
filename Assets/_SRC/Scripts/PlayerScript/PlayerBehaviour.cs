@@ -26,6 +26,8 @@ public class PlayerBehaviour : MonoBehaviour
 
     private float attackCooldown = 0.5f;
     private float lastAttackTime;
+    private float attackBufferTime = 0.3f;
+    private float attackBufferCounter;
     private float coyoteTime = 0.2f;
     private float coyoteTimeCounter;
     private float jumpBufferTime = 0.2f;
@@ -58,6 +60,7 @@ public class PlayerBehaviour : MonoBehaviour
         if(!playerLife.takingDamage && !playerLife.isDeath && !PauseScript.paused)
         {
             horizontalInput = Input.GetAxis("Horizontal");
+
             if(IsGrounded())
             {
                 coyoteTimeCounter = coyoteTime;
@@ -74,6 +77,14 @@ public class PlayerBehaviour : MonoBehaviour
             {
                 jumpBufferCounter -= Time.deltaTime;
             }
+            if(Input.GetButtonDown("Fire1"))
+            {
+                attackBufferCounter = attackBufferTime;
+            }
+            else
+            {
+                attackBufferCounter -= Time.deltaTime;
+            }
             if(coyoteTimeCounter > 0f && jumpBufferCounter > 0f)
             {
                 Jump();
@@ -84,9 +95,10 @@ public class PlayerBehaviour : MonoBehaviour
                 rb2d.velocity = new Vector2(rb2d.velocity.x, rb2d.velocity.y * 0.5f);
                 coyoteTimeCounter = 0f;
             }
-            if(Input.GetButtonDown("Fire1") && IsGrounded() && !attacking)
+            if(attackBufferCounter > 0f && IsGrounded() && !attacking)
             {
                 Attack(); 
+                attackBufferCounter = 0;
                 horizontalInput = 0;
             }
             if (Input.GetButtonDown("Fire2") && IsGrounded() && !blocking)
@@ -166,9 +178,11 @@ public class PlayerBehaviour : MonoBehaviour
     private void Attack()
     {
         if (Time.time - lastAttackTime < attackCooldown || attacking) return;
+
+        if (IsGrounded()) rb2d.velocity = Vector2.zero;
+        
         attacking = true;
         lastAttackTime = Time.time;
-        rb2d.velocity = Vector2.zero;
         anim.SetTrigger("Attack");
         StartCoroutine(AttackSlashSound());
         StartCoroutine(DisableAttack());
@@ -176,8 +190,13 @@ public class PlayerBehaviour : MonoBehaviour
 
     private IEnumerator AttackSlashSound()
     {
-        yield return new WaitForSeconds(0.16f);
-        SoundManager.Instance.PlaySound2D("SwordSlash");
+        yield return new WaitForSeconds(0.30f);
+        if (!playerLife.takingDamage)
+        {
+            SoundManager.Instance.PlaySound2D("SwordSlash");
+        }
+        
+        
     }
 
     public IEnumerator DisableAttack()

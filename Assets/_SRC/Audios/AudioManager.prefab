@@ -260,9 +260,9 @@ MonoBehaviour:
   - trackName: Tutorial
     clip: {fileID: 8300000, guid: a3d5c7cd7a87c62449ac1cf3ac979e44, type: 3}
   - trackName: Fase 1
-    clip: {fileID: 8300000, guid: 06906d718be5b6a4cb2df8732bf39832, type: 3}
-  - trackName: Fase 2
     clip: {fileID: 8300000, guid: bef0cef2ded0f0645ad90c6e5bdd4965, type: 3}
+  - trackName: Fase 2
+    clip: {fileID: 8300000, guid: 06906d718be5b6a4cb2df8732bf39832, type: 3}
   - trackName: Fase 3
     clip: {fileID: 8300000, guid: 1f2ad53bacc245642854dbdc8ea71a9b, type: 3}
 --- !u!114 &4495698308106961656

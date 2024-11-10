@@ -10194,6 +10194,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5472545759989403009, guid: f81756c81817d6945924ae9a34b048dc, type: 3}
+      propertyPath: waitTimeToPlayMusic
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 7769023276481682026, guid: f81756c81817d6945924ae9a34b048dc, type: 3}
       propertyPath: m_Name
       value: SceneTransitionsUI

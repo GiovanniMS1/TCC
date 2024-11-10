@@ -13,6 +13,7 @@ public class FlyEnemyController : MonoBehaviour
     private Vector3 initialPoint;
     private Animator anim;
     private EnemyLife enemyLife;
+    private Rigidbody2D rb2d;
     public List<Vector3> pathPositions = new List<Vector3>();
     private void Start()
     {
@@ -21,6 +22,8 @@ public class FlyEnemyController : MonoBehaviour
         playerMovementScript = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBehaviour>();
         anim = GetComponent<Animator>();
         enemyLife = GetComponent<EnemyLife>();
+        rb2d = GetComponent<Rigidbody2D>();
+        rb2d.constraints = RigidbodyConstraints2D.FreezeAll;
         initialPoint = transform.position;
     }
 

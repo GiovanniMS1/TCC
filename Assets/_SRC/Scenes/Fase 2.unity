@@ -4105,7 +4105,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.2369099, y: -0.02013, z: -10}
+  m_LocalPosition: {x: 3.1828191, y: -0.02013, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -19647,6 +19647,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6993658340599057461, guid: eaf56795e9feeb949a8581e61071a1fb, type: 3}
+      propertyPath: sprite
+      value: 
+      objectReference: {fileID: 1975837745}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -20306,6 +20310,11 @@ Transform:
 --- !u!95 &1975837741 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 1914606748819305142, guid: eaf56795e9feeb949a8581e61071a1fb, type: 3}
+  m_PrefabInstance: {fileID: 1874825685}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &1975837745 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 7253764694971594974, guid: eaf56795e9feeb949a8581e61071a1fb, type: 3}
   m_PrefabInstance: {fileID: 1874825685}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &2013957206

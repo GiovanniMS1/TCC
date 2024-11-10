@@ -2,12 +2,14 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 using System;
+using Unity.VisualScripting;
 
 public class PlayerLife : MonoBehaviour
 {
     [Header("Player Life")]
     public int maxLife;
     [SerializeField] private int actualLife;
+    [SerializeField] private SpriteRenderer sprite;
     [SerializeField] private GameObject blood;
     public static BoxCollider2D bc2d;
     public event EventHandler playerDeath;
@@ -25,6 +27,7 @@ public class PlayerLife : MonoBehaviour
         playerRb2d = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         bc2d = GetComponent<BoxCollider2D>();
+        Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Enemy"), false);
     }
 
     private void Update()
@@ -41,7 +44,6 @@ public class PlayerLife : MonoBehaviour
         }
         else
         {
-            Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Enemy"), false);
             return isDeath = false;
         }
     }
@@ -81,8 +83,23 @@ public class PlayerLife : MonoBehaviour
         yield return new WaitForSeconds(0.6f);
         playerScript.EnablePlayerControl();
         takingDamage = false;
+        StartCoroutine(BlinkSprite());
     }
 
+    private IEnumerator BlinkSprite()
+    {
+        bc2d.enabled = false;
+        Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Enemy"), true);
+        for (int i = 0; i < 7; i++)
+        {
+            sprite.enabled = false;
+            yield return new WaitForSeconds(0.15f);
+            sprite.enabled = true;
+            yield return new WaitForSeconds(0.15f);
+        }
+        Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Enemy"), false);
+        bc2d.enabled = true;
+    }
     public void HealLife(int heal)
     {
         int tempLife = actualLife + heal;
@@ -99,7 +116,7 @@ public class PlayerLife : MonoBehaviour
         changeLife.Invoke(actualLife);
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.CompareTag("DeathZone"))
         {

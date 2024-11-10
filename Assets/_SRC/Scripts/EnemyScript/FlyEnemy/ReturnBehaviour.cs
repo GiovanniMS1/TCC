@@ -47,6 +47,7 @@ public class ReturnBehaviour : StateMachineBehaviour
             {
                 animator.transform.position = initialPoint;
                 rb.velocity = Vector2.zero;
+                rb.constraints = RigidbodyConstraints2D.FreezeAll;
                 animator.SetTrigger("Arrived");
             }
         }
