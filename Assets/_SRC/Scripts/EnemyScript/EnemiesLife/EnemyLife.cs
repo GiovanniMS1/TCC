@@ -82,7 +82,7 @@ public class EnemyLife : MonoBehaviour
         {
             isDead = true;
             rb2d.velocity = Vector2.zero;
-            Physics2D.IgnoreCollision(GameObject.FindGameObjectWithTag("Player").GetComponent<BoxCollider2D>(), gameObject.GetComponent<BoxCollider2D>(), true);
+            Physics2D.IgnoreCollision( gameObject.GetComponent<BoxCollider2D>(), GameObject.FindGameObjectWithTag("Player").GetComponent<BoxCollider2D>(), true);
         }  
         else
         {

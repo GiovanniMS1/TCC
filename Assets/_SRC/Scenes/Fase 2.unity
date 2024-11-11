@@ -255,7 +255,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35099bbffa8bf2f4aabe8e954b31027f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  life: 2
+  life: 3
   blood: {fileID: 6536558886776448717, guid: 3cab4583f14f44144a5ab1315bcc51e4, type: 3}
   takingDamage: 0
   isDead: 0
@@ -432,9 +432,9 @@ GameObject:
   m_Component:
   - component: {fileID: 42645877}
   - component: {fileID: 42645883}
+  - component: {fileID: 42645880}
   - component: {fileID: 42645882}
   - component: {fileID: 42645881}
-  - component: {fileID: 42645880}
   - component: {fileID: 42645879}
   - component: {fileID: 42645878}
   m_Layer: 7
@@ -471,7 +471,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35099bbffa8bf2f4aabe8e954b31027f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  life: 2
+  life: 3
   blood: {fileID: 6536558886776448717, guid: 3cab4583f14f44144a5ab1315bcc51e4, type: 3}
   takingDamage: 0
   isDead: 0
@@ -488,7 +488,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd0607d5589307443b9873bf219b8cd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+  speed: 3
   reboundPower: 6
   detectionRadius: 3
 --- !u!95 &42645880
@@ -1361,7 +1361,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35099bbffa8bf2f4aabe8e954b31027f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  life: 2
+  life: 3
   blood: {fileID: 6536558886776448717, guid: 3cab4583f14f44144a5ab1315bcc51e4, type: 3}
   takingDamage: 0
   isDead: 0
@@ -2546,9 +2546,9 @@ GameObject:
   m_Component:
   - component: {fileID: 318311761}
   - component: {fileID: 318311767}
+  - component: {fileID: 318311764}
   - component: {fileID: 318311766}
   - component: {fileID: 318311765}
-  - component: {fileID: 318311764}
   - component: {fileID: 318311763}
   - component: {fileID: 318311762}
   m_Layer: 7
@@ -2585,7 +2585,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35099bbffa8bf2f4aabe8e954b31027f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  life: 2
+  life: 3
   blood: {fileID: 6536558886776448717, guid: 3cab4583f14f44144a5ab1315bcc51e4, type: 3}
   takingDamage: 0
   isDead: 0
@@ -2602,7 +2602,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd0607d5589307443b9873bf219b8cd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+  speed: 3
   reboundPower: 6
   detectionRadius: 3
 --- !u!95 &318311764
@@ -2830,7 +2830,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35099bbffa8bf2f4aabe8e954b31027f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  life: 2
+  life: 3
   blood: {fileID: 6536558886776448717, guid: 3cab4583f14f44144a5ab1315bcc51e4, type: 3}
   takingDamage: 0
   isDead: 0
@@ -4105,7 +4105,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.1828191, y: -0.02013, z: -10}
+  m_LocalPosition: {x: 3.17199, y: -0.02013, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4361,7 +4361,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 1179940315}
-  audioMixer: {fileID: 24100000, guid: 6e210111818ed604cbcb1694331f6aa6, type: 2}
   musicSlider: {fileID: 890523769}
   sfxSlider: {fileID: 700801059}
 --- !u!114 &573976410
@@ -5198,7 +5197,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35099bbffa8bf2f4aabe8e954b31027f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  life: 2
+  life: 3
   blood: {fileID: 6536558886776448717, guid: 3cab4583f14f44144a5ab1315bcc51e4, type: 3}
   takingDamage: 0
   isDead: 0
@@ -5847,7 +5846,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35099bbffa8bf2f4aabe8e954b31027f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  life: 2
+  life: 3
   blood: {fileID: 6536558886776448717, guid: 3cab4583f14f44144a5ab1315bcc51e4, type: 3}
   takingDamage: 0
   isDead: 0
@@ -7002,6 +7001,7 @@ GameObject:
   m_Component:
   - component: {fileID: 934647231}
   - component: {fileID: 934647230}
+  - component: {fileID: 934647233}
   - component: {fileID: 934647232}
   m_Layer: 0
   m_Name: CinematicBegin
@@ -7036,7 +7036,7 @@ PlayableDirector:
   - key: {fileID: 7789784871989465822, guid: 3ab0e1b1808bfdb4885f32d1f55ed381, type: 2}
     value: {fileID: 1975837734}
   - key: {fileID: -2176592342949159453, guid: 3ab0e1b1808bfdb4885f32d1f55ed381, type: 2}
-    value: {fileID: 774564435}
+    value: {fileID: 934647233}
   m_ExposedReferences:
     m_References: []
 --- !u!4 &934647231
@@ -7066,6 +7066,102 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0edd3be52302d874bb9e174517b01bc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!82 &934647233
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 934647229}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: -5845767157525001480, guid: 6e210111818ed604cbcb1694331f6aa6, type: 2}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &971289077
 GameObject:
   m_ObjectHideFlags: 0
@@ -8589,6 +8685,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1280510052}
   - component: {fileID: 1280510054}
+  - component: {fileID: 1280510055}
   - component: {fileID: 1280510053}
   m_Layer: 0
   m_Name: CinematicEnding
@@ -8633,26 +8730,122 @@ PlayableDirector:
   m_GameObject: {fileID: 1280510051}
   m_Enabled: 1
   serializedVersion: 3
-  m_PlayableAsset: {fileID: 11400000, guid: 6cbd8f7894c0bdf4385cfba12e2fa4ca, type: 2}
+  m_PlayableAsset: {fileID: 11400000, guid: b45adbad7175d3e4788d4024c77e1d96, type: 2}
   m_InitialState: 0
   m_WrapMode: 2
   m_DirectorUpdateMode: 1
   m_InitialTime: 0
   m_SceneBindings:
-  - key: {fileID: 6339919272976744047, guid: 6cbd8f7894c0bdf4385cfba12e2fa4ca, type: 2}
-    value: {fileID: 1975837741}
-  - key: {fileID: -6807980546447946993, guid: 6cbd8f7894c0bdf4385cfba12e2fa4ca, type: 2}
-    value: {fileID: 299426719}
   - key: {fileID: -5981878050809120471, guid: 6cbd8f7894c0bdf4385cfba12e2fa4ca, type: 2}
     value: {fileID: 774564435}
-  - key: {fileID: -6487232438174711180, guid: 6cbd8f7894c0bdf4385cfba12e2fa4ca, type: 2}
-    value: {fileID: 1975837741}
-  - key: {fileID: -7345416058538571410, guid: 6cbd8f7894c0bdf4385cfba12e2fa4ca, type: 2}
+  - key: {fileID: -6807980546447946993, guid: b45adbad7175d3e4788d4024c77e1d96, type: 2}
+    value: {fileID: 299426719}
+  - key: {fileID: -7345416058538571410, guid: b45adbad7175d3e4788d4024c77e1d96, type: 2}
     value: {fileID: 1975837734}
-  - key: {fileID: 3926980975394039806, guid: 6cbd8f7894c0bdf4385cfba12e2fa4ca, type: 2}
-    value: {fileID: 774564435}
+  - key: {fileID: -6487232438174711180, guid: b45adbad7175d3e4788d4024c77e1d96, type: 2}
+    value: {fileID: 1975837741}
+  - key: {fileID: 6339919272976744047, guid: b45adbad7175d3e4788d4024c77e1d96, type: 2}
+    value: {fileID: 1975837741}
+  - key: {fileID: -3837263005516479555, guid: b45adbad7175d3e4788d4024c77e1d96, type: 2}
+    value: {fileID: 1280510055}
   m_ExposedReferences:
     m_References: []
+--- !u!82 &1280510055
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1280510051}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: -5845767157525001480, guid: 6e210111818ed604cbcb1694331f6aa6, type: 2}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1281936117
 GameObject:
   m_ObjectHideFlags: 0
@@ -11562,9 +11755,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1288275718}
   - component: {fileID: 1288275724}
+  - component: {fileID: 1288275721}
   - component: {fileID: 1288275723}
   - component: {fileID: 1288275722}
-  - component: {fileID: 1288275721}
   - component: {fileID: 1288275720}
   - component: {fileID: 1288275719}
   m_Layer: 7
@@ -11601,7 +11794,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35099bbffa8bf2f4aabe8e954b31027f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  life: 2
+  life: 3
   blood: {fileID: 6536558886776448717, guid: 3cab4583f14f44144a5ab1315bcc51e4, type: 3}
   takingDamage: 0
   isDead: 0
@@ -11618,7 +11811,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd0607d5589307443b9873bf219b8cd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+  speed: 3
   reboundPower: 6
   detectionRadius: 3
 --- !u!95 &1288275721
@@ -12416,9 +12609,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1472074326}
   - component: {fileID: 1472074332}
+  - component: {fileID: 1472074329}
   - component: {fileID: 1472074331}
   - component: {fileID: 1472074330}
-  - component: {fileID: 1472074329}
   - component: {fileID: 1472074328}
   - component: {fileID: 1472074327}
   m_Layer: 7
@@ -12455,7 +12648,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35099bbffa8bf2f4aabe8e954b31027f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  life: 2
+  life: 3
   blood: {fileID: 6536558886776448717, guid: 3cab4583f14f44144a5ab1315bcc51e4, type: 3}
   takingDamage: 0
   isDead: 0
@@ -12472,7 +12665,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd0607d5589307443b9873bf219b8cd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+  speed: 3
   reboundPower: 6
   detectionRadius: 3
 --- !u!95 &1472074329
@@ -20731,7 +20924,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 573976408}
         m_TargetAssemblyTypeName: NextLevelScript, Assembly-CSharp
-        m_MethodName: BackToMenu
+        m_MethodName: TransitionNextLevel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -20919,7 +21112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35099bbffa8bf2f4aabe8e954b31027f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  life: 2
+  life: 3
   blood: {fileID: 6536558886776448717, guid: 3cab4583f14f44144a5ab1315bcc51e4, type: 3}
   takingDamage: 0
   isDead: 0
@@ -21431,7 +21624,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35099bbffa8bf2f4aabe8e954b31027f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  life: 2
+  life: 3
   blood: {fileID: 6536558886776448717, guid: 3cab4583f14f44144a5ab1315bcc51e4, type: 3}
   takingDamage: 0
   isDead: 0
@@ -21829,7 +22022,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35099bbffa8bf2f4aabe8e954b31027f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  life: 2
+  life: 3
   blood: {fileID: 6536558886776448717, guid: 3cab4583f14f44144a5ab1315bcc51e4, type: 3}
   takingDamage: 0
   isDead: 0
@@ -21846,7 +22039,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd0607d5589307443b9873bf219b8cd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+  speed: 3
   reboundPower: 6
   detectionRadius: 3
 --- !u!1 &3622865284586905158
@@ -21859,9 +22052,9 @@ GameObject:
   m_Component:
   - component: {fileID: 202444566460549959}
   - component: {fileID: 3096077981135742831}
+  - component: {fileID: 6007530814698164638}
   - component: {fileID: 5426189180568364494}
   - component: {fileID: 8665134016414660126}
-  - component: {fileID: 6007530814698164638}
   - component: {fileID: 3508438767731210090}
   - component: {fileID: 4595585058724907928}
   m_Layer: 7
@@ -21905,7 +22098,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35099bbffa8bf2f4aabe8e954b31027f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  life: 2
+  life: 3
   blood: {fileID: 6536558886776448717, guid: 3cab4583f14f44144a5ab1315bcc51e4, type: 3}
   takingDamage: 0
   isDead: 0

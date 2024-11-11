@@ -85,7 +85,7 @@ public class PlayerBehaviour : MonoBehaviour
             {
                 attackBufferCounter -= Time.deltaTime;
             }
-            if(coyoteTimeCounter > 0f && jumpBufferCounter > 0f)
+            if(coyoteTimeCounter > 0f && jumpBufferCounter > 0f && !attacking)
             {
                 Jump();
                 jumpBufferCounter = 0f;
