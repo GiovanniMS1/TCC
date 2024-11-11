@@ -197,7 +197,7 @@ MonoBehaviour:
   reboundPower: 6
   obstacleLayer:
     serializedVersion: 2
-    m_Bits: 136
+    m_Bits: 8
   pathPositions: []
 --- !u!114 &411028528819861407
 MonoBehaviour:

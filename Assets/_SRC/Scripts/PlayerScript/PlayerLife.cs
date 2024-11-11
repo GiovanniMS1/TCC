@@ -67,6 +67,8 @@ public class PlayerLife : MonoBehaviour
                 playerScript.DisableBlock();
                 StartCoroutine(DisableDamage());
                 Instantiate(blood, transform.position, Quaternion.identity);
+                bc2d.enabled = false;
+                Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Enemy"), true);
             }
             else
             {
@@ -88,9 +90,6 @@ public class PlayerLife : MonoBehaviour
 
     private IEnumerator BlinkSprite()
     {
-        bc2d.enabled = false;
-        Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Enemy"), true);
-
         for (int i = 0; i < 7; i++)
         {
             sprite.enabled = false;

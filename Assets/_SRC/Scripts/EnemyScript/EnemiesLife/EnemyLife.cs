@@ -78,27 +78,26 @@ public class EnemyLife : MonoBehaviour
     }
     private void EnemyIsDeath()
     {
-        if(life <= 0)
+        if(life <= 0 && !isDead)
         {
             isDead = true;
             rb2d.velocity = Vector2.zero;
-            Physics2D.IgnoreCollision( gameObject.GetComponent<BoxCollider2D>(), GameObject.FindGameObjectWithTag("Player").GetComponent<BoxCollider2D>(), true);
-        }  
-        else
-        {
-            isDead = false;
-        }    
+            DestroyEnemy();
+        }
     }
 
     private void OnDestroy()
     {
         if (!isDead) return;
+
         Instantiate(blood, transform.position, Quaternion.identity);
         SoundManager.Instance.PlaySound2D("Explosion");
     }
     private void DestroyEnemy()
     {
         if(isDead)
+        {
             Destroy(gameObject);
+        }
     }
 }
