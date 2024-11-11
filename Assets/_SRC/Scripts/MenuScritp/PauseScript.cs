@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -7,7 +6,6 @@ public class PauseScript : MonoBehaviour
 {
     public GameObject pauseMenu;
     public static bool paused;
-    public AudioMixer audioMixer;
     public Slider musicSlider;
     public Slider sfxSlider;
     private PlayerBehaviour playerBehaviour;
@@ -16,7 +14,7 @@ public class PauseScript : MonoBehaviour
     {
         playerBehaviour = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBehaviour>();
         SetPauseMenu(false);
-        LoadVolume();
+        AudioManager.Instance.InitializeSliders(musicSlider, sfxSlider);
     }
 
     private void ChangeCursor()
@@ -67,27 +65,16 @@ public class PauseScript : MonoBehaviour
 
     public void UpdateMusicVolume(float volume)
     {
-        audioMixer.SetFloat("MusicVolume", volume);
+        AudioManager.Instance.UpdateMusicVolume(volume);
     }
 
     public void UpdateSoundVolume(float volume)
     {
-        audioMixer.SetFloat("SFXVolume", volume);
+        AudioManager.Instance.UpdateSFXVolume(volume);
     }
 
     public void SaveVolume()
     {
-        audioMixer.GetFloat("MusicVolume", out float musicVolume);
-        PlayerPrefs.SetFloat("MusicVolume", musicVolume);
-
-        audioMixer.GetFloat("SFXVolume", out float sfxVolume);
-        PlayerPrefs.SetFloat("SFXVolume", sfxVolume);
+        AudioManager.Instance.SaveVolumeSettings();
     }
-
-    public void LoadVolume()
-    {
-        musicSlider.value = PlayerPrefs.GetFloat("MusicVolume");
-        sfxSlider.value = PlayerPrefs.GetFloat("SFXVolume");
-    }
-    
 }

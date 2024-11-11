@@ -222,6 +222,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxLife: 3
   actualLife: 3
+  sprite: {fileID: 7253764694971594974}
   blood: {fileID: 6536558886776448717, guid: 3cab4583f14f44144a5ab1315bcc51e4, type: 3}
   changeLife:
     m_PersistentCalls:

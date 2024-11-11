@@ -90,6 +90,7 @@ public class PlayerLife : MonoBehaviour
     {
         bc2d.enabled = false;
         Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Enemy"), true);
+
         for (int i = 0; i < 7; i++)
         {
             sprite.enabled = false;
@@ -97,8 +98,10 @@ public class PlayerLife : MonoBehaviour
             sprite.enabled = true;
             yield return new WaitForSeconds(0.15f);
         }
+
         Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Enemy"), false);
         bc2d.enabled = true;
+        
     }
     public void HealLife(int heal)
     {
