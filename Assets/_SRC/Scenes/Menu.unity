@@ -2458,7 +2458,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &725643437
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4519,7 +4519,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\nHist\xF3ria:\r\n - Felipe Gon\xC7aves e Giovanni Marchan\r\n\r\nPrograma\xE7\xE3o:\r\n
+  m_text: "\nHist\xF3ria:\r\n - Felipe Gon\xE7alves e Giovanni Marchan\r\n\r\nPrograma\xE7\xE3o:\r\n
     - Giovanni Marchan\r\n - BravePixelG\r\n - Raycastly\r\n - RehopeGames\n - bendux\r\n\r\nFonte:\r\n
     - Pixellari by Zacchary Dempsey-Plante\r\n\nGFX:\r\n - Wooden Pixel Art GUI by
     Narik\r\n\nPlayer sprite:\n -  Knight Character Pack v3.0 by RgsDev\r\n\r\r\nMonster's
