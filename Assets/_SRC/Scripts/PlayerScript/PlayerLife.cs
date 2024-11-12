@@ -27,7 +27,7 @@ public class PlayerLife : MonoBehaviour
         playerRb2d = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         bc2d = GetComponent<BoxCollider2D>();
-        Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Enemy"), false);
+        ResetPhysicCollision();
     }
 
     private void Update()
@@ -67,8 +67,8 @@ public class PlayerLife : MonoBehaviour
                 playerScript.DisableBlock();
                 StartCoroutine(DisableDamage());
                 Instantiate(blood, transform.position, Quaternion.identity);
-                bc2d.enabled = false;
                 Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Enemy"), true);
+                Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Shoot"), true);
             }
             else
             {
@@ -98,10 +98,16 @@ public class PlayerLife : MonoBehaviour
             yield return new WaitForSeconds(0.15f);
         }
 
-        Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Enemy"), false);
-        bc2d.enabled = true;
+        ResetPhysicCollision();
         
     }
+
+    private void ResetPhysicCollision()
+    {
+        Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Enemy"), false);
+        Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Shoot"), false);
+    }
+
     public void HealLife(int heal)
     {
         int tempLife = actualLife + heal;
@@ -122,7 +128,7 @@ public class PlayerLife : MonoBehaviour
     {
         if(collision.CompareTag("DeathZone"))
         {
-            gameObject.SetActive(false);        
+            gameObject.SetActive(false);
             playerRb2d.velocity = Vector2.zero;
             actualLife = 0;
             isDeath = true;
