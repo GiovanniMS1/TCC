@@ -15,7 +15,7 @@ public class PlayerBehaviour : MonoBehaviour
     
     private Rigidbody2D rb2d;
     private Animator anim;
-    private BoxCollider2D boxCollider;
+    private CapsuleCollider2D capsuleCollider2D;
     private PlayerLife playerLife;
     private PauseScript pauseGame;
 
@@ -39,7 +39,7 @@ public class PlayerBehaviour : MonoBehaviour
         canMove = false;
         rb2d = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-        boxCollider = GameObject.FindGameObjectWithTag("FloorDetection").GetComponent<BoxCollider2D>();
+        capsuleCollider2D = GameObject.FindGameObjectWithTag("FloorDetection").GetComponent<CapsuleCollider2D>();
         playerLife = GetComponent<PlayerLife>();
         pauseGame = GameObject.FindAnyObjectByType<PauseScript>();
     }
@@ -155,7 +155,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     private bool IsGrounded()
     {
-        RaycastHit2D ground = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0, Vector2.down, 0.2f, whatIsGround);
+        RaycastHit2D ground = Physics2D.BoxCast(capsuleCollider2D.bounds.center, capsuleCollider2D.bounds.size, 0, Vector2.down, 0.2f, whatIsGround);
         return isGrounded = ground.collider != null;
     }
 

@@ -2,7 +2,6 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 using System;
-using Unity.VisualScripting;
 
 public class PlayerLife : MonoBehaviour
 {
@@ -128,7 +127,8 @@ public class PlayerLife : MonoBehaviour
     {
         if(collision.CompareTag("DeathZone"))
         {
-            gameObject.SetActive(false);
+            if (isDeath) return;
+            
             playerRb2d.velocity = Vector2.zero;
             actualLife = 0;
             isDeath = true;
