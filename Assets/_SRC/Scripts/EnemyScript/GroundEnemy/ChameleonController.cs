@@ -43,7 +43,6 @@ public class ChameleonController : MonoBehaviour
         {
             Chasing();
         }
-        
     }
 
     private void FlipSprite(Vector2 direction)

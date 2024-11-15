@@ -239,7 +239,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4163078251705454188}
   - component: {fileID: 56040710776925441}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: SwordRange
   m_TagString: Sword
   m_Icon: {fileID: 0}
@@ -5203,7 +5203,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7570389148485909847}
   - component: {fileID: 8596118247733383027}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: ShieldRange
   m_TagString: Shield
   m_Icon: {fileID: 0}

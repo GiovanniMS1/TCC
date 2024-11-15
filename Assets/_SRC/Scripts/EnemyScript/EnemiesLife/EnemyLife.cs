@@ -27,6 +27,7 @@ public class EnemyLife : MonoBehaviour
             life -= damage;
             if(life >= 1) SoundManager.Instance.PlaySound2D("EnemyHit");
             rb2d.velocity = Vector2.zero;
+            Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Enemy"), true);
             StartCoroutine(DisableDamage());
         }
     }
@@ -52,6 +53,7 @@ public class EnemyLife : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f);
         takingDamage = false;
+        Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Enemy"), false);
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -97,6 +99,7 @@ public class EnemyLife : MonoBehaviour
     {
         if(isDead)
         {
+            Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Enemy"), false);
             Destroy(gameObject);
         }
     }

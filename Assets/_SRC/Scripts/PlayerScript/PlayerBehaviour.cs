@@ -69,6 +69,7 @@ public class PlayerBehaviour : MonoBehaviour
             {
                 coyoteTimeCounter -= Time.deltaTime;
             }
+
             if(Input.GetButtonDown("Jump"))
             {
                 jumpBufferCounter = jumpBufferTime;
@@ -77,6 +78,7 @@ public class PlayerBehaviour : MonoBehaviour
             {
                 jumpBufferCounter -= Time.deltaTime;
             }
+
             if(Input.GetButtonDown("Fire1"))
             {
                 attackBufferCounter = attackBufferTime;
@@ -85,31 +87,37 @@ public class PlayerBehaviour : MonoBehaviour
             {
                 attackBufferCounter -= Time.deltaTime;
             }
+
             if(coyoteTimeCounter > 0f && jumpBufferCounter > 0f && !attacking)
             {
                 Jump();
                 jumpBufferCounter = 0f;
             }
+            
             if(Input.GetButtonUp("Jump") && rb2d.velocity.y > 0f)
             {
                 rb2d.velocity = new Vector2(rb2d.velocity.x, rb2d.velocity.y * 0.5f);
                 coyoteTimeCounter = 0f;
             }
-            if(attackBufferCounter > 0f && IsGrounded() && !attacking)
+
+            if(attackBufferCounter > 0f && !attacking)
             {
                 Attack(); 
                 attackBufferCounter = 0;
                 horizontalInput = 0;
             }
-            if (Input.GetButtonDown("Fire2") && IsGrounded() && !blocking)
+
+            if (Input.GetButtonDown("Fire2") && !blocking)
             {
                 Block();
                 horizontalInput = 0;
             }
+
             if (Input.GetButtonUp("Fire2") && blocking)
             {
                 DisableBlock();
             }
+
             if (Input.GetButtonDown("Cancel"))
             {
                 pauseGame.SetPauseMenu(!PauseScript.paused);
@@ -119,8 +127,24 @@ public class PlayerBehaviour : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(!playerLife.takingDamage && !attacking && !blocking && !playerLife.isDeath)
+        if(playerLife.takingDamage || playerLife.isDeath) return;
+
+        if (attacking || blocking)
         {
+            if (IsGrounded())
+            {
+                // Durante o ataque no chão, o jogador não se move
+                rb2d.velocity = Vector2.zero;
+            }
+            else
+            {
+                // Permitir controle aéreo durante o ataque no ar
+                rb2d.velocity = new Vector2(horizontalInput * moveSpeed, rb2d.velocity.y);
+            }
+        }
+        else
+        {
+            // Movimentação normal
             rb2d.velocity = new Vector2(horizontalInput * moveSpeed, rb2d.velocity.y);
         }
     }
@@ -156,6 +180,11 @@ public class PlayerBehaviour : MonoBehaviour
     private bool IsGrounded()
     {
         RaycastHit2D ground = Physics2D.BoxCast(capsuleCollider2D.bounds.center, capsuleCollider2D.bounds.size, 0, Vector2.down, 0.2f, whatIsGround);
+        if (ground.collider != null && !isGrounded)
+        {
+            anim.ResetTrigger("AirAttack");
+            attacking = false;
+        }
         return isGrounded = ground.collider != null;
     }
 
@@ -179,11 +208,20 @@ public class PlayerBehaviour : MonoBehaviour
     {
         if (Time.time - lastAttackTime < attackCooldown || attacking) return;
 
-        if (IsGrounded()) rb2d.velocity = Vector2.zero;
-        
         attacking = true;
         lastAttackTime = Time.time;
-        anim.SetTrigger("Attack");
+
+        if (IsGrounded())
+        {
+            rb2d.velocity = Vector2.zero;
+            anim.SetTrigger("Attack");
+        }
+        else
+        {
+            // Ataque aéreo
+            anim.SetTrigger("AirAttack");
+        }
+
         StartCoroutine(AttackSlashSound());
         StartCoroutine(DisableAttack());
     }
@@ -195,8 +233,6 @@ public class PlayerBehaviour : MonoBehaviour
         {
             SoundManager.Instance.PlaySound2D("SwordSlash");
         }
-        
-        
     }
 
     public IEnumerator DisableAttack()

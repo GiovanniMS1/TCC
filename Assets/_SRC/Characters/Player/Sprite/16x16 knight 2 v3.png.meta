@@ -72,7 +72,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -664,8 +664,8 @@ TextureImporter:
       name: 16x16 knight 2 v3_25
       rect:
         serializedVersion: 2
-        x: 0
-        y: 64
+        x: 64
+        y: 128
         width: 64
         height: 64
       alignment: 0
@@ -685,8 +685,8 @@ TextureImporter:
       name: 16x16 knight 2 v3_26
       rect:
         serializedVersion: 2
-        x: 64
-        y: 64
+        x: 128
+        y: 128
         width: 64
         height: 64
       alignment: 0
@@ -706,8 +706,8 @@ TextureImporter:
       name: 16x16 knight 2 v3_27
       rect:
         serializedVersion: 2
-        x: 128
-        y: 64
+        x: 192
+        y: 128
         width: 64
         height: 64
       alignment: 0
@@ -727,8 +727,8 @@ TextureImporter:
       name: 16x16 knight 2 v3_28
       rect:
         serializedVersion: 2
-        x: 192
-        y: 64
+        x: 256
+        y: 128
         width: 64
         height: 64
       alignment: 0
@@ -748,8 +748,8 @@ TextureImporter:
       name: 16x16 knight 2 v3_29
       rect:
         serializedVersion: 2
-        x: 256
-        y: 64
+        x: 320
+        y: 128
         width: 64
         height: 64
       alignment: 0
@@ -769,8 +769,8 @@ TextureImporter:
       name: 16x16 knight 2 v3_30
       rect:
         serializedVersion: 2
-        x: 320
-        y: 64
+        x: 384
+        y: 128
         width: 64
         height: 64
       alignment: 0
@@ -790,7 +790,7 @@ TextureImporter:
       name: 16x16 knight 2 v3_31
       rect:
         serializedVersion: 2
-        x: 384
+        x: 0
         y: 64
         width: 64
         height: 64
@@ -811,8 +811,8 @@ TextureImporter:
       name: 16x16 knight 2 v3_32
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
+        x: 64
+        y: 64
         width: 64
         height: 64
       alignment: 0
@@ -832,8 +832,8 @@ TextureImporter:
       name: 16x16 knight 2 v3_33
       rect:
         serializedVersion: 2
-        x: 64
-        y: 0
+        x: 128
+        y: 64
         width: 64
         height: 64
       alignment: 0
@@ -845,6 +845,132 @@ TextureImporter:
       bones: []
       spriteID: 2b47c12de3ba7db44a2be9d4ffcec975
       internalID: -1717674497
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 16x16 knight 2 v3_34
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 798b7658395d5ff4dac27d7dd03d809b
+      internalID: 1774476540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 16x16 knight 2 v3_35
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11d1801d04db58f4894b8ac62c94dcf8
+      internalID: -388653649
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 16x16 knight 2 v3_36
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5a000b59b3724c4eb424b37a1b27458
+      internalID: 1058096377
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 16x16 knight 2 v3_37
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40c27dd61aed3de4db5535b95db5f8bd
+      internalID: 2018935657
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 16x16 knight 2 v3_38
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 979c4076c2302e945a1decf42bb07891
+      internalID: 142147362
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 16x16 knight 2 v3_39
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b943bc51693bbd4c8a3a7639db929e1
+      internalID: 24384368
       vertices: []
       indices: 
       edges: []
@@ -888,6 +1014,12 @@ TextureImporter:
       16x16 knight 2 v3_31: 394516237
       16x16 knight 2 v3_32: 1809936321
       16x16 knight 2 v3_33: -1717674497
+      16x16 knight 2 v3_34: 1774476540
+      16x16 knight 2 v3_35: -388653649
+      16x16 knight 2 v3_36: 1058096377
+      16x16 knight 2 v3_37: 2018935657
+      16x16 knight 2 v3_38: 142147362
+      16x16 knight 2 v3_39: 24384368
       16x16 knight 2 v3_4: -820826272
       16x16 knight 2 v3_5: 1018751967
       16x16 knight 2 v3_6: -1415587876
