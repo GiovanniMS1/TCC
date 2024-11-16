@@ -44,21 +44,21 @@ public class PauseScript : MonoBehaviour
     public void SetPauseMenu(bool isPaused)
     {
         paused = isPaused;
-        Time.timeScale = paused ? 0 : 1;
+        Time.timeScale = paused ? 0f : 1f;
         pauseMenu.SetActive(paused);
         ChangeCursor();
     }
 
     public void Reset()
     {
-        Time.timeScale = 1;
+        Time.timeScale = 1f;
         SceneTransition.Instance.DissolveExit(SceneManager.GetActiveScene().buildIndex);
         BlockPlayerInput();
     }
 
     public void BackMenu()
     {
-        Time.timeScale = 1;
+        Time.timeScale = 1f;
         SceneTransition.Instance.DissolveExit(0);
         BlockPlayerInput();
     }

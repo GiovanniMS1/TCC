@@ -39,7 +39,7 @@ public class PlayerBehaviour : MonoBehaviour
         canMove = false;
         rb2d = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-        capsuleCollider2D = GameObject.FindGameObjectWithTag("FloorDetection").GetComponent<CapsuleCollider2D>();
+        capsuleCollider2D = GetComponentInChildren<CapsuleCollider2D>();
         playerLife = GetComponent<PlayerLife>();
         pauseGame = GameObject.FindAnyObjectByType<PauseScript>();
     }
@@ -57,10 +57,12 @@ public class PlayerBehaviour : MonoBehaviour
 
     private void PlayerInput()
     {
-        if(!playerLife.takingDamage && !playerLife.isDeath && !PauseScript.paused)
+        if(!playerLife.takingDamage)
         {
+            // Movimento horizontal
             horizontalInput = Input.GetAxis("Horizontal");
-
+            
+            // Pular
             if(IsGrounded())
             {
                 coyoteTimeCounter = coyoteTime;
@@ -79,16 +81,7 @@ public class PlayerBehaviour : MonoBehaviour
                 jumpBufferCounter -= Time.deltaTime;
             }
 
-            if(Input.GetButtonDown("Fire1"))
-            {
-                attackBufferCounter = attackBufferTime;
-            }
-            else
-            {
-                attackBufferCounter -= Time.deltaTime;
-            }
-
-            if(coyoteTimeCounter > 0f && jumpBufferCounter > 0f && !attacking)
+            if(coyoteTimeCounter > 0f && jumpBufferCounter > 0f && !attacking && !blocking)
             {
                 Jump();
                 jumpBufferCounter = 0f;
@@ -100,6 +93,16 @@ public class PlayerBehaviour : MonoBehaviour
                 coyoteTimeCounter = 0f;
             }
 
+            //Atacar
+            if(Input.GetButtonDown("Fire1"))
+            {
+                attackBufferCounter = attackBufferTime;
+            }
+            else
+            {
+                attackBufferCounter -= Time.deltaTime;
+            }
+
             if(attackBufferCounter > 0f && !attacking)
             {
                 Attack(); 
@@ -107,7 +110,8 @@ public class PlayerBehaviour : MonoBehaviour
                 horizontalInput = 0;
             }
 
-            if (Input.GetButtonDown("Fire2") && !blocking)
+            // Bloquear
+            if (Input.GetButtonDown("Fire2") && IsGrounded() && !blocking)
             {
                 Block();
                 horizontalInput = 0;
@@ -118,6 +122,7 @@ public class PlayerBehaviour : MonoBehaviour
                 DisableBlock();
             }
 
+            // Pausar
             if (Input.GetButtonDown("Cancel"))
             {
                 pauseGame.SetPauseMenu(!PauseScript.paused);
@@ -129,19 +134,12 @@ public class PlayerBehaviour : MonoBehaviour
     {
         if(playerLife.takingDamage || playerLife.isDeath) return;
 
-        if (attacking || blocking)
+        
+        if (attacking && IsGrounded() || blocking && IsGrounded())
         {
-            if (IsGrounded())
-            {
-                // Durante o ataque no chão, o jogador não se move
-                rb2d.velocity = Vector2.zero;
-            }
-            else
-            {
-                // Permitir controle aéreo durante o ataque no ar
-                rb2d.velocity = new Vector2(horizontalInput * moveSpeed, rb2d.velocity.y);
-            }
+            rb2d.velocity = Vector2.zero;
         }
+
         else
         {
             // Movimentação normal
@@ -149,21 +147,65 @@ public class PlayerBehaviour : MonoBehaviour
         }
     }
 
-    public void Rebound()
-    {
-        rb2d.velocity = new Vector2(rb2d.velocity.x, reboundVelocity);
-    }
-
-    public void EnemyRebound()
-    {
-        rb2d.velocity = new Vector2(rb2d.velocity.x, rb2d.velocity.y);
-    }
-
     private void Jump()
     {
         CreateDust();
         SoundManager.Instance.PlaySound2D("Jumping");
         rb2d.velocity = new Vector2(rb2d.velocity.x, jumpPower);
+    }
+
+    private void Attack()
+    {
+        if (Time.time - lastAttackTime < attackCooldown || attacking) return;
+
+        attacking = true;
+        lastAttackTime = Time.time;
+
+        if (IsGrounded())
+        {
+            // Ataque no chão
+            anim.SetTrigger("Attack");
+        }
+        else
+        {
+            // Ataque no ar
+            anim.SetTrigger("AirAttack");
+        }
+
+        StartCoroutine(AttackSlashSound());
+        StartCoroutine(DisableAttack());
+    }
+
+    private IEnumerator AttackSlashSound()
+    {
+        yield return new WaitForSeconds(0.30f);
+        if (!playerLife.takingDamage)
+        {
+            SoundManager.Instance.PlaySound2D("SwordSlash");
+        }
+    }
+
+    public IEnumerator DisableAttack()
+    {
+        yield return new WaitForSeconds(0.5f);
+        attacking = false;
+    }
+
+    private void Block()
+    {
+        blocking = true;
+        SoundManager.Instance.PlaySound2D("PullShield");
+    }
+
+    public void DisableBlock()
+    {
+        StartCoroutine(DisableBlockDelay());
+    }
+
+    private IEnumerator DisableBlockDelay()
+    {
+        yield return new WaitForSeconds(0.1f);
+        blocking = false;
     }
 
     private void FlipSprite()
@@ -204,67 +246,22 @@ public class PlayerBehaviour : MonoBehaviour
         }
     }
 
-    private void Attack()
-    {
-        if (Time.time - lastAttackTime < attackCooldown || attacking) return;
-
-        attacking = true;
-        lastAttackTime = Time.time;
-
-        if (IsGrounded())
-        {
-            rb2d.velocity = Vector2.zero;
-            anim.SetTrigger("Attack");
-        }
-        else
-        {
-            // Ataque aéreo
-            anim.SetTrigger("AirAttack");
-        }
-
-        StartCoroutine(AttackSlashSound());
-        StartCoroutine(DisableAttack());
-    }
-
-    private IEnumerator AttackSlashSound()
-    {
-        yield return new WaitForSeconds(0.30f);
-        if (!playerLife.takingDamage)
-        {
-            SoundManager.Instance.PlaySound2D("SwordSlash");
-        }
-    }
-
-    public IEnumerator DisableAttack()
-    {
-        yield return new WaitForSeconds(0.5f);
-        attacking = false;
-    }
-
-    private void Block()
-    {
-        SoundManager.Instance.PlaySound2D("PullShield");
-        blocking = true;
-        rb2d.velocity = Vector2.zero;
-    }
-
-    public void DisableBlock()
-    {
-        StartCoroutine(DisableBlockDelay());
-    }
-
-    private IEnumerator DisableBlockDelay()
-    {
-        yield return new WaitForSeconds(0.1f);
-        blocking = false;
-    }
-
     private void AnimationState()
     {
         anim.SetFloat("xVelocity", Mathf.Abs(rb2d.velocity.x));
         anim.SetFloat("yVelocity", rb2d.velocity.y);
         anim.SetBool("isJumping", !isGrounded);
         anim.SetBool("isBlocking", blocking);
+    }
+
+    public void Rebound()
+    {
+        rb2d.velocity = new Vector2(rb2d.velocity.x, reboundVelocity);
+    }
+
+    public void EnemyRebound()
+    {
+        rb2d.velocity = new Vector2(rb2d.velocity.x, rb2d.velocity.y);
     }
 
     private void CreateDust()
