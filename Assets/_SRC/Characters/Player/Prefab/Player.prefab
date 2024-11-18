@@ -307,7 +307,7 @@ GameObject:
   - component: {fileID: 6873380957383259736}
   - component: {fileID: 1293938210816911042}
   - component: {fileID: 4580743376551985608}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: DustPS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5136,7 +5136,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2294923334584756837}
   - component: {fileID: 1479730576357540914}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: FloorCollision
   m_TagString: FloorDetection
   m_Icon: {fileID: 0}

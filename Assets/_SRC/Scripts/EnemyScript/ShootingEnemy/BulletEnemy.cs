@@ -5,7 +5,7 @@ public class BulletEnemy : MonoBehaviour
     [SerializeField] private float velocity;
     [SerializeField] private float reboundPower;
     [SerializeField] private int damage;
-    public Vector3 directionBullet;
+    private Vector3 directionBullet;
     private PlayerBehaviour playerMovement;
     public float lifeTime;
     private Rigidbody2D rb2d;
@@ -44,13 +44,13 @@ public class BulletEnemy : MonoBehaviour
         else if(collision.TryGetComponent(out PlayerLife playerLife))
         {
             Vector2 directionDamage = new Vector2(transform.position.x, 0);
-            playerLife.TakeDamage(directionDamage, reboundPower, 1);
+            playerLife.TakeDamage(directionDamage, reboundPower, damage);
             DestroyBullet();
         }
         
         else if(collision.TryGetComponent(out EnemyLife enemyLife))
         {
-            enemyLife.TakeDamage(1);
+            enemyLife.TakeDamage(damage);
             DestroyBullet();
         }
             

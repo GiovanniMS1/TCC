@@ -147,6 +147,17 @@ public class PlayerBehaviour : MonoBehaviour
         }
     }
 
+    private bool IsGrounded()
+    {
+        RaycastHit2D ground = Physics2D.BoxCast(capsuleCollider2D.bounds.center, capsuleCollider2D.bounds.size, 0, Vector2.down, 0.1f, whatIsGround);
+        if (ground.collider != null && !isGrounded)
+        {
+            anim.ResetTrigger("AirAttack");
+            attacking = false;
+        }
+        return isGrounded = ground.collider != null;
+    }
+
     private void Jump()
     {
         CreateDust();
@@ -217,17 +228,6 @@ public class PlayerBehaviour : MonoBehaviour
             ls.x *= -1f;
             transform.localScale = ls;
         }
-    }
-
-    private bool IsGrounded()
-    {
-        RaycastHit2D ground = Physics2D.BoxCast(capsuleCollider2D.bounds.center, capsuleCollider2D.bounds.size, 0, Vector2.down, 0.2f, whatIsGround);
-        if (ground.collider != null && !isGrounded)
-        {
-            anim.ResetTrigger("AirAttack");
-            attacking = false;
-        }
-        return isGrounded = ground.collider != null;
     }
 
     private void CheckPlayerSteps()
