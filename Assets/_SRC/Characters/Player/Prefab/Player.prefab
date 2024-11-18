@@ -208,6 +208,13 @@ MonoBehaviour:
   dust: {fileID: 1293938210816911042}
   isFacingRight: 0
   canMove: 0
+  staminaSlider: {fileID: 0}
+  maxStamina: 3
+  staminaDepletionRate: 1
+  staminaRecoveryRate: 1
+  recoveryDelay: 1
+  isDefending: 0
+  canDefend: 1
 --- !u!114 &6993658340599057461
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5136,7 +5143,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2294923334584756837}
   - component: {fileID: 1479730576357540914}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FloorCollision
   m_TagString: FloorDetection
   m_Icon: {fileID: 0}

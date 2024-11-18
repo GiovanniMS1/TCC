@@ -194,7 +194,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2794936712147845a9fe18ca759e681, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  searchRadius: 3
+  searchRadius: 5
   maxDistance: 5
   movemetVelocity: 2
   reboundPower: 5

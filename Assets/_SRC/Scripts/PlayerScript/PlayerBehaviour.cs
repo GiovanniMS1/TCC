@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerBehaviour : MonoBehaviour
 {
@@ -33,6 +34,18 @@ public class PlayerBehaviour : MonoBehaviour
     private float jumpBufferTime = 0.2f;
     private float jumpBufferCounter;
 
+    [Header("Stamina Settings")]
+    public Slider staminaSlider; // Referência ao Slider da estamina
+    public float maxStamina; // Valor máximo de estamina
+    public float staminaDepletionRate; // Taxa de redução da estamina por segundo
+    public float staminaRecoveryRate; // Taxa de recuperação da estamina por segundo
+    public float recoveryDelay = 1f; // Tempo de espera para começar a recuperar após soltar o botão
+
+    public bool isDefending = false; // Verifica se o jogador está defendendo
+    public bool canDefend = true; // Verifica se o jogador pode defender
+    private float currentStamina;
+    private float recoveryTimer;
+
     void Start()
     {
         isFacingRight = true;
@@ -42,6 +55,9 @@ public class PlayerBehaviour : MonoBehaviour
         capsuleCollider2D = GetComponentInChildren<CapsuleCollider2D>();
         playerLife = GetComponent<PlayerLife>();
         pauseGame = GameObject.FindAnyObjectByType<PauseScript>();
+        currentStamina = maxStamina;
+        staminaSlider.maxValue = maxStamina;
+        staminaSlider.value = maxStamina;
     }
 
     void Update()
@@ -53,6 +69,7 @@ public class PlayerBehaviour : MonoBehaviour
         IsGrounded();   
         AnimationState();
         CheckPlayerSteps();
+        HandleStamina();
     }
 
     private void PlayerInput()
@@ -111,15 +128,17 @@ public class PlayerBehaviour : MonoBehaviour
             }
 
             // Bloquear
-            if (Input.GetButtonDown("Fire2") && IsGrounded() && !blocking)
+            if (Input.GetButtonDown("Fire2") && IsGrounded() && !blocking && canDefend)
             {
                 Block();
+                isDefending = true;
                 horizontalInput = 0;
             }
 
             if (Input.GetButtonUp("Fire2") && blocking)
             {
                 DisableBlock();
+                isDefending = false;
             }
 
             // Pausar
@@ -217,6 +236,45 @@ public class PlayerBehaviour : MonoBehaviour
     {
         yield return new WaitForSeconds(0.1f);
         blocking = false;
+        isDefending = false;
+    }
+
+    private void HandleStamina()
+    {
+        if (isDefending && canDefend)
+        {
+            // Reduz a estamina enquanto o jogador estiver defendendo
+            currentStamina -= staminaDepletionRate * Time.deltaTime;
+            currentStamina = Mathf.Clamp(currentStamina, 0, maxStamina);
+            staminaSlider.value = currentStamina;
+
+            // Impede que o jogador continue defendendo se a estamina zerar
+            if (currentStamina <= 0)
+            {
+                canDefend = false;
+                isDefending = false;
+                DisableBlock();
+            }
+
+            recoveryTimer = 0; // Reseta o tempo de recuperação
+        }
+        else
+        {
+            // Inicia a recuperação após o tempo de espera
+            recoveryTimer += Time.deltaTime;
+            if (recoveryTimer >= recoveryDelay)
+            {
+                currentStamina += staminaRecoveryRate * Time.deltaTime;
+                currentStamina = Mathf.Clamp(currentStamina, 0, maxStamina);
+                staminaSlider.value = currentStamina;
+
+                // Permite defender novamente quando a estamina estiver cheia
+                if (currentStamina >= maxStamina)
+                {
+                    canDefend = true;
+                }
+            }
+        }
     }
 
     private void FlipSprite()

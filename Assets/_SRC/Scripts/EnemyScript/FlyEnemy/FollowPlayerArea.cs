@@ -1,6 +1,4 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class FollowPlayerArea : MonoBehaviour
@@ -56,11 +54,6 @@ public class FollowPlayerArea : MonoBehaviour
                 break;
         }
 
-        if(enemyLife.takingDamage)
-        {
-            actualState = MovimentState.TakingDamage;
-        }
-
         AnimationState();
     }
 
@@ -80,6 +73,13 @@ public class FollowPlayerArea : MonoBehaviour
 
     private void FollowingState()
     {
+        if (enemyLife.takingDamage)
+        {
+            actualState = MovimentState.TakingDamage;
+            playerTransform = null;
+            return;
+        }
+
         if(playerTransform == null)
         {
             actualState = MovimentState.Returning;
@@ -141,6 +141,7 @@ public class FollowPlayerArea : MonoBehaviour
         {
             Vector2 directionDamage = new Vector2(transform.position.x, 0);
             playerLifeScript.TakeDamage(directionDamage, reboundPower, 1);
+            actualState = MovimentState.Returning;
         }
     }
 
@@ -169,7 +170,7 @@ public class FollowPlayerArea : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, searchRadius);
+        Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(initialPoint, maxDistance);
     }
-
 }
