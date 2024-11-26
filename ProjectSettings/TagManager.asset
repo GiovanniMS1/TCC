@@ -11,6 +11,7 @@ TagManager:
   - Bullet
   - DeathZone
   - FloorDetection
+  - Button
   layers:
   - Default
   - TransparentFX
